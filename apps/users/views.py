@@ -58,7 +58,7 @@ class RegisterView(View):
         else:
             hashkey = CaptchaStore.generate_key()
             imgage_url = captcha_image_url(hashkey)
-            return render(request, "/reg.html", {'hashkey':hashkey,'imgage_url':imgage_url})
+            return render(request, "zl955/reg.html", {'hashkey':hashkey,'imgage_url':imgage_url})
     def post(self, request):
         register_form = RegisterForm(request.POST)
         check_code = CheckCode(request.POST)
@@ -118,7 +118,7 @@ class LoginView(View):
         if request.user.is_authenticated():
             return HttpResponseRedirect(reverse("zl-index"))
         else:
-            return render(request, "login.html", {})
+            return render(request, "zl955/login.html", {})
     def post(self, request):
         login_form = LoginForm(request.POST)
         if login_form.is_valid():
