@@ -30,8 +30,8 @@
           $('body').append(modal);
         }
         modal.find('.modal-title').html(el.attr('title'));
-
-        var _url = "http://whois.pconline.com.cn/ip.jsp?ip="+this.res_uri
+        var _url = "http://www.ip138.com/ips138.asp?ip="+this.res_uri+"&action=2"
+        // var _url = "http://whois.pconline.com.cn/ip.jsp?ip="+this.res_uri
 
         modal.find('.modal-body').html('<iframe src="'+_url+'" width="100%"></iframe>');
 
