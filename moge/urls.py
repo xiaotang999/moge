@@ -39,13 +39,11 @@ urlpatterns = [
     url(r'^zl955/static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
     # 
     url(r'^captcha/', include('captcha.urls')),# 验证码
-    
-    # url('^$', IndexView.as_view(), name='index'),
-    url('^vip8j888/$', VIP8j888IndexView.as_view(), name='vip-index'),
-    url('^zl955/$', ZL955IndexView.as_view(), name='zl-index'),
-    # url('^zl955/$', IndexView.as_view(), name='index'),
+    # 
     url('^zl955/reg/$', RegisterView.as_view(), name="reg"),
     url('^zl955/login/$', LoginView.as_view(), name="login"),
     url('^zl955/logout/$', LogoutView.as_view(), name="logout"),
-    # url('^login/$', LoginView.as_view(), name="login"),
+
+    url('^vip8j888/$', VIP8j888IndexView.as_view(), name='vip-index'),
+    url('^zl955/$', ZL955IndexView.as_view(), name='zl-index'),
 ]
