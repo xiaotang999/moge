@@ -36,3 +36,11 @@ git push origin master
 git reset --hard
 git pull
 ```
+
+```
+uwsgi -i uwsgi.ini &
+
+
+uwsgi --ini uwsgi.ini
+pkill -9 uwsgi
+```

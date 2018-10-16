@@ -131,9 +131,9 @@ USE_TZ = False   #默认是Ture，时间是utc时间，由于我们要用本地�
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATICFILES_DIRS = (
-#   os.path.join(BASE_DIR, "static"),
-#)
+STATICFILES_DIRS = (
+   os.path.join(BASE_DIR, "static"),
+)
 # 上线屏蔽上面即可，开启下面即可
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
