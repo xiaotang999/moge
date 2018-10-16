@@ -5,7 +5,7 @@ pip install -r requirements.txt
 # 环境
 mkvirtualenv -p python3 XXX
 workon XXX # 进入虚拟环境
-deactiveate # 退出虚拟环境
+deactivate # 退出虚拟环境
 rm virtualenv XXX # 删除该虚拟环境
 # 开始django项目
 django-admin startproject xxx

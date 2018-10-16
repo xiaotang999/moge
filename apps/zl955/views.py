@@ -7,7 +7,7 @@ from django.template import loader
 # Create your views here.
 from .models import Settings, Guanggao, OpenNew, Open, Bottoms, PiaoChuan, IpApp
 
-class IndexView(View):
+class ZL955IndexView(View):
 	def post(self, request):
 		_opennew = OpenNew.objects.all()
 		_opennew = [

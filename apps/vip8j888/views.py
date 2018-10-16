@@ -5,7 +5,7 @@ import httplib2
 # Create your views here.
 from .models import HtmlApp, AgentApp, HotApp, IpApp
 
-class IndexView(View):
+class VIP8j888IndexView(View):
 	def get(self, request):
 		htmlx = HtmlApp.objects.all()
 		agentx = AgentApp.objects.all()

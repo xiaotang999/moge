@@ -19,8 +19,8 @@ from django.views.static import serve
 from moge.settings import MEDIA_ROOT
 # from moge.settings import STATIC_ROOT
 
-from zl955.views import IndexView
-from vip8j888.views import IndexView
+from zl955.views import ZL955IndexView
+from vip8j888.views import VIP8j888IndexView
 from users.views import LoginView, RegisterView, LogoutView
 
 urlpatterns = [
@@ -32,8 +32,8 @@ urlpatterns = [
     url(r'^captcha/', include('captcha.urls')),# 验证码
     
     # url('^$', IndexView.as_view(), name='index'),
-    url('^vip8j888/$', IndexView.as_view(), name='vip-index'),
-    url('^zl955/$', IndexView.as_view(), name='zl-index'),
+    url('^vip8j888/$', VIP8j888IndexView.as_view(), name='vip-index'),
+    url('^zl955/$', ZL955IndexView.as_view(), name='zl-index'),
     # url('^zl955/$', IndexView.as_view(), name='index'),
     url('^reg/$', RegisterView.as_view(), name="reg"),
     url('^login/$', LoginView.as_view(), name="login"),
