@@ -54,11 +54,11 @@ class RegisterView(View):
     """用户注册"""
     def get(self, request):
         if request.user.is_authenticated():
-            return HttpResponseRedirect(reverse("index"))
+            return HttpResponseRedirect(reverse("zl-index"))
         else:
             hashkey = CaptchaStore.generate_key()
             imgage_url = captcha_image_url(hashkey)
-            return render(request, "user/reg.html", {'hashkey':hashkey,'imgage_url':imgage_url})
+            return render(request, "/reg.html", {'hashkey':hashkey,'imgage_url':imgage_url})
     def post(self, request):
         register_form = RegisterForm(request.POST)
         check_code = CheckCode(request.POST)
@@ -110,15 +110,15 @@ class LogoutView(View):
     """用户登出"""
     def get(self, request):
         logout(request)
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("zl-index"))
 
 class LoginView(View):
     """用户登录"""
     def get(self, request):
         if request.user.is_authenticated():
-            return HttpResponseRedirect(reverse("index"))
+            return HttpResponseRedirect(reverse("zl-index"))
         else:
-            return render(request, "user/login.html", {})
+            return render(request, "login.html", {})
     def post(self, request):
         login_form = LoginForm(request.POST)
         if login_form.is_valid():
