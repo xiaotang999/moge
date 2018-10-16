@@ -29,6 +29,7 @@ SECRET_KEY = '--jyn^hqb_h(voubf(t7c)5gn$dj2gwl^+qg@bbs#2-hv&#7qp'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+X_FRAME_OPTIONS = 'ALLOWALL'
 
 # Application definition
 AUTHENTICATION_BACKENDS = (
