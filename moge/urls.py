@@ -24,7 +24,11 @@ from vip8j888.views import VIP8j888IndexView
 from users.views import LoginView, RegisterView, LogoutView
 
 urlpatterns = [
+    
+    url(r'^xadmin/media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}), # 静态上传文件路径
+    url(r'^xadmin/static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
     url(r'^xadmin/', xadmin.site.urls),
+
     url(r'^ueditor/', include('DjangoUeditor.urls')), # 富文本路径
     url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}), # 静态上传文件路径
     url(r'^static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
