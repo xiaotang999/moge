@@ -25,9 +25,13 @@ python manage.py makemigrations
 python manage.py migrate
 # 创建超级管理员和密码
 python manage.py createsuperuser
+# 部署静态文件
+python manage.py collectstatic
 ```
 
 ```
-pip freeze > requirements.txt
-pip install -r requirements.txt
+git add 
+git commit -m "xx"
+git push origin master
+
 ```

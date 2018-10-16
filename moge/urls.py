@@ -27,7 +27,12 @@ urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
     url(r'^ueditor/', include('DjangoUeditor.urls')), # 富文本路径
     url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}), # 静态上传文件路径
-    # url(r'^static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
+    url(r'^static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
+
+    url(r'^vip8j888/media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
+    url(r'^vip8j888/static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
+    url(r'^zl955/media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
+    url(r'^zl955/static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
     # 
     url(r'^captcha/', include('captcha.urls')),# 验证码
     
