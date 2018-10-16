@@ -1,0 +1,22 @@
+.layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after{
+	background-color: #cc991d;
+}
+.layui-layout-body{
+	overflow: auto;
+}
+.layui-layout-admin .layui-logo{
+    font-family: cursive;
+    font-size: 32px;
+    font-weight: bold;
+    color: #d9ab3b;
+    text-shadow: 3px 3px 3px #f00;
+    left: 15px;
+    text-align: left;
+}
+.layui-layout-body{
+    width: 940px;
+    margin: 0 auto;
+}
+.layui-header .layui-logo{
+    cursor: default;
+}

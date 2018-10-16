@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+{% for items in htmlx %}
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{{ items.name }}</title>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<link rel="icon" type="image/x-icon" href="media/{{ items.icons }}"/>
+	<meta name="keywords" content="{{ items.keywords }}" />
+	<meta name="description" content="{{ items.description }}" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="static/dist/css/sm.min.css">	
+	<link rel="stylesheet" href="static/dist/css/sm-extend.min.css">
+<style type="text/css">
+.theme-dark{
+    max-width: 600px;
+    margin: 0 auto;
+}
+.tabs img{
+	width: 100%;
+}
+.theme-dark .title{
+	color: #ddc624;
+    font-weight: bold;
+}
+.theme-dark .tab-item.active{
+	color: #ddc624;
+}
+.bar-nav.theme-dark, .bar-tab.theme-dark, .theme-dark .bar-nav, .theme-dark .bar-tab{
+    background-color: #000000;
+}
+.page.theme-dark, .panel.theme-dark, .theme-dark .content, .theme-dark .login-screen-content, .theme-dark .page, .theme-dark .panel{
+    background-color: #000000;
+}
+.agent{
+	color: #ddc624;
+    font-weight: bold;
+    text-align: center;
+    font-size: .8rem;
+}
+.agent-ls{
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #959595;
+    width:90%;
+    margin: .2rem auto;
+    background-color: #887431;
+    border-radius: 5px;
+}
+.agent-ls>a{
+	color: #9f1b2a;
+	font-size: .7rem;
+}
+#tab2 img{
+	line-height: 0;
+}
+.top{
+	width: 80%;
+	margin: 0 auto;
+}
+</style>
+</head>
+<body class="theme-dark">
+	<!-- start -->
+    <div class="page-group">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page">
+            <!-- 标题栏 -->
+            <!--
+            <header class="bar bar-nav">
+                <h1 class="title">{{ items.name }}</h1>
+            </header>
+        	-->
+            <!-- 工具栏 -->
+            <nav class="bar bar-tab">
+                <a class="tab-item external tab-link active" href="#tab1">
+                    <span class="icon icon-home"></span>
+                    <span class="tab-label">首页</span>
+                </a>
+                <a class="tab-item external tab-link" href="#tab2">
+                    <span class="icon icon-gift"></span>
+                    <span class="tab-label">活动</span>
+                </a>
+                <a class="tab-item external" href="{{ items.service }}" external>
+                    <span class="icon icon-message"></span>
+                    <span class="tab-label">客服</span>
+                </a>
+            </nav>
+
+            <!-- 这里是页面内容区 -->
+            <div class="content">
+			    <div class="tabs">
+			      <div id="tab1" class="tab active">
+			        <div class="content-block" style="padding: 0;margin: 0;overflow: hidden;">
+			        	<div style="width: 100%;">
+			        		<img class="top" src="media/{{ items.top }}">
+			        		<div class="agent">VIP代理链接</div>
+			        		<div>
+			        			{% for xx in agentx.all %}
+			        				<div class="agent-ls"><a href="{{ xx.urls }}" external>{{ xx.name }}</a></div>
+			        			{% endfor %}
+			        		</div>
+			        	</div>
+			        </div>
+			      </div>
+			      <div id="tab2" class="tab">
+			        <div class="content-block" style="padding: 0;margin: 0;overflow: hidden;line-height: 0;">
+	        			{% for pic in hotx.all %}
+	        				<img src="media/{{ pic.images }}">
+	        			{% endfor %}
+			        </div>
+			      </div>
+			      <!-- ending -->
+			    </div>
+            </div>
+        </div>
+    </div>
+    <!-- start js -->
+	<script type='text/javascript' src='static/dist/js/zepto.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='static/dist/js/sm.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='static/dist/js/sm-extend.min.js' charset='utf-8'></script>
+<script>
+$.config = {
+        // 路由功能开关过滤器，返回 false 表示当前点击链接不使用路由
+        routerFilter: function($link) {
+            // 某个区域的 a 链接不想使用路由功能
+            if ($link.is('.disable-router a')) {
+                return false;
+            }
+
+            return true;
+        }
+    };
+</script>
+</body>
+{% endfor %}
+</html>
+
