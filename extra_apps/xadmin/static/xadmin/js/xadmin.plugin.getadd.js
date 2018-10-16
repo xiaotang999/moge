@@ -33,7 +33,7 @@
         var _url = "http://www.ip138.com/ips138.asp?ip="+this.res_uri+"&action=2"
         // var _url = "http://whois.pconline.com.cn/ip.jsp?ip="+this.res_uri
 
-        modal.find('.modal-body').html('<iframe src="'+_url+'" width="100%"></iframe>');
+        modal.find('.modal-body').html('<iframe src="'+_url+'" width="100%"  height="400px"></iframe>');
 
         modal.modal();
 
