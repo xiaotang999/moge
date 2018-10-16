@@ -44,8 +44,8 @@ urlpatterns = [
     url('^vip8j888/$', VIP8j888IndexView.as_view(), name='vip-index'),
     url('^zl955/$', ZL955IndexView.as_view(), name='zl-index'),
     # url('^zl955/$', IndexView.as_view(), name='index'),
-    url('^reg/$', RegisterView.as_view(), name="reg"),
-    url('^login/$', LoginView.as_view(), name="login"),
-    url('^logout/$', LogoutView.as_view(), name="logout"),
+    url('^zl955/reg/$', RegisterView.as_view(), name="reg"),
+    url('^zl955/login/$', LoginView.as_view(), name="login"),
+    url('^zl955/logout/$', LogoutView.as_view(), name="logout"),
     # url('^login/$', LoginView.as_view(), name="login"),
 ]
