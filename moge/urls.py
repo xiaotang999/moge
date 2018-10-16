@@ -17,7 +17,7 @@ import xadmin
 from django.conf.urls import url, include
 from django.views.static import serve
 from moge.settings import MEDIA_ROOT
-# from moge.settings import STATIC_ROOT
+from moge.settings import STATIC_ROOT
 
 from zl955.views import ZL955IndexView
 from vip8j888.views import VIP8j888IndexView

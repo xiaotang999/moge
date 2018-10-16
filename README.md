@@ -33,5 +33,6 @@ python manage.py collectstatic
 git add 
 git commit -m "xx"
 git push origin master
-
+git reset --hard
+git pull
 ```
