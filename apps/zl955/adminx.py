@@ -18,8 +18,9 @@ class SettingsAdmin(object):
     model_icon = 'fa fa-html5'
 class GuanggaoAdmin(object):
     """广告设置"""
-    list_display = ["id", "name", "is_show", "add_time"]
+    list_display = ["name", "href", "is_show", "add_time"]
     ordering = ["id"]
+    list_editable = ["is_show"]
     model_icon = 'fa fa-html5'
 class OpenNewAdmin(object):
     """最新开奖"""
