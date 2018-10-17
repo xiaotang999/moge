@@ -14,7 +14,7 @@ from .models import CommentSet
 class CommentSetView(View):
     """用户注册"""
     def get(self, request):
-        _messages = CommentSet.objects.all()
+        _messages = 'asd'
         return render(request, "zl955/test.html", {'_messages':_messages})
     def post(self, request):
         _messages = CommentSet.objects.all()
