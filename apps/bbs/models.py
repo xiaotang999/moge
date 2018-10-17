@@ -15,4 +15,4 @@ class CommentSet(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.username.username
+        return '网站评论'
