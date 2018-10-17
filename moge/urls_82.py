@@ -3,7 +3,7 @@ from django.views.static import serve
 from moge.settings import MEDIA_ROOT
 from moge.settings import STATIC_ROOT
 
-from zl955.views import ZL955IndexView
+from zl955.views import ZL955IndexView, ZL955TestView
 from users.views import LoginView, RegisterView, LogoutView
 
 urlpatterns = [
@@ -17,5 +17,6 @@ urlpatterns = [
     url('^logout/$', LogoutView.as_view(), name="logout"),
 
     url('^', ZL955IndexView.as_view(), name='zl-index'),
+    url('^test/', ZL955TestView.as_view(), name='zl-index'),
 ]
 

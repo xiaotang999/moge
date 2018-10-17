@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+{% for settings in settings.all|slice:"1" %}
+<title>{{ settings.name }}</title>
+<meta name="keywords" content="{{settings.keywords}}" />
+<meta name="description" content="{{settings.description}}" />
+<link rel="icon" type="image/x-icon" href="media/{{settings.icons}}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'moge/css/zl.css' %}">
+<script type="text/javascript">
+var asd = {
+	"0" : {"color" : "red", "shengxiao" : " "},
+	"1" : {"color" : "red", "shengxiao" : "狗"},
+	//
+	"2" : {"color" : "red", "shengxiao" : "鸡"},
+	"3" : {"color" : "blue", "shengxiao" : "猴"},
+	"4" : {"color" : "blue", "shengxiao" : "羊"},
+	"5" : {"color" : "green", "shengxiao" : "马"},
+	"6" : {"color" : "green", "shengxiao" : "蛇"},
+	"7" : {"color" : "red", "shengxiao" : "龙"},
+	"8" : {"color" : "red", "shengxiao" : "兔"},
+	"9" : {"color" : "blue", "shengxiao" : "虎"},
+	"10" : {"color" : "blue", "shengxiao" : "牛"},
+	"11" : {"color" : "green", "shengxiao" : "鼠"},
+	"12" : {"color" : "red", "shengxiao" : "猪"},
+	"13" : {"color" : "red", "shengxiao" : "狗"},
+	//
+	"14" : {"color" : "blue", "shengxiao" : "鸡"},
+	"15" : {"color" : "blue", "shengxiao" : "猴"},
+	"16" : {"color" : "green", "shengxiao" : "羊"},
+	"17" : {"color" : "green", "shengxiao" : "马"},
+	"18" : {"color" : "red", "shengxiao" : "蛇"},
+	"19" : {"color" : "red", "shengxiao" : "龙"},
+	"20" : {"color" : "blue", "shengxiao" : "兔"},
+	"21" : {"color" : "green", "shengxiao" : "虎"},
+	"22" : {"color" : "green", "shengxiao" : "牛"},
+	"23" : {"color" : "red", "shengxiao" : "鼠"},
+	"24" : {"color" : "red", "shengxiao" : "猪"},
+	"25" : {"color" : "blue", "shengxiao" : "狗"},
+	//
+	"26" : {"color" : "blue", "shengxiao" : "鸡"},
+	"27" : {"color" : "green", "shengxiao" : "猴"},
+	"28" : {"color" : "green", "shengxiao" : "羊"},
+	"29" : {"color" : "red", "shengxiao" : "马"},
+	"30" : {"color" : "red", "shengxiao" : "蛇"},
+	"31" : {"color" : "red", "shengxiao" : "龙"},
+	"32" : {"color" : "green", "shengxiao" : "兔"},
+	"33" : {"color" : "green", "shengxiao" : "虎"},
+	"34" : {"color" : "red", "shengxiao" : "牛"},
+	"35" : {"color" : "red", "shengxiao" : "鼠"},
+	"36" : {"color" : "blue", "shengxiao" : "猪"},
+	"37" : {"color" : "blue", "shengxiao" : "狗"},
+	//
+	"38" : {"color" : "green", "shengxiao" : "鸡"},
+	"39" : {"color" : "green", "shengxiao" : "猴"},
+	"40" : {"color" : "red", "shengxiao" : "羊"},
+	"41" : {"color" : "blue", "shengxiao" : "马"},
+	"42" : {"color" : "blue", "shengxiao" : "蛇"},
+	"43" : {"color" : "green", "shengxiao" : "龙"},
+	"44" : {"color" : "green", "shengxiao" : "兔"},
+	"45" : {"color" : "red", "shengxiao" : "虎"},
+	"46" : {"color" : "red", "shengxiao" : "牛"},
+	"47" : {"color" : "blue", "shengxiao" : "鼠"},
+	"48" : {"color" : "blue", "shengxiao" : "猪"},
+	"49" : {"color" : "green", "shengxiao" : "狗"},
+}
+</script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+	<div class="layui-header">
+		<div class="layui-logo">战狼论坛</div>
+		{% if request.user.is_authenticated %}
+		<ul class="layui-nav layui-layout-right">
+			<li class="layui-nav-item">
+				<a href="javascript:;"><img src="media/{{ request.user.avatar }}" class="layui-nav-img">我</a>
+				<dl class="layui-nav-child">
+					<dd><a href="/logout/">注销</a></dd>
+				</dl>
+			</li>
+		</ul>
+		{% else %}
+		<ul class="layui-nav layui-layout-right">
+			<li class="layui-nav-item"><a href="/login/" id="login">登录</a></li>
+			<li class="layui-nav-item"><a href="/reg/" id="reg">注册</a></li>
+		</ul>
+		{% endif %}
+	</div>
+</div>
+<div class="bg">
+	<div class="main">
+		<div class="logo">
+			<img src="media/{{settings.logo_pic}}">
+		</div>
+		<!-- aqq  -->
+		{% for guanggao in guanggao.all|slice:":10" %}
+		<div class="aqq">
+			<a href="{{ guanggao.href }}" target="_blank">
+				<img src="/media/{{ guanggao.image }}">
+			</a>
+		</div>
+		{% endfor %}
+		<!-- open new s -->
+		{% for opennew in opennew.all|slice:":1" %}
+
+		<div class="news">
+			<div class="news-open" id="news">
+				<div class="nob issues">{{ opennew.issue }}: </div>
+				<div id="no1" class="nob">
+					<div class="up1"></div>
+					<div class="down1"></div>
+				</div>
+				<div id="no2" class="nob">
+					<div class="up2"></div>
+					<div class="down2"></div>
+				</div>
+				<div id="no3" class="nob">
+					<div class="up3"></div>
+					<div class="down3"></div>
+				</div>
+				<div id="no4" class="nob">
+					<div class="up4"></div>
+					<div class="down4"></div>
+				</div>
+				<div id="no5" class="nob">
+					<div class="up5"></div>
+					<div class="down5"></div>
+				</div>
+				<div id="no6" class="nob">
+					<div class="up6"></div>
+					<div class="down6"></div>
+				</div>
+				<div class="nob add">+</div>
+				<div id="no7" class="nob">
+					<div class="up7"></div>
+					<div class="down7"></div>
+				</div>
+			</div>
+			<div class="refalsh-btn">
+				<button class="layui-btn layui-btn-warm" id="refalsh">刷新</button>
+			</div>
+			<!-- open new end -->
+			{% autoescape off %}
+				{{ opennew.desc }}
+			{% endautoescape %}
+<script type="text/javascript">
+function writer(data){
+	document.getElementsByClassName("up1")[0].innerHTML = data[0];
+	document.getElementsByClassName("up1")[0].style.background = asd[data[0]]["color"];
+	document.getElementsByClassName("down1")[0].innerHTML = asd[data[0]]["shengxiao"];
+
+	document.getElementsByClassName("up2")[0].innerHTML = data[1];
+	document.getElementsByClassName("up2")[0].style.background = asd[data[1]]["color"];
+	document.getElementsByClassName("down2")[0].innerHTML = asd[data[1]]["shengxiao"];
+
+	document.getElementsByClassName("up3")[0].innerHTML = data[2];
+	document.getElementsByClassName("up3")[0].style.background = asd[data[2]]["color"];
+	document.getElementsByClassName("down3")[0].innerHTML = asd[data[2]]["shengxiao"];
+
+	document.getElementsByClassName("up4")[0].innerHTML = data[3];
+	document.getElementsByClassName("up4")[0].style.background = asd[data[3]]["color"];
+	document.getElementsByClassName("down4")[0].innerHTML = asd[data[3]]["shengxiao"];
+
+	document.getElementsByClassName("up5")[0].innerHTML = data[4];
+	document.getElementsByClassName("up5")[0].style.background = asd[data[4]]["color"];
+	document.getElementsByClassName("down5")[0].innerHTML = asd[data[4]]["shengxiao"];
+
+	document.getElementsByClassName("up6")[0].innerHTML = data[5];
+	document.getElementsByClassName("up6")[0].style.background = asd[data[5]]["color"];
+	document.getElementsByClassName("down6")[0].innerHTML = asd[data[5]]["shengxiao"];
+
+	document.getElementsByClassName("up7")[0].innerHTML = data[6];
+	document.getElementsByClassName("up7")[0].style.background = asd[data[6]]["color"];
+	document.getElementsByClassName("down7")[0].innerHTML = asd[data[6]]["shengxiao"];
+}	
+function shows(){
+	var data = ['{{opennew.no1}}','{{opennew.no2}}','{{opennew.no3}}','{{opennew.no4}}','{{opennew.no5}}','{{opennew.no6}}','{{opennew.no7}}']
+	for(i=0;i<7;i++){
+		if(data[i]>=0 && data[i]<=49){
+			data[i] = parseInt(data[i])
+		}else{
+			data[i] = 0
+		}
+	}
+	writer(data)
+}
+shows();// 执行
+</script>
+		</div>
+		{% endfor %}
+		<!-- open history -->
+		<div class="open" style="background: url('/media/{{settings.water_pic}}');background-size: 200px 200px;">
+		{% autoescape off %}
+			{% for open in open.all|slice:":5" %}
+			<div class="open-top" style="text-align: center;">{{ open.top }}</div>
+			{{ open.desc }}
+			{% endfor %}
+		{% endautoescape %}
+		</div>
+		<!-- bbs start -->
+		<div class="bbs" style="display: none">
+			{{ _messages }}
+			<div class="speak"></div>
+			<div class="talk">
+				<div class="talk-top">
+					<div class="talk-top-left">评论</div>
+					<div class="talk-top-right">1100<i>参与,</i>200<i>条评论</i></div>
+				</div>
+				<div class="talk-top-hot">热门评论</div>
+				<div class="talk-info">
+					<div class="talk-info-avatar"><img src="http://t.cn/RCzsdCq" class="layui-nav-img"></div>
+					<div class="talk-info-main">
+						<div class="talk-user">13720890777</div>
+						<div class="talk-message">hi,hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是</div>
+					</div>
+					<div class="talk-info-tail">
+						<div class="talk-time">2018.01.01 10:10:10</div>
+						<a class="talk-good" href="">
+							<i class="layui-icon layui-icon-praise" style="font-size: 24px; color: #1E9FFF;"></i>
+							<em class="talk-good-no">1</em>
+						</a>
+					</div>
+				</div>
+				<div class="talk-info">
+					<div class="talk-info-avatar"><img src="http://t.cn/RCzsdCq" class="layui-nav-img"></div>
+					<div class="talk-info-main">
+						<div class="talk-user">13720890777</div>
+						<div class="talk-message">hi,hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是hi,你好呀啊哈哈哈是阿莎是</div>
+					</div>
+					<div class="talk-info-tail">
+						<div class="talk-time">2018.01.01 10:10:10</div>
+						<a class="talk-good" href="">
+							<i class="layui-icon layui-icon-praise" style="font-size: 24px; color: #1E9FFF;"></i>
+							<em class="talk-good-no">1</em>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- bbs end -->
+		<!-- bottom info -->
+		<div class="bottom">
+			{% for bottoms in bottoms.all|slice:":1" %}
+				{% autoescape off %}
+					{{ bottoms.desc }}
+				{% endautoescape %}
+				<div class="explain">{{ bottoms.explain }}</div>
+			{% endfor %}
+		</div>
+	</div>
+	<!-- flaot -->
+	{% for piaochuan in piaochuan.all|slice:":1" %}
+	<div class="piaochuan1" id="piaochuan1">
+		<div class="close1" id="close1">X</div>
+		<a href="{{ piaochuan.leftt_herf }}" target="_blank">
+			<img src="/media/{{ piaochuan.leftt }}">
+		</a>
+	</div>
+	<div class="piaochuan2" id="piaochuan2">
+		<div class="close2" id="close2">X</div>
+		<a href="{{ piaochuan.rightt_herf }}" target="_blank">
+			<img src="/media/{{ piaochuan.rightt }}">
+		</a>
+	</div>
+	{% endfor %}
+	<!-- flaot end -->
+	{% endfor %}
+</div>
+<script src="{% static '/layui/layui.js' %}"></script>
+<script src="{% static '/moge/js/zl.js' %}"></script>
+<script type="text/javascript">
+document.getElementById("close1").onclick = function(){
+	document.getElementById("piaochuan1").style.display = "none"
+}
+document.getElementById("close2").onclick = function(){
+	document.getElementById("piaochuan2").style.display = "none"
+}
+//
+layui.use('layer', function(){
+	var $ = layui.jquery, layer = layui.layer; 
+	var box = document.getElementById("refalsh");
+	box.onclick = function(){
+		layer.load(2);
+		$.ajax({
+			cache: false,
+			type: "POST",
+			url: "/",
+			data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+			async: true,
+			success: function(data) {
+				ReWriter(data)
+				layer.closeAll('loading');
+			},
+			error: function(){
+				layer.closeAll('loading');
+				layer.msg('获取失败...请稍后再试...');
+			}
+		});
+	};
+
+})
+function ReWriter(data){
+	for(i=0;i<7;i++){
+		if(data[i]>=0 && data[i]<=49){
+			data[i] = parseInt(data[i])
+		}else{
+			data[i] = 0
+		}
+	}
+	writer(data)
+}
+// layer top start
+layui.use('element', function(){
+	var element = layui.element;
+});
+</script>
+</body>
+</html>
