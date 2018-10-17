@@ -10,6 +10,9 @@ from users.models import User
 
 class CommentSetView(View):
     def get(self, request):
+        _groups = 'null'
+        if request.user.is_authenticated():
+            _groups = User.objects.all()
         _messages = CommentSet.objects.order_by('-id')[:5]
         _people = User.objects.all().count()
         _num = CommentSet.objects.all().count()
@@ -17,4 +20,5 @@ class CommentSetView(View):
             'messages':_messages,
             'people' : _people,
             'num' : _num,
+            'groups' :_groups,
         })
