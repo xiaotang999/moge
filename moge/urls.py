@@ -26,25 +26,25 @@ from users.views import LoginView, RegisterView, LogoutView
 urlpatterns = [
     
     # url(r'^xadmin/media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}), # 静态上传文件路径
-    # url(r'^xadmin/static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
-    url(r'^xadmin/', xadmin.site.urls),
+    # # url(r'^xadmin/static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
+    # url(r'^xadmin/', xadmin.site.urls),
 
-    url(r'^ueditor/', include('DjangoUeditor.urls')), # 富文本路径
-    url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}), # 静态上传文件路径
-    url(r'^static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
+    # url(r'^ueditor/', include('DjangoUeditor.urls')), # 富文本路径
+    # url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}), # 静态上传文件路径
+    # url(r'^static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
 
     # url(r'^vip8j888/media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
     # url(r'^vip8j888/static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
     # url(r'^zl955/media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
     # url(r'^zl955/static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
     # 
-    url(r'^captcha/', include('captcha.urls')),# 验证码
-    # 
-    url('^reg/$', RegisterView.as_view(), name="reg"),
-    url('^login/$', LoginView.as_view(), name="login"),
-    url('^logout/$', LogoutView.as_view(), name="logout"),
+    # url(r'^captcha/', include('captcha.urls')),# 验证码
+    # # 
+    # url('^reg/$', RegisterView.as_view(), name="reg"),
+    # url('^login/$', LoginView.as_view(), name="login"),
+    # url('^logout/$', LogoutView.as_view(), name="logout"),
 
-    url('^vip8j888/$', VIP8j888IndexView.as_view(), name='vip-index'),
-    url('^zl955/$', ZL955IndexView.as_view(), name='zl-index'),
+    # url('^vip8j888/$', VIP8j888IndexView.as_view(), name='vip-index'),
+    # url('^zl955/$', ZL955IndexView.as_view(), name='zl-index'),
 
 ]
