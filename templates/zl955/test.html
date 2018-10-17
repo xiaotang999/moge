@@ -5,8 +5,7 @@
 <meta charset="UTF-8">
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
-{% for settings in settings.all|slice:"1" %}
-<title>{{ settings.name }}</title>
+<title>test</title>
 <meta name="keywords" content="{{settings.keywords}}" />
 <meta name="description" content="{{settings.description}}" />
 <link rel="icon" type="image/x-icon" href="media/{{settings.icons}}"/>
@@ -15,26 +14,6 @@
 
 </head>
 <body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-	<div class="layui-header">
-		<div class="layui-logo">战狼论坛</div>
-		{% if request.user.is_authenticated %}
-		<ul class="layui-nav layui-layout-right">
-			<li class="layui-nav-item">
-				<a href="javascript:;"><img src="media/{{ request.user.avatar }}" class="layui-nav-img">我</a>
-				<dl class="layui-nav-child">
-					<dd><a href="/logout/">注销</a></dd>
-				</dl>
-			</li>
-		</ul>
-		{% else %}
-		<ul class="layui-nav layui-layout-right">
-			<li class="layui-nav-item"><a href="/login/" id="login">登录</a></li>
-			<li class="layui-nav-item"><a href="/reg/" id="reg">注册</a></li>
-		</ul>
-		{% endif %}
-	</div>
-</div>
 <div class="bg">
 	<div class="main">
 		<!-- bbs start -->
@@ -68,10 +47,7 @@
 		<!-- bottom info -->
 
 	</div>
-	<!-- flaot -->
 
-	<!-- flaot end -->
-	{% endfor %}
 </div>
 <script src="{% static '/layui/layui.js' %}"></script>
 <script src="{% static '/moge/js/zl.js' %}"></script>
