@@ -80,7 +80,7 @@ class ZL955TestView(View):
 		_open = Open.objects.order_by('-id')
 		_bottoms = Bottoms.objects.all()
 		_piaochuan = PiaoChuan.objects.all()
-		_messages = CommentSet.objects.order_by('-add_time')
+		_messages = CommentSet.objects.all()
 		# 
 		if 'HTTP_X_FORWARDED_FOR' in request.META:
 			get_ip = request.META['HTTP_X_FORWARDED_FOR']
