@@ -13,5 +13,5 @@ from .models import CommentSet
 
 class CommentSetView(View):
     def get(self, request):
-        _messages = 'asd'
-        return render(request, "zl955/test.html", {'_messages':_messages})
+        _xman = 'asd'
+        return render(request, "zl955/test.html", {'_xman':_xman})
