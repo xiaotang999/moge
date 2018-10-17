@@ -28,11 +28,11 @@ SECRET_KEY = '--jyn^hqb_h(voubf(t7c)5gn$dj2gwl^+qg@bbs#2-hv&#7qp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*','118.193.241.38:81','118.193.241.38:82','118.193.241.38:83']
+ALLOWED_HOSTS = ['*','118.193.241.38:81','118.193.241.38:82','moge.pk5866.com']
 MULTIPLE_UFL_CONFIG = {
     '118.193.241.38:81': 'moge.urls_81',
     '118.193.241.38:82': 'moge.urls_82',
-    '118.193.241.38:83': 'moge.urls_83',
+    'moge.pk5866.com': 'moge.urls_83',
 }
 # Application definition
 AUTHENTICATION_BACKENDS = (
