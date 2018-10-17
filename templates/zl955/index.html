@@ -262,7 +262,7 @@ body{
 		{% if request.user.is_authenticated %}
 		<ul class="layui-nav layui-layout-right">
 			<li class="layui-nav-item">
-				<a href="javascript:;">{{ request.user.username }}</a>
+				<a href="javascript:;"><img src="{{ request.user.avatar }}" class="layui-nav-img">我</a>
 				<dl class="layui-nav-child">
 					<dd><a href="/logout/">注销</a></dd>
 				</dl>
