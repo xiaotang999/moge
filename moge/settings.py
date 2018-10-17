@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 SECRET_KEY = '--jyn^hqb_h(voubf(t7c)5gn$dj2gwl^+qg@bbs#2-hv&#7qp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['vip8j888.com','www.vip8j888.com','zl955.com','www.zl955.com','moge.pk5866.com']
 MULTIPLE_UFL_CONFIG = {
@@ -139,7 +139,7 @@ USE_TZ = False   #默认是Ture，时间是utc时间，由于我们要用本地�
 
 STATIC_URL = '/static/'
 # STATICFILES_DIRS = (
-#    os.path.join(BASE_DIR, "static"),
+#     os.path.join(BASE_DIR, "static"),
 # )
 # 上线屏蔽上面即可，开启下面即可
 STATIC_ROOT = os.path.join(BASE_DIR, "static")

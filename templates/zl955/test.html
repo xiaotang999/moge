@@ -81,8 +81,9 @@ layui.use('layer', function(){
 	function bbs(){
 		$.ajax({
 			cache: false,
-			type: "GET",
+			type: "POST",
 			url: "/bbs/",
+			data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
 			async: true,
 			success: function(data) {
 				console.log(data)
