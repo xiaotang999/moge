@@ -8,12 +8,14 @@ from .models import CommentSet
 
 
 
+
+
+
 class CommentSetView(View):
     """用户注册"""
     def get(self, request):
         _messages = CommentSet.objects.all()
-
-        print(_messages)
-        return HttpResponse(json.dumps(_messages),content_type='application/json')
+        return render(request, "zl955/test.html", {'_messages':_messages})
     def post(self, request):
-        pass
+        _messages = CommentSet.objects.all()
+        return HttpResponse(_messages,content_type='application/json')
