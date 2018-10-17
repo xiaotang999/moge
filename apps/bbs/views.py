@@ -11,7 +11,7 @@ from .models import CommentSet
 class CommentSetView(View):
     """用户注册"""
     def get(self, request):
-        _messages = CommentSet.objects.all()[:5]
+        _messages = CommentSet.objects.all()
         # _status= {'msg':'网络错误，请联系管理员','icon':'5'}
         return HttpResponse(_messages,content_type='application/json')
     def post(self, request):
