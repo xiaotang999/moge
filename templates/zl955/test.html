@@ -25,22 +25,23 @@
 					<div class="talk-top-right">1100<i>参与,</i>200<i>条评论</i></div>
 				</div>
 				<div class="talk-top-hot">热门评论</div>
-				{% for bbs in _messages %}
+				{{ _messages }}
+				<!--  -->
 				<div class="talk-info">
 					<div class="talk-info-avatar"><img src="http://t.cn/RCzsdCq" class="layui-nav-img"></div>
 					<div class="talk-info-main">
-						<div class="talk-user">{{bbs.username}}</div>
-						<div class="talk-message">{{bbs.desc}}</div>
+						<div class="talk-user">username</div>
+						<div class="talk-message">desc</div>
 					</div>
 					<div class="talk-info-tail">
-						<div class="talk-time">{{bbs.add_time}}</div>
+						<div class="talk-time">add_time</div>
 						<a class="talk-good" href="">
 							<i class="layui-icon layui-icon-praise" style="font-size: 24px; color: #1E9FFF;"></i>
-							<em class="talk-good-no">{{bbs.good}}</em>
+							<em class="talk-good-no">good</em>
 						</a>
 					</div>
 				</div>
-				{% endfor %}
+				<!--  -->
 			</div>
 		</div>
 		<!-- bbs end -->
@@ -53,37 +54,7 @@
 <script src="{% static '/moge/js/zl.js' %}"></script>
 <script type="text/javascript">
 //
-layui.use('layer', function(){
-	var $ = layui.jquery, layer = layui.layer; 
-	var box = document.getElementById("refalsh");
-	
-	function bbs(){
-		console.log('start get bbs')
 
-		$.get("/bbs/",function(data,status){
-			console.log('start get bbs')
-			console.log(data+'==========='+status)
-		});
-
-
-	};
-	bbs();
-
-})
-function ReWriter(data){
-	for(i=0;i<7;i++){
-		if(data[i]>=0 && data[i]<=49){
-			data[i] = parseInt(data[i])
-		}else{
-			data[i] = 0
-		}
-	}
-	writer(data)
-}
-// layer top start
-layui.use('element', function(){
-	var element = layui.element;
-});
 </script>
 </body>
 </html>
