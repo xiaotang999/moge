@@ -84,10 +84,17 @@ layui.use(['layer', 'element', 'form'], function(){
 	var layer = layui.layer; 
 	var form = layui.form;
 	//监听提交
+	{% if request.user.is_authenticated %}
 	form.on('submit(Speaks)', function(data){
 		layer.msg(JSON.stringify(data.field));
 		return false;
 	});
+	{% else %}
+	form.on('submit(Speaks)', function(data){
+		layer.msg('请先登录！');
+		return false;
+	});
+	{% endif %}
 	function show(){
 		layer.load(2);
 		$.ajax({
