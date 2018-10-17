@@ -202,3 +202,115 @@ body{
 .layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after{
 	background-color: #cc991d;
 }
+/* bbs */
+.bbs{
+	width: 900px;
+	margin: 0 auto;
+}
+.talk{
+
+}
+.talk-top{
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	border-bottom: 1px solid #4398ed;
+    position: relative;
+    height: 38px;
+}
+.talk-top-left{
+    font-size: 18px;
+    color: #4398ed;
+    height: 38px;
+    position: absolute;
+    left: 0;
+    line-height: 42px;
+}
+.talk-top-right{
+	height: 38px;
+    position: absolute;
+    right: 0;
+    color: #4398ed;
+    font-size: 24px;
+    margin: 0 5px;
+    font-family: Impact;
+    line-height: 52px;
+    letter-spacing: 1px;
+}
+.talk-top-right i{
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+}
+.talk-top-hot{
+    font-size: 18px;
+    color: #4398ed;
+    height: 38px;
+    line-height: 38px;
+}
+.talk-info{
+	width: 100%;
+	height: 120px;
+	/*background: #ccc;*/
+	position: relative;
+	border-bottom: 1px dashed #e5e5e5;
+}
+.talk-info-avatar{
+	float: left;
+	line-height: 90px;
+	width: 90px;
+}
+.talk-info-avatar img{
+    width: 50px;
+    height: 50px;
+    margin: 0 20px;
+}
+.talk-info-main{
+    float: left;
+    height: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 600px;
+}
+.talk-user{
+    height: 25px;
+    line-height: 25px;
+    font-size: 14px;
+    color: #4398ed;
+}
+.talk-message{
+	height: 75px;
+    line-height: 25px;
+    font-size: 16px;
+	overflow: hidden;
+	-webkit-line-clamp: 3; 
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+}
+.talk-info-tail{
+	float: right;
+    position: relative;
+    height: 120px;
+}
+.talk-time{
+    padding: 5px 5px 0 0;
+    font-family: Arial;
+    color: silver;
+}
+.talk-good{
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	height: 30px;
+	cursor:pointer;
+}
+.talk-good i.layui-icon{
+    font-size: 24px;
+    color: #1E9FFF;
+    float: left;
+}
+.talk-good-no{
+    height: 30px;
+    line-height: 23px;
+    margin-left: 3px;
+}
+/* bbs end */
