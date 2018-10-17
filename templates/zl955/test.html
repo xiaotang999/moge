@@ -39,7 +39,6 @@
 	<div class="main">
 		<!-- bbs start -->
 		<div class="bbs">
-			
 			<div class="speak"></div>
 			<div class="talk">
 				<div class="talk-top">
@@ -47,7 +46,6 @@
 					<div class="talk-top-right">1100<i>参与,</i>200<i>条评论</i></div>
 				</div>
 				<div class="talk-top-hot">热门评论</div>
-				{% for bbs in _messages.all|slice:"1" %}
 				<div class="talk-info">
 					<div class="talk-info-avatar"><img src="http://t.cn/RCzsdCq" class="layui-nav-img"></div>
 					<div class="talk-info-main">
@@ -62,7 +60,6 @@
 						</a>
 					</div>
 				</div>
-				{% endfor %}
 			</div>
 		</div>
 		<!-- bbs end -->
@@ -81,17 +78,14 @@
 layui.use('layer', function(){
 	var $ = layui.jquery, layer = layui.layer; 
 	var box = document.getElementById("refalsh");
-	box.onclick = function(){
-		layer.load(2);
+	function bbs(){
 		$.ajax({
 			cache: false,
-			type: "POST",
-			url: "/",
-			data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+			type: "GET",
+			url: "/bbs/",
 			async: true,
 			success: function(data) {
-				ReWriter(data)
-				layer.closeAll('loading');
+				console.log(data)
 			},
 			error: function(){
 				layer.closeAll('loading');
@@ -99,6 +93,7 @@ layui.use('layer', function(){
 			}
 		});
 	};
+	bbs();
 
 })
 function ReWriter(data){
