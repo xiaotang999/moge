@@ -11,7 +11,7 @@ from .models import CommentSet
 class CommentSetView(View):
     def get(self, request):
         _messages = CommentSet.objects.order_by('-id')[:5]
-        _num = Count(CommentSet.objects.all())
+        _num = CommentSet.objects.annotate(Count('id'))
         return render(request, "zl955/test.html", {
             'messages':_messages,
             'num' : _num,
