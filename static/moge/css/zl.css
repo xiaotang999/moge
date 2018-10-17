@@ -261,9 +261,10 @@ body{
 	width: 90px;
 }
 .talk-info-avatar img{
-    width: 50px;
-    height: 50px;
+    width: 49px;
+    height: 49px;
     margin: 0 20px;
+    border: 1px solid #ccc;
 }
 .talk-info-main{
     float: left;
@@ -291,11 +292,13 @@ body{
 	float: right;
     position: relative;
     height: 120px;
+    width: 180px;
 }
 .talk-time{
     padding: 5px 5px 0 0;
     font-family: Arial;
     color: silver;
+    float: right;
 }
 .talk-good{
 	position: absolute;
@@ -313,5 +316,6 @@ body{
     height: 30px;
     line-height: 23px;
     margin-left: 3px;
+    color: #999;
 }
 /* bbs end */
