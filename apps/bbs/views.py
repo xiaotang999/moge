@@ -9,5 +9,5 @@ from .models import CommentSet
 
 class CommentSetView(View):
     def get(self, request):
-        _xman = 'asd'
-        return render(request, "zl955/test.html", {'_xman':_xman})
+        _messages = CommentSet.OpenNew.objects.all()
+        return render(request, "zl955/test.html", {'messages':_messages})
