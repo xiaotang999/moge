@@ -13,7 +13,7 @@ class CommentSetView(View):
     def get(self, request):
         _messages = CommentSet.objects.all()[:5]
         # _status= {'msg':'网络错误，请联系管理员','icon':'5'}
-        return HttpResponse(json.dumps(_messages),content_type='application/json')
+        return HttpResponse(_messages,content_type='application/json')
     def post(self, request):
         pass
         
