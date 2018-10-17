@@ -6,12 +6,15 @@ from django.template import loader
 
 # Create your views here.
 from .models import CommentSet
+from users.models import User
 
 class CommentSetView(View):
     def get(self, request):
         _messages = CommentSet.objects.order_by('-id')[:5]
+        _people = User.objects.all().count()
         _num = CommentSet.objects.all().count()
         return render(request, "zl955/test.html", {
             'messages':_messages,
+            'people' : _people,
             'num' : _num,
         })
