@@ -233,6 +233,13 @@ shows();// 执行
 <script src="{% static '/layui/layui.js' %}"></script>
 <script src="{% static '/moge/js/zl.js' %}"></script>
 <script type="text/javascript">
+document.getElementById("close1").onclick = function(){
+	document.getElementById("piaochuan1").style.display = "none"
+}
+document.getElementById("close2").onclick = function(){
+	document.getElementById("piaochuan2").style.display = "none"
+}
+//
 layui.use('layer', function(){
 	var $ = layui.jquery, layer = layui.layer; 
 	var box = document.getElementById("refalsh");
