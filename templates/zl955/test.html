@@ -32,7 +32,7 @@
 </style>
 			<!-- speak start -->
 			{% if request.user.is_authenticated %}
-			{{groups}}
+			{{request.user.group.name}}
 			{% endif %}
 			<div class="speak">
 				<form class="layui-form layui-form-pane" action="">
