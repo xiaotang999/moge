@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.template import loader
 # Create your views here.
 from .models import Settings, Guanggao, OpenNew, Open, Bottoms, PiaoChuan, IpApp
+from bbs.models import CommentSet
 
 class ZL955IndexView(View):
 	def post(self, request):
@@ -28,6 +29,7 @@ class ZL955IndexView(View):
 		_open = Open.objects.order_by('-id')
 		_bottoms = Bottoms.objects.all()
 		_piaochuan = PiaoChuan.objects.all()
+		_messages = CommentSet.objects.all()[:5]
 		# 
 		if 'HTTP_X_FORWARDED_FOR' in request.META:
 			get_ip = request.META['HTTP_X_FORWARDED_FOR']
@@ -105,4 +107,5 @@ class ZL955TestView(View):
 			"open" : _open,
 			"bottoms" : _bottoms,
 			"piaochuan" : _piaochuan,
+			"_messages" : _messages,
 		})
