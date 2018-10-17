@@ -20,7 +20,7 @@
 		<div class="bbs">
 <style type="text/css">
 .speak{
-    padding-top: 15px;
+    
 }
 .speak .layui-btn{
 	float: right;
@@ -32,7 +32,9 @@
 </style>
 			<!-- speak start -->
 			{% if request.user.is_authenticated %}
-			{{request.user.group.name}}
+				{{request.user.group.name}}
+				{{request.user.group.limit_speak_no}}
+				{{request.user.group.open_speak}}
 			{% endif %}
 			<div class="speak">
 				<form class="layui-form layui-form-pane" action="">

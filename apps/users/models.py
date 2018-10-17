@@ -18,9 +18,12 @@ class UserSetting(models.Model):
     def __str__(self):
         return self.name
 
+def get_group_default():
+    return UserSetting.objects.get(id=1)
+
 class User(AbstractUser):
     """本站会员"""
-    group = models.ForeignKey(UserSetting, null=True, blank=True, verbose_name="会员组")
+    group = models.ForeignKey(UserSetting, null=True, blank=True, verbose_name="会员组", default=get_group_default)
     # name = models.CharField(max_length=25, verbose_name="会员昵称", help_text="请输入小于20字符的描述！")
     avatar = models.ImageField(upload_to="users/avatar/%Y/%m",default=u"users/avatar/default.png", max_length=100)
     ip = models.CharField(max_length=100, null=True, blank=True, verbose_name="注册IP")
