@@ -15,8 +15,8 @@ urlpatterns = [
     url('^reg/$', RegisterView.as_view(), name="reg"),
     url('^login/$', LoginView.as_view(), name="login"),
     url('^logout/$', LogoutView.as_view(), name="logout"),
-
+    url('^test/', ZL955TestView.as_view(), name='zl-test'),
     url('^', ZL955IndexView.as_view(), name='zl-index'),
-    url('^test/', ZL955TestView.as_view(), name='zl-index'),
+    
 ]
 

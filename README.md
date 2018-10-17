@@ -40,7 +40,8 @@ git pull
 ```
 uwsgi -i uwsgi.ini &
 
+pkill -9 uwsgi
 
 uwsgi --ini uwsgi.ini
-pkill -9 uwsgi
+
 ```

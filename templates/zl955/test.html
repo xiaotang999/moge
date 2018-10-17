@@ -136,14 +136,7 @@ var asd = {
 		</div>
 		<!-- bbs end -->
 		<!-- bottom info -->
-		<div class="bottom">
-			{% for bottoms in bottoms.all|slice:":1" %}
-				{% autoescape off %}
-					{{ bottoms.desc }}
-				{% endautoescape %}
-				<div class="explain">{{ bottoms.explain }}</div>
-			{% endfor %}
-		</div>
+
 	</div>
 	<!-- flaot -->
 	{% for piaochuan in piaochuan.all|slice:":1" %}
