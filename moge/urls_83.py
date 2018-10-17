@@ -9,7 +9,7 @@ from moge.settings import STATIC_ROOT
 # from users.views import LoginView, RegisterView, LogoutView
 
 urlpatterns = [
-    url(r'^xadmin/', xadmin.site.urls),
+    url(r'^', xadmin.site.urls),
     url(r'^ueditor/', include('DjangoUeditor.urls')), # 富文本路径
     url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}), # 静态上传文件路径
     url(r'^static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
