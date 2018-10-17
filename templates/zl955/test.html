@@ -18,7 +18,29 @@
 	<div class="main">
 		<!-- bbs start -->
 		<div class="bbs">
-			<div class="speak"></div>
+<style type="text/css">
+.speak{
+
+}
+</style>
+			<!-- speak start -->
+			<div class="speak">
+				<form class="layui-form" action="">
+				  <div class="layui-form-item layui-form-text">
+				    <label class="layui-form-label">请输入内容</label>
+				    <div class="layui-input-block">
+				      <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <div class="layui-input-block">
+				      <button class="layui-btn" lay-submit lay-filter="Speaks">立即提交</button>
+				      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+				    </div>
+				  </div>
+				</form>
+			</div>
+			<!-- speak end -->
 			<div class="talk">
 				<div class="talk-top">
 					<div class="talk-top-left">评论</div>
@@ -55,8 +77,15 @@
 <script src="{% static '/moge/js/zl.js' %}"></script>
 <script type="text/javascript">
 //
-layui.use('layer', function(){
-	var $ = layui.jquery, layer = layui.layer; 
+layui.use(['layer', 'element', 'form'], function(){
+	var $ = layui.jquery;
+	var layer = layui.layer; 
+	var form = layui.form;
+	//监听提交
+	form.on('submit(Speaks)', function(data){
+		layer.msg(JSON.stringify(data.field));
+		return false;
+	});
 	function show(){
 		layer.load(2);
 		$.ajax({
@@ -75,6 +104,7 @@ layui.use('layer', function(){
 		});
 	};
 	show();
+
 })
 //
 </script>
