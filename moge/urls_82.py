@@ -17,7 +17,7 @@ urlpatterns = [
     url('^login/$', LoginView.as_view(), name="login"),
     url('^logout/$', LogoutView.as_view(), name="logout"),
     # 
-    url('^bbs/', CommentSetView.as_view(), name="bbs"),
+    url('^test/bbs/', CommentSetView.as_view(), name="bbs"),
     url('^test/', ZL955TestView.as_view(), name='zl-test'),
     url('^', ZL955IndexView.as_view(), name='zl-index'),
 ]

@@ -78,12 +78,13 @@
 layui.use('layer', function(){
 	var $ = layui.jquery, layer = layui.layer; 
 	var box = document.getElementById("refalsh");
+	
 	function bbs(){
+		console.log('start get bbs')
 		$.ajax({
 			cache: false,
-			type: "POST",
+			type: "GET",
 			url: "/bbs/",
-			data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
 			async: true,
 			success: function(data) {
 				console.log(data)
