@@ -16,15 +16,7 @@
 	<div class="upload-title">上传头像</div>
 	<form class="layui-form" action="" autocomplete="off">
 		<div class="layui-form-item">
-			<div class="layui-input-block">
-				<input type="text" name="nickname" required lay-verify="required|nick" placeholder="请输入昵称" autocomplete="off" class="layui-input">
-			</div>
-		</div>
-		<div class="layui-form-item">
-			<label class="layui-form-label">上传头像</label>
-			<div class="layui-input-block">
-				<input type="file" name="avatar">
-			</div>
+			<input type="file" name="avatar" class="avatar-input">
 		</div>
 		<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 		<div class="layui-form-item" style="text-align: center;">
