@@ -239,8 +239,9 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 				async: true,
 				dataType : 'json',
 				success: function(info) {
+					console.log(info)
                     layer.msg(info.msg, {time:222,icon: info.icon}, function(){
-                        window.location.reload()
+                        // window.location.reload()
                     });
 				},
 				error: function(){
