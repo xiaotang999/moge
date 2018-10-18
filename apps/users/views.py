@@ -66,6 +66,7 @@ class RegisterView(View):
             if register_form.is_valid():
                 print('ok 经过RegisterForm验证 ok')
                 _status = ''
+                nick_name = request.POST.get("nickname", "")
                 user_name = request.POST.get("username", "")
                 pass_word = request.POST.get("password", "")
                 pass_words = request.POST.get("passwords", "")
@@ -84,6 +85,7 @@ class RegisterView(View):
                 print(get_ip)
                 # 
                 user_profile = User()
+                user_profile.nickname= nick_name
                 user_profile.username = user_name
                 user_profile.email = user_name+'@admin.com'
                 user_profile.ip = get_ip

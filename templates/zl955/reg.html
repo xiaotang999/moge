@@ -17,6 +17,11 @@
 	<form class="layui-form" action="" autocomplete="off">
 		<div class="layui-form-item">
 			<div class="layui-input-block">
+				<input type="text" name="nickname" required lay-verify="required|nick" placeholder="请输入昵称" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-input-block">
 				<input type="text" name="username" required lay-verify="required|phone|number" placeholder="请输入手机号" autocomplete="off" class="layui-input">
 			</div>
 		</div>
@@ -154,6 +159,10 @@ layui.use(['layer', 'element', 'form'], function(){
 		,pwd: [
 			/^[\S]{6,16}$/
 			,'密码必须6到16位，且不能出现空格'
+		]
+		,nick: [
+			/^[\S]{1,12}$/
+			,'昵称必须1至12位，且不能出现空格'
 		]
 	});
 	// 
