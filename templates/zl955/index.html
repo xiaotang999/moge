@@ -23,9 +23,7 @@
 				<a href="javascript:;"><img src="media/{{ request.user.avatar }}" class="layui-nav-img">{{ request.user.nickname }}</a>
 				<dl class="layui-nav-child">
 					<dd>
-						<a href="javascript:;" id="changeavatar">更换头像
-							<input type="file" name="image" id="avatarUp" class="js-img-up"/>
-						</a>
+						<a href="javascript:;" id="changeavatar">更换头像</a>
 					</dd>
 					<dd><a href="/logout/">注销</a></dd>
 				</dl>
@@ -253,12 +251,12 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	    }
 	    ,data:{
 		  id: function(){
-		    return $('#avatarUp').val();
+		    return $('#changeavatar').val();
 		  }
 	    }
 	    ,done: function(res){
 	      //上传完毕回调
-	      console.log($('#avatarUp').val())
+	      console.log($('#changeavatar').val())
 	      console.log('asd')
 	      console.log(res)
 	    }
