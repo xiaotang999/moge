@@ -58,6 +58,20 @@ class ZL955IndexView(View):
 		})
 
 # 
+class zl955NewOpen(View):
+	def get(self, request):
+		_opennew = OpenNew.objects.all()
+		_opennew = [
+			_opennew[0].no1,
+			_opennew[0].no2,
+			_opennew[0].no3,
+			_opennew[0].no4,
+			_opennew[0].no5,
+			_opennew[0].no6,
+			_opennew[0].no7,
+			]
+		return HttpResponse(json.dumps(_opennew),content_type='application/json')
+		
 class ZL955TestView(View):
 	def post(self, request):
 		_opennew = OpenNew.objects.all()

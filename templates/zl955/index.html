@@ -162,9 +162,8 @@ layui.use(['layer', 'element', 'flow'], function(){
 		layer.load(2);
 		$.ajax({
 			cache: false,
-			type: "POST",
-			url: "/",
-			data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
+			type: "GET",
+			url: "/newopen/",
 			async: true,
 			success: function(info) {
 				for(i=0;i<7;i++){

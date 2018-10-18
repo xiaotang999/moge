@@ -100,7 +100,7 @@ body{
 	width: 180px;
 }
 .piaochuan1{
-    background: red;
+    /* background: red; */
     position: fixed;
     bottom: 0;
     left: 0;
@@ -121,7 +121,7 @@ body{
     color:#fff;
 }
 .piaochuan2{
-    background: red;
+    /* background: red; */
     position: fixed;
     bottom: 0;
     right: 0;
