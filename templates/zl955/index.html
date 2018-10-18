@@ -179,13 +179,8 @@ function OpenNewShow(){
 }
 {% endfor %}
 OpenNewShow() //获取新增开奖数据
-//
-layui.use(['layer', 'element', 'flow', 'form'], function(){
-	var element = layui.element; // layer 导航栏效果
-	var flow = layui.flow; // 图像懒加载 src改为lay-src
+layui.use('layer', function(){
 	var $ = layui.jquery; // jq加载
-	var layer = layui.layer; //layer加载
-	var form = layui.form;
 	function GoodUp(n){
 		console.log(n)
 		layer.load(2);
@@ -207,6 +202,14 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 		});
 		return false;
 	}
+})
+//
+layui.use(['layer', 'element', 'flow', 'form'], function(){
+	var element = layui.element; // layer 导航栏效果
+	var flow = layui.flow; // 图像懒加载 src改为lay-src
+	var $ = layui.jquery; // jq加载
+	var layer = layui.layer; //layer加载
+	var form = layui.form;
 	flow.lazyimg(); 
     // 获取评论信息
 	function getBBS(){
