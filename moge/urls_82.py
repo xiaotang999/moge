@@ -20,6 +20,6 @@ urlpatterns = [
     url('^bbs/', CommentSetView.as_view(), name="bbs"),
     url('^test/', ZL955TestView.as_view(), name='zl-test'),
     url('^newopen/', zl955NewOpen.as_view(), name='zl-newopen'),
-    url('^/', ZL955IndexView.as_view(), name='zl-index'),
+    url('^', ZL955IndexView.as_view(), name='zl-index'),
 ]
 
