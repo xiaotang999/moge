@@ -150,7 +150,10 @@ class UploadImageView(LoginRequiredMixin, View):
     用户修改头像
     """
     def get(self, request):
-        return render(request, "zl955/upload.html", {})
+        if request.user.is_authenticated():
+            return render(request, "zl955/upload.html", {})
+        else:
+            return HttpResponseRedirect(reverse("zl-index"))
     def post(self, request):
         image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)
         if image_form.is_valid():
