@@ -20,7 +20,7 @@ urlpatterns = [
     # 
     url('^bbs/', CommentSetView.as_view(), name="bbs"),
     url('^newopen/', zl955NewOpen.as_view(), name='zl-newopen'),
-    url('^good/', zl955NewOpen.as_view(), name='zl-good'),
+    url('^good/', zl955Good.as_view(), name='zl-good'),
     
 ]
 
