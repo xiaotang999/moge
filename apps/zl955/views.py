@@ -97,5 +97,5 @@ class zl955Good(View):
 		_bbs = CommentSet.objects.get(id=_id)
 		_bbs.good += 1
 		_bbs.save()
-		_status = {'status':'ok','num':1}
+		_status = {'status':'ok','num':_bbs.good}
 		return HttpResponse(json.dumps(_status),content_type='application/json')
