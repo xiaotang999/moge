@@ -90,3 +90,8 @@ class zl955NewOpen(View):
 			_opennew[0].no7,
 			]
 		return HttpResponse(json.dumps(_opennew),content_type='application/json')
+
+class zl955Good(View):
+	def post(self, request):
+		if request.user.is_authenticated():
+			pass

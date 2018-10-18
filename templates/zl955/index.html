@@ -101,7 +101,7 @@
 		</div>
 		<!-- open history end -->
 		<!-- bbs start -->
-		<div class="bbs" id="bbs" style="display: none">
+		<div class="bbs" id="bbs">
 			{% if request.user.is_authenticated %}
 			<div class="speak">
 				<form class="layui-form layui-form-pane" action="">
@@ -201,7 +201,7 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 					'</div>'+
 					'<div class="talk-info-tail">'+
 						'<div class="talk-time">{{bbs.add_time}}</div>'+
-						'<a class="talk-good" href="">'+
+						'<a class="talk-good" href="javascript:;">'+
 							'<i class="layui-icon layui-icon-praise" style="font-size: 24px; color: #1E9FFF;"></i>'+
 							'<em class="talk-good-no">{{bbs.good}}</em>'+
 						'</a>'+
