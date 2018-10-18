@@ -221,8 +221,8 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 	if(userSet.open_speak){
 		console.log(userSet.open_speak)
 		$("#Desc").attr("maxlength",userSet.limit_speak_no);
-		form.on('submit(Speaks)', function(data){
-			console.log(data.field.desc)
+		form.on('submit(Speaks)', function(tijiao){
+			console.log(tijiao.field.desc)
 			layer.load(2);
 			$.ajax({
 				cache: false,
@@ -230,7 +230,7 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 				url: "/",
 				data: {
 					csrfmiddlewaretoken: '{{ csrf_token }}',
-					'desc': data.field.desc,
+					'desc': tijiao.field.desc,
 					'open_speak': userSet.open_speak,
 					'limit_speak_no': userSet.limit_speak_no,
 				},
