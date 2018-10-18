@@ -102,7 +102,10 @@
 		<!-- open history end -->
 		<!-- bbs start -->
 		<div class="bbs" id="bbs" style="display: none">
-			<div class="speak" style="display: none">
+			{% if request.user.is_authenticated %}
+			<a href="/login/" class="layui-btn layui-btn-fluid layui-btn-radius layui-btn-normal" style="margin: 5px 0;">您还未登录，请先登录！</a>
+			{% else %}
+			<div class="speak">
 				<form class="layui-form layui-form-pane" action="">
 				  <div class="layui-form-item layui-form-text">
 				    <div class="layui-input-block">
@@ -116,6 +119,7 @@
 				  </div>
 				</form>
 			</div>
+			{% endif %}
 			<div class="talk">
 				<div class="talk-top">
 					<div class="talk-top-left">评论</div>
