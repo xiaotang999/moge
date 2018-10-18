@@ -20,7 +20,7 @@
 		{% if request.user.is_authenticated %}
 		<ul class="layui-nav layui-layout-right">
 			<li class="layui-nav-item">
-				<a href="javascript:;"><img lay-src="media/{{ request.user.avatar }}" class="layui-nav-img">我</a>
+				<a href="javascript:;"><img src="media/{{ request.user.avatar }}" class="layui-nav-img">我</a>
 				<dl class="layui-nav-child">
 					<dd><a href="/logout/">注销</a></dd>
 				</dl>
@@ -37,22 +37,21 @@
 <div class="bg">
 	<div class="main">
 		<div class="logo">
-			<img lay-src="media/{{settings.logo_pic}}">
+			<img src="media/{{settings.logo_pic}}">
 		</div>
 		<!-- aqq start -->
 		{% for guanggao in guanggao.all|slice:":10" %}
 		<div class="aqq">
 			<a href="{{ guanggao.href }}" target="_blank">
-				<img lay-src="/media/{{ guanggao.image }}">
+				<img src="/media/{{ guanggao.image }}">
 			</a>
 		</div>
 		{% endfor %}
 		<!-- aqq end -->
 		<!-- open new s -->
-		{% for opennew in opennew.all|slice:":1" %}
 		<div class="news">
 			<div class="news-open" id="news">
-				<div class="nob issues">{{ opennew.issue }}: </div>
+				<div class="nob issues" id="OpenIssues"></div>
 				<div id="no1" class="nob">
 					<div class="up1"></div>
 					<div class="down1"></div>
@@ -86,112 +85,12 @@
 			<div class="refalsh-btn">
 				<button class="layui-btn layui-btn-warm" id="refalsh">刷新</button>
 			</div>
-			<!-- open new end -->
-			{% autoescape off %}
-				{{ opennew.desc }}
-			{% endautoescape %}
-<script type="text/javascript">
-var asd = {
-	"0" : {"color" : "red", "shengxiao" : " "},
-	"1" : {"color" : "red", "shengxiao" : "狗"},
-	//
-	"2" : {"color" : "red", "shengxiao" : "鸡"},
-	"3" : {"color" : "blue", "shengxiao" : "猴"},
-	"4" : {"color" : "blue", "shengxiao" : "羊"},
-	"5" : {"color" : "green", "shengxiao" : "马"},
-	"6" : {"color" : "green", "shengxiao" : "蛇"},
-	"7" : {"color" : "red", "shengxiao" : "龙"},
-	"8" : {"color" : "red", "shengxiao" : "兔"},
-	"9" : {"color" : "blue", "shengxiao" : "虎"},
-	"10" : {"color" : "blue", "shengxiao" : "牛"},
-	"11" : {"color" : "green", "shengxiao" : "鼠"},
-	"12" : {"color" : "red", "shengxiao" : "猪"},
-	"13" : {"color" : "red", "shengxiao" : "狗"},
-	//
-	"14" : {"color" : "blue", "shengxiao" : "鸡"},
-	"15" : {"color" : "blue", "shengxiao" : "猴"},
-	"16" : {"color" : "green", "shengxiao" : "羊"},
-	"17" : {"color" : "green", "shengxiao" : "马"},
-	"18" : {"color" : "red", "shengxiao" : "蛇"},
-	"19" : {"color" : "red", "shengxiao" : "龙"},
-	"20" : {"color" : "blue", "shengxiao" : "兔"},
-	"21" : {"color" : "green", "shengxiao" : "虎"},
-	"22" : {"color" : "green", "shengxiao" : "牛"},
-	"23" : {"color" : "red", "shengxiao" : "鼠"},
-	"24" : {"color" : "red", "shengxiao" : "猪"},
-	"25" : {"color" : "blue", "shengxiao" : "狗"},
-	//
-	"26" : {"color" : "blue", "shengxiao" : "鸡"},
-	"27" : {"color" : "green", "shengxiao" : "猴"},
-	"28" : {"color" : "green", "shengxiao" : "羊"},
-	"29" : {"color" : "red", "shengxiao" : "马"},
-	"30" : {"color" : "red", "shengxiao" : "蛇"},
-	"31" : {"color" : "red", "shengxiao" : "龙"},
-	"32" : {"color" : "green", "shengxiao" : "兔"},
-	"33" : {"color" : "green", "shengxiao" : "虎"},
-	"34" : {"color" : "red", "shengxiao" : "牛"},
-	"35" : {"color" : "red", "shengxiao" : "鼠"},
-	"36" : {"color" : "blue", "shengxiao" : "猪"},
-	"37" : {"color" : "blue", "shengxiao" : "狗"},
-	//
-	"38" : {"color" : "green", "shengxiao" : "鸡"},
-	"39" : {"color" : "green", "shengxiao" : "猴"},
-	"40" : {"color" : "red", "shengxiao" : "羊"},
-	"41" : {"color" : "blue", "shengxiao" : "马"},
-	"42" : {"color" : "blue", "shengxiao" : "蛇"},
-	"43" : {"color" : "green", "shengxiao" : "龙"},
-	"44" : {"color" : "green", "shengxiao" : "兔"},
-	"45" : {"color" : "red", "shengxiao" : "虎"},
-	"46" : {"color" : "red", "shengxiao" : "牛"},
-	"47" : {"color" : "blue", "shengxiao" : "鼠"},
-	"48" : {"color" : "blue", "shengxiao" : "猪"},
-	"49" : {"color" : "green", "shengxiao" : "狗"},
-}
-function writer(data){
-	document.getElementsByClassName("up1")[0].innerHTML = data[0];
-	document.getElementsByClassName("up1")[0].style.background = asd[data[0]]["color"];
-	document.getElementsByClassName("down1")[0].innerHTML = asd[data[0]]["shengxiao"];
-
-	document.getElementsByClassName("up2")[0].innerHTML = data[1];
-	document.getElementsByClassName("up2")[0].style.background = asd[data[1]]["color"];
-	document.getElementsByClassName("down2")[0].innerHTML = asd[data[1]]["shengxiao"];
-
-	document.getElementsByClassName("up3")[0].innerHTML = data[2];
-	document.getElementsByClassName("up3")[0].style.background = asd[data[2]]["color"];
-	document.getElementsByClassName("down3")[0].innerHTML = asd[data[2]]["shengxiao"];
-
-	document.getElementsByClassName("up4")[0].innerHTML = data[3];
-	document.getElementsByClassName("up4")[0].style.background = asd[data[3]]["color"];
-	document.getElementsByClassName("down4")[0].innerHTML = asd[data[3]]["shengxiao"];
-
-	document.getElementsByClassName("up5")[0].innerHTML = data[4];
-	document.getElementsByClassName("up5")[0].style.background = asd[data[4]]["color"];
-	document.getElementsByClassName("down5")[0].innerHTML = asd[data[4]]["shengxiao"];
-
-	document.getElementsByClassName("up6")[0].innerHTML = data[5];
-	document.getElementsByClassName("up6")[0].style.background = asd[data[5]]["color"];
-	document.getElementsByClassName("down6")[0].innerHTML = asd[data[5]]["shengxiao"];
-
-	document.getElementsByClassName("up7")[0].innerHTML = data[6];
-	document.getElementsByClassName("up7")[0].style.background = asd[data[6]]["color"];
-	document.getElementsByClassName("down7")[0].innerHTML = asd[data[6]]["shengxiao"];
-}	
-function shows(){
-	var data = ['{{opennew.no1}}','{{opennew.no2}}','{{opennew.no3}}','{{opennew.no4}}','{{opennew.no5}}','{{opennew.no6}}','{{opennew.no7}}']
-	for(i=0;i<7;i++){
-		if(data[i]>=0 && data[i]<=49){
-			data[i] = parseInt(data[i])
-		}else{
-			data[i] = 0
-		}
-	}
-	writer(data)
-}
-shows();// 执行
-</script>
+			<div id="OpennewDesc">
+				<!-- 填充数据 -->
+			</div>
 		</div>
-		{% endfor %}
-		<!-- open history -->
+		<!-- open new end -->
+		<!-- open history start -->
 		<div class="open" style="background: url('/media/{{settings.water_pic}}');background-size: 200px 200px;">
 		{% autoescape off %}
 			{% for open in open.all|slice:":5" %}
@@ -218,13 +117,13 @@ shows();// 执行
 	<div class="piaochuan1" id="piaochuan1">
 		<div class="close1" id="close1">X</div>
 		<a href="{{ piaochuan.leftt_herf }}" target="_blank">
-			<img src="/media/{{ piaochuan.leftt }}">
+			<img lay-src="/media/{{ piaochuan.leftt }}">
 		</a>
 	</div>
 	<div class="piaochuan2" id="piaochuan2">
 		<div class="close2" id="close2">X</div>
 		<a href="{{ piaochuan.rightt_herf }}" target="_blank">
-			<img src="/media/{{ piaochuan.rightt }}">
+			<img lay-src="/media/{{ piaochuan.rightt }}">
 		</a>
 	</div>
 	{% endfor %}
@@ -234,12 +133,24 @@ shows();// 执行
 <script src="{% static '/layui/layui.js' %}"></script>
 <script src="{% static '/moge/js/zl.js' %}"></script>
 <script type="text/javascript">
-document.getElementById("close1").onclick = function(){
-	document.getElementById("piaochuan1").style.display = "none"
+{% for opennew in opennew.all|slice:":1" %}
+function OpenNewShow(){
+	document.getElementById("OpenIssues").innerHTML = "{{ opennew.issue }}:";
+	var data = ['{{opennew.no1}}','{{opennew.no2}}','{{opennew.no3}}','{{opennew.no4}}','{{opennew.no5}}','{{opennew.no6}}','{{opennew.no7}}']
+	for(i=0;i<7;i++){
+		if(data[i]>=0 && data[i]<=49){
+			data[i] = parseInt(data[i])
+		}else{
+			data[i] = 0
+		}
+	}
+	writer(data)
+	document.getElementById("OpennewDesc").innerHTML = "{% autoescape off %}{{ opennew.desc }}{% endautoescape %}";
 }
-document.getElementById("close2").onclick = function(){
-	document.getElementById("piaochuan2").style.display = "none"
-}
+OpenNewShow()
+{% endfor %}
+//
+
 //
 layui.use('layer', function(){
 	var $ = layui.jquery, layer = layui.layer; 
@@ -274,14 +185,11 @@ function ReWriter(data){
 	}
 	writer(data)
 }
-// layer top start
-layui.use('element', function(){
-	var element = layui.element;
-});
-layui.use('flow', function(){
-  var flow = layui.flow;
-  //当你执行这样一个方法时，即对页面中的全部带有lay-src的img元素开启了懒加载（当然你也可以指定相关img）
-  flow.lazyimg(); 
+// 
+layui.use(['layer', 'element', 'flow'], function(){
+	var element = layui.element;// layer 导航栏效果
+	var flow = layui.flow;// 图像懒加载 src改为lay-src
+	flow.lazyimg(); 
 });
 </script>
 </body>
