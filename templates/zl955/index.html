@@ -187,6 +187,27 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 	var layer = layui.layer; //layer加载
 	var form = layui.form;
 	flow.lazyimg(); 
+	function GoodUp(n){
+		console.log(n)
+		layer.load(2);
+		$.ajax({
+			cache: false,
+			type: "GET",
+			url: "/",
+			data: {id:n},
+			async: true,
+			success: function(data) {
+                console.log(data)
+                layer.closeAll('loading');
+			},
+			error: function(){
+				layer.closeAll('loading');
+				layer.msg('网络异常错误，请稍候再试！！！', {icon: 5});
+				return false
+			}
+		});
+		return false;
+	}
     // 获取评论信息
 	function getBBS(){
 		document.getElementById("People").innerHTML = "76{{ num }}";
@@ -201,7 +222,7 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 					'</div>'+
 					'<div class="talk-info-tail">'+
 						'<div class="talk-time">{{bbs.add_time}}</div>'+
-						'<a class="talk-good" href="javascript:;" onclick="GoodUp({{bbs.id}})">'+
+						'<a class="talk-good" href="javascript:GoodUp({{bbs.id}})">'+
 							'<i class="layui-icon layui-icon-praise" style="font-size: 24px; color: #1E9FFF;"></i>'+
 							'<em class="talk-good-no">{{bbs.good}}</em>'+
 						'</a>'+
@@ -259,33 +280,6 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 			});
 			return false;
 		});
-	}
-	{% endif %}
-	{% if request.user.is_authenticated %}
-	function GoodUp(n){
-		console.log(n)
-		layer.load(2);
-		$.ajax({
-			cache: false,
-			type: "GET",
-			url: "/",
-			data: {id:n},
-			async: true,
-			success: function(data) {
-                console.log(data)
-                layer.closeAll('loading');
-			},
-			error: function(){
-				layer.closeAll('loading');
-				layer.msg('网络异常错误，请稍候再试！！！', {icon: 5});
-				return false
-			}
-		});
-		return false;
-	}
-	{% else %}
-	function GoodUp(n){
-		layer.msg('清先登录！', {icon: 0});
 	}
 	{% endif %}
 	// 刷新功能
