@@ -241,6 +241,7 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 				success: function(data) {
 	                console.log(data)
 	                if( data.icon == 1){
+	                	layer.closeAll('loading');
 	                    layer.msg(data.msg, {time:222,icon: data.icon}, function(){
 	                        // window.location.reload()
 	                    });
