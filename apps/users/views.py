@@ -157,9 +157,11 @@ class UploadImageView(LoginRequiredMixin, View):
         image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)
         if image_form.is_valid():
             image_form.save()
-            return HttpResponseRedirect(reverse("zl-index"))
+            _status= {'msg':'xxx','icon':'1'}
+            return HttpResponse(json.dumps(_status),content_type='application/json')
         else:
-            return HttpResponseRedirect(reverse("zl-index"))
+            _status= {'msg':'失败','icon':'5'}
+            return HttpResponse(json.dumps(_status),content_type='application/json')
 
 
 
