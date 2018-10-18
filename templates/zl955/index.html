@@ -247,7 +247,7 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	    elem: '#changeavatar' //绑定元素
 	    ,url: 'image/upload/' //上传接口
 	    ,headers:{
-	    	"X-CSRFToken", "{{ csrf_token }}"
+	    	"X-CSRFToken": "{{ csrf_token }}"
 	    }
 	    ,done: function(res){
 	      //上传完毕回调
