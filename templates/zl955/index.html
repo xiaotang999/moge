@@ -209,7 +209,7 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 				'</div>'
 		{% endfor %}
 		document.getElementById("TalkInfo").innerHTML = html
-		function GoodUp(n){
+		GoodUp = function(n){
 			console.log(n)
 			layer.load(2);
 			$.ajax({
