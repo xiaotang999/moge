@@ -218,9 +218,9 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 				url: "good/",
 				data: {id:n},
 				async: true,
-				success: function(data) {
-					console.log(data)
-					$('.talk-good-'+n+' .talk-good-no').text(data.num);
+				success: function(datas) {
+					console.log(datas)
+					$('.talk-good-'+n+' .talk-good-no').text(datas.num);
 		            layer.closeAll('loading');
 				},
 				error: function(){
