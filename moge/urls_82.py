@@ -4,7 +4,7 @@ from moge.settings import MEDIA_ROOT
 from moge.settings import STATIC_ROOT
 
 from zl955.views import ZL955IndexView, zl955NewOpen, zl955Good
-from users.views import LoginView, RegisterView, LogoutView
+from users.views import LoginView, RegisterView, LogoutView, UploadImageView
 from bbs.views import CommentSetView
 
 urlpatterns = [
@@ -21,6 +21,6 @@ urlpatterns = [
     url('^bbs/', CommentSetView.as_view(), name="bbs"),
     url('^newopen/', zl955NewOpen.as_view(), name='zl-newopen'),
     url('^good/', zl955Good.as_view(), name='zl-good'),
-    
+    url(r'^image/upload/$', UploadImageView.as_view(), name="image_upload"),
 ]
 

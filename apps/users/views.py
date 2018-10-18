@@ -16,10 +16,11 @@ from captcha.helpers import captcha_image_url
 
 
 from .models import User
-from .forms import LoginForm, RegisterForm, CheckCode
+from .forms import LoginForm, RegisterForm, CheckCode, UploadImageForm
 # from .forms import UserInfoForm
 # from utils.email_send import send_register_email
 from utils.mixin_utils import LoginRequiredMixin
+
 
 # from .models import Banner
 
@@ -144,7 +145,17 @@ class LoginView(View):
 
 
 
-
+class UploadImageView(LoginRequiredMixin, View):
+    """
+    用户修改头像
+    """
+    def post(self, request):
+        image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)
+        if image_form.is_valid():
+            image_form.save()
+            return HttpResponse('{"status":"success"}', content_type='application/json')
+        else:
+            return HttpResponse('{"status":"fail"}', content_type='application/json')
 
 
 

@@ -99,3 +99,4 @@ class zl955Good(View):
 		_bbs.save()
 		_status = {'status':'ok','num':_bbs.good}
 		return HttpResponse(json.dumps(_status),content_type='application/json')
+

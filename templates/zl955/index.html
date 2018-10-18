@@ -22,7 +22,7 @@
 			<li class="layui-nav-item">
 				<a href="javascript:;"><img src="media/{{ request.user.avatar }}" class="layui-nav-img">{{ request.user.nickname }}</a>
 				<dl class="layui-nav-child">
-					<dd><a href="javascript:ChangeAvatar();">更换头像</a></dd>
+					<dd><a href="javascript:ChangeAvatar();" id="changeavatar">更换头像</a></dd>
 					<dd><a href="/logout/">注销</a></dd>
 				</dl>
 			</li>
@@ -185,12 +185,13 @@ function OpenNewShow(){
 {% endfor %}
 OpenNewShow() //获取新增开奖数据
 //
-layui.use(['layer', 'element', 'flow', 'form'], function(){
+layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	var element = layui.element; // layer 导航栏效果
 	var flow = layui.flow; // 图像懒加载 src改为lay-src
 	var $ = layui.jquery; // jq加载
 	var layer = layui.layer; //layer加载
 	var form = layui.form;
+	var upload = layui.upload;
 	flow.lazyimg(); 
     // 获取评论信息
 	function getBBS(){
@@ -241,7 +242,19 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 	// 评论功能-监听提交
 	{% if request.user.is_authenticated %}
 	ChangeAvatar = function(){
-		console.log('ceshi123');
+		//执行实例
+		var uploadInst = upload.render({
+			elem: '#changeavatar' //绑定元素
+			,url: 'image/upload/' //上传接口
+			,done: function(res){
+			//上传完毕回调
+				console.log(res)
+			}
+			,error: function(){
+			//请求异常回调
+				console.log('bad!')
+			}
+		});
 	}
 	var userSet = {
 		'open_speak':'{{request.user.group.open_speak}}',

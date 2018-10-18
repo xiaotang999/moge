@@ -18,6 +18,10 @@ class LoginForm(forms.Form):
     username = forms.CharField(required=True, min_length=6, max_length=16)
     password = forms.CharField(required=True, min_length=6, max_length=16)
 
+class UploadImageForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['users/avatar/']
 
         
 
