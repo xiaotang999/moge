@@ -252,7 +252,7 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	    ,url: 'image/upload/' //上传接口
 	    ,headers: {
 	    	'X-CSRFToken': '{{ csrf_token }}',
-	    	'enctype'= 'multipart/form-data'
+	    	'enctype': 'multipart/form-data'
 	    }
 	    ,done: function(res){
 	      //如果上传失败
