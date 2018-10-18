@@ -52,8 +52,17 @@ class ZL955IndexView(View):
             'num' : _num,
 			'messages':_messages,
 		})
+	def post(self, request):
+		if request.user.is_authenticated():
+			received_json_data = json.loads(request.body)
+			return HttpResponse(json.dumps(received_json_data),content_type='application/json')
+			# 'desc': data.field.desc,
+			# 'open_speak': userSet.open_speak,
+			# 'limit_speak_no': userSet.limit_speak_no,
+		else:
+			pass
 
-# 
+# 刷新获取新数据
 class zl955NewOpen(View):
 	def get(self, request):
 		_opennew = OpenNew.objects.all()
