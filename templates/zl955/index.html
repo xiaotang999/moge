@@ -103,13 +103,11 @@
 		<!-- bbs start -->
 		<div class="bbs" id="bbs" style="display: none">
 			{% if request.user.is_authenticated %}
-			<a href="/login/" class="layui-btn layui-btn-fluid layui-btn-radius layui-btn-normal" style="margin: 5px 0;">您还未登录，请先登录！</a>
-			{% else %}
 			<div class="speak">
 				<form class="layui-form layui-form-pane" action="">
 				  <div class="layui-form-item layui-form-text">
 				    <div class="layui-input-block">
-				      <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+				      <textarea name="desc" id="Desc" placeholder="请输入内容" class="layui-textarea" maxlength="0"></textarea>
 				    </div>
 				  </div>
 				  <div class="layui-form-item">
@@ -119,6 +117,8 @@
 				  </div>
 				</form>
 			</div>
+			{% else %}
+			<a href="/login/" class="layui-btn layui-btn-fluid layui-btn-normal" style="margin: 10px 0;border-radius: 10px;">您还未登录，请先登录！</a>
 			{% endif %}
 			<div class="talk">
 				<div class="talk-top">
@@ -187,11 +187,7 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 	var layer = layui.layer; //layer加载
 	var form = layui.form;
 	flow.lazyimg(); 
-	// 评论功能
-            // 'messages':_messages,
-            // 'people' : _people,
-            // 'num' : _num,
-    // 评论信息
+    // 获取评论信息
 	function getBBS(){
 		document.getElementById("People").innerHTML = "76{{ num }}";
 		document.getElementById("Num").innerHTML = "130{{ people }}";
@@ -215,22 +211,21 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 		document.getElementById("TalkInfo").innerHTML = html
 	}
 	getBBS();
-	//监听提交
+	// 评论功能-监听提交
 	{% if request.user.is_authenticated %}
 	var userSet = {
 		'open_speak':'{{request.user.group.open_speak}}',
 		'limit_speak_no':'{{request.user.group.limit_speak_no}}'
 	}
 	console.log(userSet)
-	// form.on('submit(Speaks)', function(data){
-	// 	layer.msg(JSON.stringify(data.field));
-	// 	return false;
-	// });
-	// {% else %}
-	// form.on('submit(Speaks)', function(data){
-	// 	layer.msg('请先登录！');
-	// 	return false;
-	// });
+	if(userSet.open_speak){
+		console.log(userSet.open_speak)
+		$("#Desc").attr("maxlength",userSet.limit_speak_no);
+		form.on('submit(Speaks)', function(data){
+			layer.msg(JSON.stringify(data.field));
+			return false;
+		});
+	}
 	{% endif %}
 	// 刷新功能
 	var shuaxin = document.getElementById("refalsh");
