@@ -56,8 +56,8 @@ class ZL955IndexView(View):
 		if request.user.is_authenticated():
 			print('asd')
 			user_obj=json.loads(request.body.decode())
-    		return HttpResponse(user_obj['desc'])
 			print('asd-------')
+			return HttpResponse(user_obj['desc'])
 			# 'desc': data.field.desc,
 			# 'open_speak': userSet.open_speak,
 			# 'limit_speak_no': userSet.limit_speak_no,
