@@ -253,9 +253,6 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	    ,headers: {
 	    	'X-CSRFToken': '{{ csrf_token }}'
 	    }
-	    ,data: {
-            avatar: $('#test1 input').val()
-        }
 	    ,done: function(res){
 	      //如果上传失败
 	      if(res.code > 0){
