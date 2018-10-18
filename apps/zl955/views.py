@@ -59,10 +59,14 @@ class ZL955IndexView(View):
 			_limit_speak_no = request.POST.get("limit_speak_no", "")
 			print('asd')
 			if _open_speak == request.user.group.open_speak:
-				_status = {'msg':'发表成功！','icon':'1'}
-				return HttpResponse(json.dumps(_status),content_type='application/json')
+				if _limit_speak_no == request.user.group.limit_speak_no:
+					_status = {'msg':'发表成功！','icon':'1'}
+					return HttpResponse(json.dumps(_status),content_type='application/json')
+				else:
+					_status = {'msg':'发布失败！','icon':'5'}
+					return HttpResponse(json.dumps(_status),content_type='application/json')
 			else:
-				_status = {'msg':'xxxx','icon':'1'}
+				_status = {'msg':'发布失败！','icon':'5'}
 				return HttpResponse(json.dumps(_status),content_type='application/json')
 		else:
 			_status = {'msg':'发布失败！','icon':'5'}
