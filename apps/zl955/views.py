@@ -8,6 +8,7 @@ from django.template import loader
 from .models import Settings, Guanggao, OpenNew, Open, Bottoms, PiaoChuan, IpApp
 from bbs.models import CommentSet
 from users.models import User
+
 class ZL955IndexView(View):
 	# get
 	def get(self, request):
@@ -17,9 +18,8 @@ class ZL955IndexView(View):
 		_open = Open.objects.order_by('-id')
 		_bottoms = Bottoms.objects.all()
 		_piaochuan = PiaoChuan.objects.all()
-		# 
-        _people = User.objects.all().count()
-        _num = CommentSet.objects.all().count()
+		_people = User.objects.all().count()
+		_num = CommentSet.objects.all().count()
 		# 
 		if 'HTTP_X_FORWARDED_FOR' in request.META:
 			get_ip = request.META['HTTP_X_FORWARDED_FOR']
