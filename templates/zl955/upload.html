@@ -79,13 +79,14 @@ layui.use(['layer', 'element', 'form'], function(){
 	var $ = layui.jquery, layer = layui.layer; // 加载JQ
 	//
 	form.on('submit(*)', function(data){
-		console.log(data.field)
+		console.log(data)
 		layer.load(2);
+
 		$.ajax({
 			cache: false,
 			type: "POST",
 			url: "/",
-			data: data.field,
+			data: data,
 			async: true,
 			success: function(data) {
                 console.log(data)
