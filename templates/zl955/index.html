@@ -191,7 +191,7 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 	function getBBS(){
 		document.getElementById("People").innerHTML = "76{{ num }}";
 		document.getElementById("Num").innerHTML = "130{{ people }}";
-		var html
+		var html = ''
 		{% for bbs in messages %}
 		html += '<div class="talk-info">'+
 					'<div class="talk-info-avatar"><img src="../media/{{bbs.username.avatar}}" class="layui-nav-img"></div>'+
