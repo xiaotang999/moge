@@ -219,7 +219,7 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 				data: {id:n},
 				async: true,
 				success: function(datas) {
-					console.log(datas)
+					// console.log(datas)
 					$('.talk-good-'+n+' .talk-good-no').text(datas.num);
 		            layer.closeAll('loading');
 				},
