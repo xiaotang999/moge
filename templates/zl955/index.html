@@ -134,7 +134,7 @@
 <script src="{% static '/moge/js/zl.js' %}"></script>
 <script type="text/javascript">
 {% for opennew in opennew.all|slice:":1" %}
-function OpenNewShow(){
+// function OpenNewShow(){
 	document.getElementById("OpenIssues").innerHTML = "{{ opennew.issue }}:";
 	var data = ['{{opennew.no1}}','{{opennew.no2}}','{{opennew.no3}}','{{opennew.no4}}','{{opennew.no5}}','{{opennew.no6}}','{{opennew.no7}}']
 	for(i=0;i<7;i++){
@@ -145,9 +145,9 @@ function OpenNewShow(){
 		}
 	}
 	writer(data)
-	document.getElementById("OpennewDesc").innerHTML = {% autoescape off %}{{ opennew.desc }}{% endautoescape %};
-}
-OpenNewShow()
+	document.getElementById("OpennewDesc").innerHTML = '{% autoescape off %}{{ opennew.desc }}{% endautoescape %}';
+// }
+// OpenNewShow()
 {% endfor %}
 //
 
