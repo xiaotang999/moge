@@ -12,6 +12,9 @@
 </head>
 <body>
 <!--  -->
+{% if _status %}
+{{_status}}
+{% endif %}
 <div class="upload">
 	<div class="upload-title">上传头像</div>
 	<form class="layui-form" action="../../image/upload/" method="post" enctype="multipart/form-data" autocomplete="off">
@@ -79,7 +82,8 @@ layui.use(['layer', 'element', 'form'], function(){
 	var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
 	var form = layui.form;
 	var $ = layui.jquery, layer = layui.layer; // 加载JQ
-	{{_status}}
+
+	
 });
 </script>
 </body>
