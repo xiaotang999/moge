@@ -201,7 +201,7 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 					'</div>'+
 					'<div class="talk-info-tail">'+
 						'<div class="talk-time">{{bbs.add_time}}</div>'+
-						'<a class="talk-good" href="javascript:GoodUp({{bbs.id}})">'+
+						'<a class="talk-good talk-good-{{bbs.id}}" href="javascript:GoodUp({{bbs.id}})">'+
 							'<i class="layui-icon layui-icon-praise" style="font-size: 24px; color: #1E9FFF;"></i>'+
 							'<em class="talk-good-no">{{bbs.good}}</em>'+
 						'</a>'+
@@ -215,10 +215,11 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 			$.ajax({
 				cache: false,
 				type: "GET",
-				url: "/",
+				url: "good/",
 				data: {id:n},
 				async: true,
 				success: function(data) {
+					$(".talk-good-'+n+' .talk-good-no").text(12);
 		            console.log(data)
 		            layer.closeAll('loading');
 				},

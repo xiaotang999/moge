@@ -92,6 +92,10 @@ class zl955NewOpen(View):
 		return HttpResponse(json.dumps(_opennew),content_type='application/json')
 
 class zl955Good(View):
-	def post(self, request):
-		if request.user.is_authenticated():
-			pass
+	def get(self, request):
+		_id = request.GET.get("id", "")
+		_bbs = CommentSet.objects.get(id=_id)
+		_bbs.good += 1
+		_bbs.save()
+		_status = {'status':'ok','id':_id}
+		return HttpResponse(json.dumps(_status),content_type='application/json')
