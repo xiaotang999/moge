@@ -1,0 +1,7 @@
+<div class="upload-avatar">
+	<form action="image/upload/" method="post" enctype="multipart/form-data">
+	  {% csrf_token %}
+	  <div>头像<input type="file" name="avatar"></div>
+	  <input type="submit" value="提交">
+	</form>
+</div>
