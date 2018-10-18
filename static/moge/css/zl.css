@@ -216,6 +216,8 @@ body{
 }
 .speak textarea{
     border-color: #4398ed;
+    font-size: 20px;
+    line-height: 1.2;
 }
 .talk{
 

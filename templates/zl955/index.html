@@ -222,7 +222,34 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 		console.log(userSet.open_speak)
 		$("#Desc").attr("maxlength",userSet.limit_speak_no);
 		form.on('submit(Speaks)', function(data){
-			layer.msg(JSON.stringify(data.field));
+			console.log(data)
+			layer.load(2);
+			// $.ajax({
+			// 	cache: false,
+			// 	type: "POST",
+			// 	url: "/",
+			// 	data: {
+			// 		csrfmiddlewaretoken: '{{ csrf_token }}',
+			// 		JSON.stringify(data.field)
+			// 	},
+			// 	async: true,
+			// 	success: function(info) {
+			// 		for(i=0;i<7;i++){
+			// 			if(info[i]>=0 && info[i]<=49){
+			// 				info[i] = parseInt(info[i])
+			// 			}else{
+			// 				info[i] = 0
+			// 			}
+			// 		}
+			// 		writer(info)
+			// 		layer.closeAll('loading');
+			// 	},
+			// 	error: function(){
+			// 		layer.closeAll('loading');
+			// 		layer.msg('获取失败...请稍后再试...');
+			// 	}
+			// });
+			// layer.msg(JSON.stringify(data.field));
 			return false;
 		});
 	}
