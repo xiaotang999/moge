@@ -22,6 +22,7 @@
 			<li class="layui-nav-item">
 				<a href="javascript:;"><img src="media/{{ request.user.avatar }}" class="layui-nav-img">{{ request.user.nickname }}</a>
 				<dl class="layui-nav-child">
+					<dd><a href="javascript:ChangeAvatar();">更换头像</a></dd>
 					<dd><a href="/logout/">注销</a></dd>
 				</dl>
 			</li>
@@ -239,6 +240,9 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 	getBBS();
 	// 评论功能-监听提交
 	{% if request.user.is_authenticated %}
+	function ChangeAvatar(){
+		console.log('ceshi123');
+	}
 	var userSet = {
 		'open_speak':'{{request.user.group.open_speak}}',
 		'limit_speak_no':'{{request.user.group.limit_speak_no}}'
