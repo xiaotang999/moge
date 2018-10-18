@@ -179,6 +179,27 @@ function OpenNewShow(){
 }
 {% endfor %}
 OpenNewShow() //获取新增开奖数据
+function GoodUp(n){
+	console.log(n)
+	layer.load(2);
+	$.ajax({
+		cache: false,
+		type: "GET",
+		url: "/",
+		data: {id:n},
+		async: true,
+		success: function(data) {
+            console.log(data)
+            layer.closeAll('loading');
+		},
+		error: function(){
+			layer.closeAll('loading');
+			layer.msg('网络异常错误，请稍候再试！！！', {icon: 5});
+			return false
+		}
+	});
+	return false;
+}
 //
 layui.use(['layer', 'element', 'flow', 'form'], function(){
 	var element = layui.element; // layer 导航栏效果
@@ -187,27 +208,6 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 	var layer = layui.layer; //layer加载
 	var form = layui.form;
 	flow.lazyimg(); 
-	function GoodUp(n){
-		console.log(n)
-		layer.load(2);
-		$.ajax({
-			cache: false,
-			type: "GET",
-			url: "/",
-			data: {id:n},
-			async: true,
-			success: function(data) {
-                console.log(data)
-                layer.closeAll('loading');
-			},
-			error: function(){
-				layer.closeAll('loading');
-				layer.msg('网络异常错误，请稍候再试！！！', {icon: 5});
-				return false
-			}
-		});
-		return false;
-	}
     // 获取评论信息
 	function getBBS(){
 		document.getElementById("People").innerHTML = "76{{ num }}";
