@@ -240,7 +240,7 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 	getBBS();
 	// 评论功能-监听提交
 	{% if request.user.is_authenticated %}
-	function ChangeAvatar(){
+	ChangeAvatar = function(){
 		console.log('ceshi123');
 	}
 	var userSet = {
