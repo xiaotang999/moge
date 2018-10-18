@@ -193,7 +193,7 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 		document.getElementById("People").innerHTML = "76{{ num }}";
 		document.getElementById("Num").innerHTML = "130{{ people }}";
 		{% for bbs in messages %}
-		document.getElementById("TalkInfo").append(''+
+		var html = ''+
 					'<div class="talk-info-avatar"><img src="../media/{{bbs.username.avatar}}" class="layui-nav-img"></div>'+
 					'<div class="talk-info-main">'+
 						'<div class="talk-user">{{bbs.username}}</div>'+
@@ -205,8 +205,9 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 							'<i class="layui-icon layui-icon-praise" style="font-size: 24px; color: #1E9FFF;"></i>'+
 							'<em class="talk-good-no">{{bbs.good}}</em>'+
 						'</a>'+
-					'</div>')
+					'</div>'
 		{% endfor %}
+		document.getElementById("TalkInfo").innerHTML = html
 	}
 	getBBS();
 	//监听提交
