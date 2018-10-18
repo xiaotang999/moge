@@ -150,7 +150,8 @@ class UploadImageView(LoginRequiredMixin, View):
     用户修改头像
     """
     def get(self, request):
-        return render(request, "zl955/upload.html", {})
+        status = ''
+        return render(request, "zl955/upload.html", {'_status':status})
     def post(self, request):
         # image  FILES
         # _img = request.FILES['file']
