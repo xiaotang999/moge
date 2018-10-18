@@ -219,8 +219,8 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 				data: {id:n},
 				async: true,
 				success: function(data) {
-					$(".talk-good-'+n+' .talk-good-no").text(12);
-		            console.log(data)
+					console.log(data)
+					$('.talk-good-'+n+' .talk-good-no').text(data.num);
 		            layer.closeAll('loading');
 				},
 				error: function(){
