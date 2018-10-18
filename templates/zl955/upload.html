@@ -79,37 +79,33 @@ layui.use(['layer', 'element', 'form'], function(){
 	var $ = layui.jquery, layer = layui.layer; // 加载JQ
 	//
 	form.on('submit(*)', function(data){
-		if(data.field.password != data.field.passwords){ //验证两次密码是否相同
-			layer.msg('两次密码输入不正确！', {icon: 5});
-			return false
-		}else{
-			layer.load(2);
-			$.ajax({
-				cache: false,
-				type: "POST",
-				url: "/",
-				data: data.field,
-				async: true,
-				success: function(data) {
-	                console.log(data)
-	                // if( data.icon == 1){
-	                //     layer.msg(data.msg, {time:222,icon: data.icon}, function(){
-	                //         window.location.reload()
-	                //     });
-	                // }else{
-	                //     layer.msg(data.msg, {icon: data.icon});
-	                //     layer.closeAll('loading');
-	                //     return false
-	                // }
-				},
-				error: function(){
-					layer.closeAll('loading');
-					layer.msg('网络异常错误，请稍候再试！！！', {icon: 5});
-					return false
-				}
-			});
-		  return false; //阻止表单跳转
-		}
+		console.log(data.field)
+		layer.load(2);
+		$.ajax({
+			cache: false,
+			type: "POST",
+			url: "/",
+			data: data.field,
+			async: true,
+			success: function(data) {
+                console.log(data)
+                // if( data.icon == 1){
+                //     layer.msg(data.msg, {time:222,icon: data.icon}, function(){
+                //         window.location.reload()
+                //     });
+                // }else{
+                //     layer.msg(data.msg, {icon: data.icon});
+                //     layer.closeAll('loading');
+                //     return false
+                // }
+			},
+			error: function(){
+				layer.closeAll('loading');
+				layer.msg('网络异常错误，请稍候再试！！！', {icon: 5});
+				return false
+			}
+		});
+	  return false; //阻止表单跳转
 	});
 
 	// 
