@@ -156,6 +156,8 @@ class UploadImageView(LoginRequiredMixin, View):
         # _img = request.FILES['file']
         print('asd')
         print(request)
+        print('asd11111')
+        print(request.FILES)
         print('asd')
         image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)
         if image_form.is_valid():
