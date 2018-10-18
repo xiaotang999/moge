@@ -60,9 +60,9 @@ class ZL955IndexView(View):
 			_changdu = len(_desc)
 			if request.user.group.open_speak:
 				if _changdu <= request.user.group.limit_speak_no:
-					_bbs = CommentSet.objects.filter(username=request.user.username)
-					# _bbs = CommentSet()
-					# _bbs.username = request.user.username
+					_user = User.objects.get(username=request.user.username)
+					_bbs = CommentSet()
+					_bbs.username = _user
 					_bbs.desc = _desc
 					_bbs.save()
 					_status = {'msg':'发表成功！','icon':'1'}
