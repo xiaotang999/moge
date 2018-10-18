@@ -57,6 +57,7 @@ class ZL955IndexView(View):
 			print(request.user.group.open_speak)
 			print(request.user.group.limit_speak_no)
 			print('asd')
+			print(request.user.group.open_speak)
 			_desc = request.POST.get("desc", "")
 			_open_speak = request.POST.get("open_speak", "")
 			_limit_speak_no = request.POST.get("limit_speak_no", "")
