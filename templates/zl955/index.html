@@ -30,7 +30,9 @@
 						</form>
 					</dd>
 					<dd>
-						<a href="javascript:;" id="changeavatar">更换头像</a>
+						<a href="javascript:;" id="changeavatar">更换头像
+							<input type="file" name="avatar" id="" style="display: none;">	
+						</a>
 					</dd>
 					<dd><a href="/logout/">注销</a></dd>
 				</dl>
@@ -251,14 +253,14 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	// 评论功能-监听提交
 	{% if request.user.is_authenticated %}
 	  var uploadInst = upload.render({
-	    elem: '#test1' //绑定元素
+	    elem: '#changeavatar' //绑定元素
 	    ,url: 'image/upload/' //上传接口
 	    ,headers:{
 	    	"X-CSRFToken": "{{ csrf_token }}"
 	    }
 	    ,done: function(res){
 	      //上传完毕回调
-	      console.log($('#test1').val())
+	      console.log($('#changeavatar').val())
 	      console.log('asd')
 	      console.log(res)
 	    }
@@ -269,9 +271,6 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	  });
 	ChangeAvatar = function(){
 	  //执行实例
-
-
-
 
 
 
