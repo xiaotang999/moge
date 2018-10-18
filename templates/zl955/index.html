@@ -102,7 +102,7 @@
 		<!-- open history end -->
 		<!-- bbs start -->
 		<div class="bbs" id="bbs" style="display: none">
-			<div class="speak">
+			<div class="speak" style="display: none">
 				<form class="layui-form layui-form-pane" action="">
 				  <div class="layui-form-item layui-form-text">
 				    <div class="layui-input-block">
@@ -122,6 +122,10 @@
 					<div class="talk-top-right"><em id="People"></em><i>参与,</i><em id="Num"></em><i>条评论</i></div>
 				</div>
 				<div class="talk-top-hot">热门评论</div>
+				<!--  -->
+				<div class="talk-info" id="TalkInfo">
+				</div>
+				<!--  -->
 			</div>
 		</div>
 		<!-- bbs end -->
@@ -186,8 +190,23 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
             // 'num' : _num,
     // 评论信息
 	function getBBS(){
-		document.getElementById("People").innerHTML = "{{ num }}:";
-		document.getElementById("Num").innerHTML = "{{ people }}:";
+		document.getElementById("People").innerHTML = "76{{ num }}";
+		document.getElementById("Num").innerHTML = "130{{ people }}";
+		{% for bbs in messages %}
+		document.getElementById("TalkInfo").innerHTML = ''+
+					'<div class="talk-info-avatar"><img src="../media/{{bbs.username.avatar}}" class="layui-nav-img"></div>'+
+					'<div class="talk-info-main">'+
+						'<div class="talk-user">{{bbs.username}}</div>'+
+						'<div class="talk-message">{{bbs.desc}}</div>'+
+					'</div>'+
+					'<div class="talk-info-tail">'+
+						'<div class="talk-time">{{bbs.add_time}}</div>'+
+						'<a class="talk-good" href="">'+
+							'<i class="layui-icon layui-icon-praise" style="font-size: 24px; color: #1E9FFF;"></i>'+
+							'<em class="talk-good-no">{{bbs.good}}</em>'+
+						'</a>'+
+					'</div>'
+		{% endfor %}
 	}
 	getBBS();
 	//监听提交
@@ -207,24 +226,6 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 	// 	return false;
 	// });
 	{% endif %}
-	function bbsShow(){
-		layer.load(2);
-		$.ajax({
-			cache: false,
-			type: "GET",
-			url: "/bbs/",
-			async: true,
-			success: function(msg) {
-				console.log(msg)
-				layer.closeAll('loading');
-			},
-			error: function(){
-				layer.closeAll('loading');
-				layer.msg('获取失败...请稍后再试...');
-			}
-		});
-	};
-	bbsShow();
 	// 刷新功能
 	var shuaxin = document.getElementById("refalsh");
 	shuaxin.onclick = function(){

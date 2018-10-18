@@ -5,37 +5,255 @@
 <meta charset="UTF-8">
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
-<title>test</title>
+{% for settings in settings.all|slice:"1" %}
+<title>{{ settings.name }}</title>
 <meta name="keywords" content="{{settings.keywords}}" />
 <meta name="description" content="{{settings.description}}" />
 <link rel="icon" type="image/x-icon" href="media/{{settings.icons}}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'moge/css/zl.css' %}">
-
 </head>
 <body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+	<div class="layui-header">
+		<div class="layui-logo">战狼论坛</div>
+		{% if request.user.is_authenticated %}
+		<ul class="layui-nav layui-layout-right">
+			<li class="layui-nav-item">
+				<a href="javascript:;"><img src="media/{{ request.user.avatar }}" class="layui-nav-img">我</a>
+				<dl class="layui-nav-child">
+					<dd><a href="/logout/">注销</a></dd>
+				</dl>
+			</li>
+		</ul>
+		{% else %}
+		<ul class="layui-nav layui-layout-right">
+			<li class="layui-nav-item"><a href="/login/" id="login">登录</a></li>
+			<li class="layui-nav-item"><a href="/reg/" id="reg">注册</a></li>
+		</ul>
+		{% endif %}
+	</div>
+</div>
 <div class="bg">
 	<div class="main">
+		<div class="logo">
+			<img src="media/{{settings.logo_pic}}">
+		</div>
+		<!-- aqq start -->
+		{% for guanggao in guanggao.all|slice:":10" %}
+		<div class="aqq">
+			<a href="{{ guanggao.href }}" target="_blank">
+				<img src="/media/{{ guanggao.image }}">
+			</a>
+		</div>
+		{% endfor %}
+		<!-- aqq end -->
+		<!-- open new s -->
+		<div class="news">
+			<div class="news-open" id="news">
+				<div class="nob issues" id="OpenIssues">第000期</div>
+				<div id="no1" class="nob">
+					<div class="up1">0</div>
+					<div class="down1">0</div>
+				</div>
+				<div id="no2" class="nob">
+					<div class="up2">0</div>
+					<div class="down2">0</div>
+				</div>
+				<div id="no3" class="nob">
+					<div class="up3">0</div>
+					<div class="down3">0</div>
+				</div>
+				<div id="no4" class="nob">
+					<div class="up4">0</div>
+					<div class="down4">0</div>
+				</div>
+				<div id="no5" class="nob">
+					<div class="up5">0</div>
+					<div class="down5">0</div>
+				</div>
+				<div id="no6" class="nob">
+					<div class="up6">0</div>
+					<div class="down6">0</div>
+				</div>
+				<div class="nob add">+</div>
+				<div id="no7" class="nob">
+					<div class="up7">0</div>
+					<div class="down7">0</div>
+				</div>
+			</div>
+			<div class="refalsh-btn">
+				<button class="layui-btn layui-btn-warm" id="refalsh">刷新</button>
+			</div>
+			<div id="OpennewDesc">
+				<!-- 填充数据 -->
+			</div>
+		</div>
+		<!-- open new end -->
+		<!-- open history start -->
+		<div class="open" style="background: url('/media/{{settings.water_pic}}');background-size: 200px 200px;">
+		{% autoescape off %}
+			{% for open in open.all|slice:":5" %}
+			<div class="open-top" style="text-align: center;">{{ open.top }}</div>
+			{{ open.desc }}
+			{% endfor %}
+		{% endautoescape %}
+		</div>
+		<!-- open history end -->
 		<!-- bbs start -->
-
+		<div class="bbs" id="bbs" style="display: none">
+			<div class="speak" style="display: none">
+				<form class="layui-form layui-form-pane" action="">
+				  <div class="layui-form-item layui-form-text">
+				    <div class="layui-input-block">
+				      <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+				    </div>
+				  </div>
+				  <div class="layui-form-item">
+				    <div class="layui-input-block">
+				      <button class="layui-btn" lay-submit lay-filter="Speaks">发表意见</button>
+				    </div>
+				  </div>
+				</form>
+			</div>
+			<div class="talk">
+				<div class="talk-top">
+					<div class="talk-top-left">评论</div>
+					<div class="talk-top-right"><em id="People"></em><i>参与,</i><em id="Num"></em><i>条评论</i></div>
+				</div>
+				<div class="talk-top-hot">热门评论</div>
+				{% for bbs in messages %}
+				<!--  -->
+				<div class="talk-info">
+					<div class="talk-info-avatar"><img src="../media/{{bbs.username.avatar}}" class="layui-nav-img"></div>
+					<div class="talk-info-main">
+						<div class="talk-user">{{bbs.username}}</div>
+						<div class="talk-message">{{bbs.desc}}</div>
+					</div>
+					<div class="talk-info-tail">
+						<div class="talk-time">{{bbs.add_time}}</div>
+						<a class="talk-good" href="">
+							<i class="layui-icon layui-icon-praise" style="font-size: 24px; color: #1E9FFF;"></i>
+							<em class="talk-good-no">{{bbs.good}}</em>
+						</a>
+					</div>
+				</div>
+				<!--  -->
+				{% endfor %}
+			</div>
+		</div>
 		<!-- bbs end -->
-		<!-- bottom info -->
-
+		<!-- bottom info start -->
+		<div class="bottom">
+			{% for bottoms in bottoms.all|slice:":1" %}
+				{% autoescape off %}
+					{{ bottoms.desc }}
+				{% endautoescape %}
+				<div class="explain">{{ bottoms.explain }}</div>
+			{% endfor %}
+		</div>
+		<!-- bottom info end -->
 	</div>
-
+	<!-- flaot -->
+	{% for piaochuan in piaochuan.all|slice:":1" %}
+	<div class="piaochuan1" id="piaochuan1">
+		<div class="close1" id="close1">X</div>
+		<a href="{{ piaochuan.leftt_herf }}" target="_blank">
+			<img lay-src="/media/{{ piaochuan.leftt }}">
+		</a>
+	</div>
+	<div class="piaochuan2" id="piaochuan2">
+		<div class="close2" id="close2">X</div>
+		<a href="{{ piaochuan.rightt_herf }}" target="_blank">
+			<img lay-src="/media/{{ piaochuan.rightt }}">
+		</a>
+	</div>
+	{% endfor %}
+	<!-- flaot end -->
 </div>
 <script src="{% static '/layui/layui.js' %}"></script>
 <script src="{% static '/moge/js/zl.js' %}"></script>
 <script type="text/javascript">
+{% for opennew in opennew.all|slice:":1" %}
+function OpenNewShow(){
+	document.getElementById("OpenIssues").innerHTML = "{{ opennew.issue }}:";
+	var data = ['{{opennew.no1}}','{{opennew.no2}}','{{opennew.no3}}','{{opennew.no4}}','{{opennew.no5}}','{{opennew.no6}}','{{opennew.no7}}']
+	for(i=0;i<7;i++){
+		if(data[i]>=0 && data[i]<=49){
+			data[i] = parseInt(data[i])
+		}else{
+			data[i] = 0
+		}
+	}
+	writer(data)
+	document.getElementById("OpennewDesc").innerHTML = '{% autoescape off %}{{ opennew.desc }}{% endautoescape %}';
+}
+{% endfor %}
+OpenNewShow() //获取新增开奖数据
 //
-layui.use(['layer', 'element', 'form'], function(){
-	var $ = layui.jquery;
-	var layer = layui.layer; 
-	
-
-
-})
-//
+layui.use(['layer', 'element', 'flow', 'form'], function(){
+	var element = layui.element; // layer 导航栏效果
+	var flow = layui.flow; // 图像懒加载 src改为lay-src
+	var $ = layui.jquery; // jq加载
+	var layer = layui.layer; //layer加载
+	var form = layui.form;
+	flow.lazyimg(); 
+	// 评论功能
+            // 'messages':_messages,
+            // 'people' : _people,
+            // 'num' : _num,
+    // 评论信息
+	function getBBS(){
+		document.getElementById("People").innerHTML = "76{{ num }}";
+		document.getElementById("Num").innerHTML = "130{{ people }}";
+	}
+	getBBS();
+	//监听提交
+	{% if request.user.is_authenticated %}
+	var userSet = {
+		'open_speak':'{{request.user.group.open_speak}}',
+		'limit_speak_no':'{{request.user.group.limit_speak_no}}'
+	}
+	console.log(userSet)
+	// form.on('submit(Speaks)', function(data){
+	// 	layer.msg(JSON.stringify(data.field));
+	// 	return false;
+	// });
+	// {% else %}
+	// form.on('submit(Speaks)', function(data){
+	// 	layer.msg('请先登录！');
+	// 	return false;
+	// });
+	{% endif %}
+	// 刷新功能
+	var shuaxin = document.getElementById("refalsh");
+	shuaxin.onclick = function(){
+		layer.load(2);
+		$.ajax({
+			cache: false,
+			type: "GET",
+			url: "/newopen/",
+			async: true,
+			success: function(info) {
+				for(i=0;i<7;i++){
+					if(info[i]>=0 && info[i]<=49){
+						info[i] = parseInt(info[i])
+					}else{
+						info[i] = 0
+					}
+				}
+				writer(info)
+				layer.closeAll('loading');
+			},
+			error: function(){
+				layer.closeAll('loading');
+				layer.msg('获取失败...请稍后再试...');
+			}
+		});
+	};
+	// 
+});
 </script>
 </body>
+{% endfor %}
 </html>

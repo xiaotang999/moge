@@ -20,6 +20,7 @@ class ZL955IndexView(View):
 		_piaochuan = PiaoChuan.objects.all()
 		_people = User.objects.all().count()
 		_num = CommentSet.objects.all().count()
+		_messages = CommentSet.objects.order_by('-id')[:5]
 		# 
 		if 'HTTP_X_FORWARDED_FOR' in request.META:
 			get_ip = request.META['HTTP_X_FORWARDED_FOR']
@@ -49,6 +50,7 @@ class ZL955IndexView(View):
 			"piaochuan" : _piaochuan,
         	'people' : _people,
             'num' : _num,
+			'messages':_messages,
 		})
 
 # 
