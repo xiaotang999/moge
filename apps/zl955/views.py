@@ -56,6 +56,7 @@ class ZL955IndexView(View):
 		if request.user.is_authenticated():
 			print('asd')
 			_desc = request.POST.get("desc", "")
+			print(_desc)
 			print('asd-------')
 			pass
 			# 'desc': data.field.desc,
