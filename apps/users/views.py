@@ -149,7 +149,7 @@ class UploadImageView(LoginRequiredMixin, View):
     """
     用户修改头像
     """
-    def post(self, request):
+    def get(self, request):
         if request.user.is_authenticated():
             return HttpResponseRedirect(reverse("zl-index"))
         else:
