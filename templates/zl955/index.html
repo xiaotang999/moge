@@ -230,9 +230,9 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 				url: "/",
 				data: {
 					csrfmiddlewaretoken: '{{ csrf_token }}',
-					'desc': tijiao.field.desc,
-					'open_speak': userSet.open_speak,
-					'limit_speak_no': userSet.limit_speak_no,
+					desc: tijiao.field.desc,
+					open_speak: userSet.open_speak,
+					limit_speak_no: userSet.limit_speak_no,
 				},
 				async: true,
 				success: function(info) {
