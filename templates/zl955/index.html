@@ -201,7 +201,7 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 					'</div>'+
 					'<div class="talk-info-tail">'+
 						'<div class="talk-time">{{bbs.add_time}}</div>'+
-						'<a class="talk-good" href="javascript:;">'+
+						'<a class="talk-good" href="javascript:GoodUp({{messages.id}});">'+
 							'<i class="layui-icon layui-icon-praise" style="font-size: 24px; color: #1E9FFF;"></i>'+
 							'<em class="talk-good-no">{{bbs.good}}</em>'+
 						'</a>'+
@@ -217,12 +217,12 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 		'open_speak':'{{request.user.group.open_speak}}',
 		'limit_speak_no':'{{request.user.group.limit_speak_no}}'
 	}
-	console.log(userSet)
+	// console.log(userSet)
 	if(userSet.open_speak){
 		console.log(userSet.open_speak)
 		$("#Desc").attr("maxlength",userSet.limit_speak_no);
 		form.on('submit(Speaks)', function(tijiao){
-			console.log(tijiao.field.desc)
+			// console.log(tijiao.field.desc)
 			layer.load(2);
 			$.ajax({
 				cache: false,
@@ -259,6 +259,29 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 			});
 			return false;
 		});
+	}
+	function GoodUp(n){
+		console.log(n)
+		layer.load(2);
+		$.ajax({
+			cache: false,
+			type: "GET",
+			url: "/",
+			data: {
+				id:n
+			},
+			async: true,
+			success: function(data) {
+                console.log(data)
+                layer.closeAll('loading');
+			},
+			error: function(){
+				layer.closeAll('loading');
+				layer.msg('网络异常错误，请稍候再试！！！', {icon: 5});
+				return false
+			}
+		});
+		return false;
 	}
 	{% endif %}
 	// 刷新功能
