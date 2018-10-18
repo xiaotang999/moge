@@ -145,7 +145,7 @@ function OpenNewShow(){
 		}
 	}
 	writer(data)
-	document.getElementById("OpennewDesc").innerHTML = "{% autoescape off %}{{ opennew.desc }}{% endautoescape %}";
+	document.getElementById("OpennewDesc").innerHTML = {% autoescape off %}{{ opennew.desc }}{% endautoescape %};
 }
 OpenNewShow()
 {% endfor %}
