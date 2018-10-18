@@ -99,10 +99,11 @@
 			{% endfor %}
 		{% endautoescape %}
 		</div>
+		<!-- open history end -->
 		<!-- bbs start -->
 		<!-- ======================= -->
 		<!-- bbs end -->
-		<!-- bottom info -->
+		<!-- bottom info start -->
 		<div class="bottom">
 			{% for bottoms in bottoms.all|slice:":1" %}
 				{% autoescape off %}
@@ -111,6 +112,7 @@
 				<div class="explain">{{ bottoms.explain }}</div>
 			{% endfor %}
 		</div>
+		<!-- bottom info end -->
 	</div>
 	<!-- flaot -->
 	{% for piaochuan in piaochuan.all|slice:":1" %}
@@ -128,7 +130,6 @@
 	</div>
 	{% endfor %}
 	<!-- flaot end -->
-	{% endfor %}
 </div>
 <script src="{% static '/layui/layui.js' %}"></script>
 <script src="{% static '/moge/js/zl.js' %}"></script>
@@ -186,4 +187,5 @@ layui.use(['layer', 'element', 'flow'], function(){
 });
 </script>
 </body>
+{% endfor %}
 </html>
