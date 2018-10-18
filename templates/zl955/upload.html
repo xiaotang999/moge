@@ -1,7 +1,81 @@
-<div class="upload-avatar">
-	<form action="../../image/upload/" method="post" enctype="multipart/form-data">
-	  {% csrf_token %}
-	  <div>头像<input type="file" name="avatar"></div>
-	  <input type="submit" value="提交">
+<!DOCTYPE html>
+<html>
+<head>
+<!-- upload -->
+{% load static %}
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+	<title>上传头像</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'moge/css/zl.css' %}">
+</head>
+<body>
+<!--  -->
+<div class="upload">
+	<div class="upload-title">上传头像</div>
+	<form class="layui-form" action="../../image/upload/" method="post" enctype="multipart/form-data" autocomplete="off">
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<input type="file" name="avatar" required lay-verify="required">
+			</div>
+		</div>
+		<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+		<div class="layui-form-item" style="text-align: center;">
+			<div class="layui-input-block">
+				<button class="layui-btn layui-btn-normal" type="submit">立即提交</button>
+			</div>
+		</div>
 	</form>
 </div>
+<style type="text/css">
+body{
+    background-color: #ccc;
+}
+.upload{
+    padding: 30px 10px;
+    border: 2px solid #777;
+    width: 500px;
+    margin: 7% auto 0;
+    background-color: #f7f7f7;
+    color: #777;
+}
+.upload-title{
+    font-size: 25px;
+    text-align: center;
+    color: #FF7F50;
+    padding: 15px 0;
+    width: 333px;
+    margin: 0 auto;
+    border-bottom: solid 1px #CCCCCC;
+    margin-bottom: 25px;
+}
+.layui-form{
+    margin: 0 80px;
+}
+.layui-form .layui-input-block input{
+    height: 50px;
+}
+.layui-input-block{
+    margin-left: 0;
+    margin-bottom: 20px;
+}
+.layui-form-code{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 1px;
+}
+.code{
+    /*width: 80px;*/
+    height: 44px;
+    border: 1px solid #ccc;
+}
+</style>
+<!--  -->
+<script src="{% static '/layui/layui.js' %}"></script>
+<script>
+
+</script>
+</body>
+</html>
