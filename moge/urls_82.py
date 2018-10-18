@@ -8,6 +8,7 @@ from users.views import LoginView, RegisterView, LogoutView
 from bbs.views import CommentSetView
 
 urlpatterns = [
+    url('^$', ZL955IndexView.as_view(), name='zl-index'),
     url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}), # 静态上传文件路径
     url(r'^static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
     # 
@@ -19,6 +20,6 @@ urlpatterns = [
     # 
     url('^bbs/', CommentSetView.as_view(), name="bbs"),
     url('^newopen/', zl955NewOpen.as_view(), name='zl-newopen'),
-    url('^$', ZL955IndexView.as_view(), name='zl-index'),
+    
 ]
 

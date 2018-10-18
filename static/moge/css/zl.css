@@ -210,6 +210,13 @@ body{
     padding-top: 15px;
     padding-bottom: 15px;
 }
+.speak .layui-btn{
+    float: right;
+    background-color: #1eb9ff;
+}
+.speak textarea{
+    border-color: #4398ed;
+}
 .talk{
 
 }
@@ -320,4 +327,5 @@ body{
     margin-left: 3px;
     color: #999;
 }
+
 /* bbs end */

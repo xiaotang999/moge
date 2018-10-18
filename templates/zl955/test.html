@@ -17,66 +17,7 @@
 <div class="bg">
 	<div class="main">
 		<!-- bbs start -->
-		<div class="bbs">
-<style type="text/css">
-.speak{
-    
-}
-.speak .layui-btn{
-	float: right;
-	background-color: #1eb9ff;
-}
-.speak textarea{
-    border-color: #4398ed;
-}
-</style>
-			<!-- speak start -->
-			{% if request.user.is_authenticated %}
-				{{request.user.group.name}}
-				{{request.user.group.limit_speak_no}}
-				{{request.user.group.open_speak}}
-			{% endif %}
-			<div class="speak">
-				<form class="layui-form layui-form-pane" action="">
-				  <div class="layui-form-item layui-form-text">
-				    <div class="layui-input-block">
-				      <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
-				    </div>
-				  </div>
-				  <div class="layui-form-item">
-				    <div class="layui-input-block">
-				      <button class="layui-btn" lay-submit lay-filter="Speaks">发表意见</button>
-				    </div>
-				  </div>
-				</form>
-			</div>
-			<!-- speak end -->
-			<div class="talk">
-				<div class="talk-top">
-					<div class="talk-top-left">评论</div>
-					<div class="talk-top-right">72{{people}}<i>参与,</i>130{{num}}<i>条评论</i></div>
-				</div>
-				<div class="talk-top-hot">热门评论</div>
-				{% for bbs in messages %}
-				<!--  -->
-				<div class="talk-info">
-					<div class="talk-info-avatar"><img src="../media/{{bbs.username.avatar}}" class="layui-nav-img"></div>
-					<div class="talk-info-main">
-						<div class="talk-user">{{bbs.username}}</div>
-						<div class="talk-message">{{bbs.desc}}</div>
-					</div>
-					<div class="talk-info-tail">
-						<div class="talk-time">{{bbs.add_time}}</div>
-						<a class="talk-good" href="">
-							<i class="layui-icon layui-icon-praise" style="font-size: 24px; color: #1E9FFF;"></i>
-							<em class="talk-good-no">{{bbs.good}}</em>
-						</a>
-					</div>
-				</div>
-				<!--  -->
-				{% endfor %}
-			</div>
-		</div>
+
 		<!-- bbs end -->
 		<!-- bottom info -->
 
@@ -90,37 +31,8 @@
 layui.use(['layer', 'element', 'form'], function(){
 	var $ = layui.jquery;
 	var layer = layui.layer; 
-	var form = layui.form;
-	//监听提交
-	{% if request.user.is_authenticated %}
-	form.on('submit(Speaks)', function(data){
-		layer.msg(JSON.stringify(data.field));
-		return false;
-	});
-	{% else %}
-	form.on('submit(Speaks)', function(data){
-		layer.msg('请先登录！');
-		return false;
-	});
-	{% endif %}
-	function show(){
-		layer.load(2);
-		$.ajax({
-			cache: false,
-			type: "GET",
-			url: "/bbs/",
-			async: true,
-			success: function(data) {
-				console.log(data)
-				layer.closeAll('loading');
-			},
-			error: function(){
-				layer.closeAll('loading');
-				layer.msg('获取失败...请稍后再试...');
-			}
-		});
-	};
-	show();
+	
+
 
 })
 //
