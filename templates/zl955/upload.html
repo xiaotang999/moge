@@ -14,14 +14,14 @@
 <!--  -->
 <div class="upload">
 	<div class="upload-title">上传头像</div>
-	<form class="layui-form" action="/" autocomplete="off">
+	<form class="layui-form" action="/" autocomplete="off" method="post" enctype="multipart/form-data" target='frameFile'>
 		<div class="layui-form-item">
 			<input type="file" name="avatar" class="avatar-input">
 		</div>
 		<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 		<div class="layui-form-item" style="text-align: center;">
 			<div class="layui-input-block">
-				<button class="layui-btn layui-btn-normal" lay-submit lay-filter="*">立即提交</button>
+				<button class="layui-btn layui-btn-normal" type="submit">立即提交</button>
 			</div>
 		</div>
 	</form>
