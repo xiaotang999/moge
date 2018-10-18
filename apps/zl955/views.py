@@ -60,6 +60,10 @@ class ZL955IndexView(View):
 			_changdu = len(_desc)
 			if request.user.group.open_speak:
 				if _changdu <= request.user.group.limit_speak_no:
+					_bbs = CommentSet()
+					_bbs.username = request.user.username
+					_bbs.desc = _desc
+					_bbs.save()
 					_status = {'msg':'发表成功！','icon':'1'}
 					return HttpResponse(json.dumps(_status),content_type='application/json')
 				else:
