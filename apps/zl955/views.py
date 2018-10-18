@@ -55,10 +55,9 @@ class ZL955IndexView(View):
 	def post(self, request):
 		if request.user.is_authenticated():
 			print('asd')
-			print(request.body.decode())
-			user_obj=json.loads(request.body.decode())
+			_desc = request.POST.get("desc", "")
 			print('asd-------')
-			return HttpResponse(user_obj['desc'])
+			pass
 			# 'desc': data.field.desc,
 			# 'open_speak': userSet.open_speak,
 			# 'limit_speak_no': userSet.limit_speak_no,
