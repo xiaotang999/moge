@@ -218,7 +218,7 @@ body{
     border-color: #4398ed;
     font-size: 18px;
     line-height: 1.2;
-    padding: 5px 6px;
+    padding: 8px 10px;
 }
 .talk{
 
@@ -321,7 +321,7 @@ body{
 }
 .talk-good i.layui-icon{
     font-size: 24px;
-    color: #1E9FFF;
+    color: red;
     float: left;
 }
 .talk-good-no{
