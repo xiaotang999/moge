@@ -152,15 +152,12 @@ class UploadImageView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request, "zl955/upload.html", {})
     def post(self, request):
-        # image  FILES
-        # _img = request.FILES['file']
-        # _img = request.FILES.get['file']
         image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)
         if image_form.is_valid():
             image_form.save()
-            return HttpResponse('上传成功~', content_type='application/json')
+            return HttpResponseRedirect(reverse("zl-index"))
         else:
-            return HttpResponse('上传失败，请重试！', content_type='application/json')
+            return HttpResponseRedirect(reverse("zl-index"))
 
 
 

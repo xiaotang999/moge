@@ -23,10 +23,7 @@
 				<a href="javascript:;"><img src="media/{{ request.user.avatar }}" class="layui-nav-img">{{ request.user.nickname }}</a>
 				<dl class="layui-nav-child">
 					<dd>
-						<a href="javascript:ChangeAvatar();">更换头像</a>
-					</dd>
-					<dd>
-						<a href="javascript:;" id="test1">更换头像1</a>
+						<a href="/image/upload/">更换头像</a>
 					</dd>
 					<dd><a href="/logout/">注销</a></dd>
 				</dl>
@@ -246,36 +243,6 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	getBBS();
 	// 评论功能-监听提交
 	{% if request.user.is_authenticated %}
-	  //执行实例
-	  var uploadInst = upload.render({
-	    elem: '#test1' //绑定元素
-	    ,url: 'image/upload/' //上传接口
-	    ,headers: {
-	    	'X-CSRFToken': '{{ csrf_token }}',
-	    	'enctype': 'multipart/form-data'
-	    }
-	    ,done: function(res){
-	      //如果上传失败
-	      if(res.code > 0){
-	        return layer.msg('上传失败');
-	      }
-	    	console.log(res)
-	      //上传完毕回调
-	    }
-	    ,error: function(){
-	    	console.log('bad')
-	      //请求异常回调
-	    }
-	  });
-	ChangeAvatar = function(){
-		layer.open({
-		  type: 2,
-		  area: ['700px', '450px'],
-		  fixed: false, //不固定
-		  maxmin: true,
-		  content: 'image/upload/'
-		});
-	}
 	var userSet = {
 		'open_speak':'{{request.user.group.open_speak}}',
 		'limit_speak_no':'{{request.user.group.limit_speak_no}}'
