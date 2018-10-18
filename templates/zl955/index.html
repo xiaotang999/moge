@@ -251,12 +251,14 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	    elem: '#test1' //绑定元素
 	    ,url: 'image/upload/' //上传接口
 	    ,headers: {
-	    	"X-CSRFToken":"{{ csrf_token }}"
+	    	csrfmiddlewaretoken :"{{ csrf_token }}"
 	    }
 	    ,done: function(res){
+	    	console.log(res)
 	      //上传完毕回调
 	    }
 	    ,error: function(){
+	    	console.log('bad')
 	      //请求异常回调
 	    }
 	  });
