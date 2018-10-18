@@ -1,7 +1,127 @@
-<div class="upload-avatar">
-	<form action="image/upload/" method="post" enctype="multipart/form-data">
-	  {% csrf_token %}
-	  <div>头像<input type="file" name="avatar"></div>
-	  <input type="submit" value="提交">
+<!DOCTYPE html>
+<html>
+<head>
+<!-- upload -->
+{% load static %}
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+	<title>上传头像</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'moge/css/zl.css' %}">
+</head>
+<body>
+<!--  -->
+<div class="upload">
+	<div class="upload-title">上传头像</div>
+	<form class="layui-form" action="" autocomplete="off">
+		<div class="layui-form-item">
+			<div class="layui-input-block">
+				<input type="text" name="nickname" required lay-verify="required|nick" placeholder="请输入昵称" autocomplete="off" class="layui-input">
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">上传头像</label>
+			<div class="layui-input-block">
+				<input type="file" name="avatar">
+			</div>
+		</div>
+		<input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+		<div class="layui-form-item" style="text-align: center;">
+			<div class="layui-input-block">
+				<button class="layui-btn layui-btn-normal" lay-submit lay-filter="*">立即提交</button>
+			</div>
+		</div>
 	</form>
 </div>
+<style type="text/css">
+body{
+    background-color: #ccc;
+}
+.upload{
+    padding: 30px 10px;
+    border: 2px solid #777;
+    width: 500px;
+    margin: 7% auto 0;
+    background-color: #f7f7f7;
+    color: #777;
+}
+.upload-title{
+    font-size: 25px;
+    text-align: center;
+    color: #FF7F50;
+    padding: 15px 0;
+    width: 333px;
+    margin: 0 auto;
+    border-bottom: solid 1px #CCCCCC;
+    margin-bottom: 25px;
+}
+.layui-form{
+    margin: 0 80px;
+}
+.layui-form .layui-input-block input{
+    height: 50px;
+}
+.layui-input-block{
+    margin-left: 0;
+    margin-bottom: 20px;
+}
+.layui-form-code{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 1px;
+}
+.code{
+    /*width: 80px;*/
+    height: 44px;
+    border: 1px solid #ccc;
+}
+</style>
+<!--  -->
+<script src="{% static '/layui/layui.js' %}"></script>
+<script>
+layui.use(['layer', 'element', 'form'], function(){
+	var element = layui.element; 
+	var form = layui.form;
+	var $ = layui.jquery, layer = layui.layer; // 加载JQ
+	//
+	form.on('submit(*)', function(data){
+		if(data.field.password != data.field.passwords){ //验证两次密码是否相同
+			layer.msg('两次密码输入不正确！', {icon: 5});
+			return false
+		}else{
+			layer.load(2);
+			$.ajax({
+				cache: false,
+				type: "POST",
+				url: "/",
+				data: data.field,
+				async: true,
+				success: function(data) {
+	                console.log(data)
+	                // if( data.icon == 1){
+	                //     layer.msg(data.msg, {time:222,icon: data.icon}, function(){
+	                //         window.location.reload()
+	                //     });
+	                // }else{
+	                //     layer.msg(data.msg, {icon: data.icon});
+	                //     layer.closeAll('loading');
+	                //     return false
+	                // }
+				},
+				error: function(){
+					layer.closeAll('loading');
+					layer.msg('网络异常错误，请稍候再试！！！', {icon: 5});
+					return false
+				}
+			});
+		  return false; //阻止表单跳转
+		}
+	});
+
+	// 
+});
+</script>
+</body>
+</html>
