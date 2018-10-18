@@ -20,7 +20,7 @@
 		{% if request.user.is_authenticated %}
 		<ul class="layui-nav layui-layout-right">
 			<li class="layui-nav-item">
-				<a href="javascript:;"><img src="media/{{ request.user.avatar }}" class="layui-nav-img">我</a>
+				<a href="javascript:;"><img src="media/{{ request.user.avatar }}" class="layui-nav-img">{{ request.user.nickname }}</a>
 				<dl class="layui-nav-child">
 					<dd><a href="/logout/">注销</a></dd>
 				</dl>
@@ -200,7 +200,7 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 		html += '<div class="talk-info">'+
 					'<div class="talk-info-avatar"><img src="../media/{{bbs.username.avatar}}" class="layui-nav-img"></div>'+
 					'<div class="talk-info-main">'+
-						'<div class="talk-user">{{bbs.username}}</div>'+
+						'<div class="talk-user">{{bbs.nickname}}</div>'+
 						'<div class="talk-message">{{bbs.desc}}</div>'+
 					'</div>'+
 					'<div class="talk-info-tail">'+
