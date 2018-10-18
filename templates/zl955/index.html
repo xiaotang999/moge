@@ -23,6 +23,11 @@
 				<a href="javascript:;"><img src="media/{{ request.user.avatar }}" class="layui-nav-img">{{ request.user.nickname }}</a>
 				<dl class="layui-nav-child">
 					<dd>
+						<button type="button" class="layui-btn" id="test1">
+						  <i class="layui-icon">&#xe67c;</i>上传图片
+						</button>
+					</dd>
+					<dd>
 						<a href="javascript:;" id="changeavatar">更换头像</a>
 					</dd>
 					<dd><a href="/logout/">注销</a></dd>
@@ -244,7 +249,7 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	// 评论功能-监听提交
 	{% if request.user.is_authenticated %}
 	  var uploadInst = upload.render({
-	    elem: '#changeavatar' //绑定元素
+	    elem: '#test1' //绑定元素
 	    ,url: 'image/upload/' //上传接口
 	    ,headers:{
 	    	"X-CSRFToken": "{{ csrf_token }}"
