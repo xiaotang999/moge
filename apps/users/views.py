@@ -150,7 +150,8 @@ class UploadImageView(LoginRequiredMixin, View):
     用户修改头像
     """
     def post(self, request):
-        image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)
+        # image  FILES
+        image_form = UploadImageForm(request.POST, request.image, instance=request.user)
         if image_form.is_valid():
             image_form.save()
             return HttpResponse('{"status":"success"}', content_type='application/json')
