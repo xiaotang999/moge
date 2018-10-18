@@ -51,35 +51,35 @@
 		<!-- open new s -->
 		<div class="news">
 			<div class="news-open" id="news">
-				<div class="nob issues" id="OpenIssues">第N期</div>
+				<div class="nob issues" id="OpenIssues">第000期</div>
 				<div id="no1" class="nob">
 					<div class="up1">0</div>
-					<div class="down1"></div>
+					<div class="down1">0</div>
 				</div>
 				<div id="no2" class="nob">
 					<div class="up2">0</div>
-					<div class="down2"></div>
+					<div class="down2">0</div>
 				</div>
 				<div id="no3" class="nob">
 					<div class="up3">0</div>
-					<div class="down3"></div>
+					<div class="down3">0</div>
 				</div>
 				<div id="no4" class="nob">
 					<div class="up4">0</div>
-					<div class="down4"></div>
+					<div class="down4">0</div>
 				</div>
 				<div id="no5" class="nob">
 					<div class="up5">0</div>
-					<div class="down5"></div>
+					<div class="down5">0</div>
 				</div>
 				<div id="no6" class="nob">
 					<div class="up6">0</div>
-					<div class="down6"></div>
+					<div class="down6">0</div>
 				</div>
 				<div class="nob add">+</div>
 				<div id="no7" class="nob">
 					<div class="up7">0</div>
-					<div class="down7"></div>
+					<div class="down7">0</div>
 				</div>
 			</div>
 			<div class="refalsh-btn">
@@ -134,7 +134,7 @@
 <script src="{% static '/moge/js/zl.js' %}"></script>
 <script type="text/javascript">
 {% for opennew in opennew.all|slice:":1" %}
-// function OpenNewShow(){
+function OpenNewShow(){
 	document.getElementById("OpenIssues").innerHTML = "{{ opennew.issue }}:";
 	var data = ['{{opennew.no1}}','{{opennew.no2}}','{{opennew.no3}}','{{opennew.no4}}','{{opennew.no5}}','{{opennew.no6}}','{{opennew.no7}}']
 	for(i=0;i<7;i++){
@@ -146,9 +146,12 @@
 	}
 	writer(data)
 	document.getElementById("OpennewDesc").innerHTML = '{% autoescape off %}{{ opennew.desc }}{% endautoescape %}';
-// }
-// OpenNewShow()
+}
 {% endfor %}
+
+setTimeout(function(){
+	OpenNewShow()
+},3000)
 //
 
 //
