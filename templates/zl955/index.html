@@ -25,6 +25,9 @@
 					<dd>
 						<a href="javascript:ChangeAvatar();">更换头像</a>
 					</dd>
+					<dd>
+						<a href="javascript:;" id="test1">更换头像1</a>
+					</dd>
 					<dd><a href="/logout/">注销</a></dd>
 				</dl>
 			</li>
@@ -243,6 +246,20 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	getBBS();
 	// 评论功能-监听提交
 	{% if request.user.is_authenticated %}
+	  //执行实例
+	  var uploadInst = upload.render({
+	    elem: '#test1' //绑定元素
+	    ,url: 'image/upload/' //上传接口
+	    ,headers: {
+	    	"X-CSRFToken":"{{ csrf_token }}"
+	    }
+	    ,done: function(res){
+	      //上传完毕回调
+	    }
+	    ,error: function(){
+	      //请求异常回调
+	    }
+	  });
 	ChangeAvatar = function(){
 		layer.open({
 		  type: 2,
