@@ -148,17 +148,16 @@ function OpenNewShow(){
 	document.getElementById("OpennewDesc").innerHTML = '{% autoescape off %}{{ opennew.desc }}{% endautoescape %}';
 }
 {% endfor %}
-
-setTimeout(function(){
-	OpenNewShow()
-},3000)
+OpenNewShow() //获取新增开奖数据
 //
-
-//
-layui.use('layer', function(){
-	var $ = layui.jquery, layer = layui.layer; 
-	var box = document.getElementById("refalsh");
-	box.onclick = function(){
+layui.use(['layer', 'element', 'flow'], function(){
+	var element = layui.element; // layer 导航栏效果
+	var flow = layui.flow; // 图像懒加载 src改为lay-src
+	var $ = layui.jquery; // jq加载
+	var layer = layui.layer; //layer加载
+	flow.lazyimg(); 
+	var shuaxin = document.getElementById("refalsh");
+	shuaxin.onclick = function(){
 		layer.load(2);
 		$.ajax({
 			cache: false,
@@ -166,8 +165,15 @@ layui.use('layer', function(){
 			url: "/",
 			data: {csrfmiddlewaretoken: '{{ csrf_token }}'},
 			async: true,
-			success: function(data) {
-				ReWriter(data)
+			success: function(info) {
+				for(i=0;i<7;i++){
+					if(info[i]>=0 && info[i]<=49){
+						info[i] = parseInt(info[i])
+					}else{
+						info[i] = 0
+					}
+				}
+				writer(info)
 				layer.closeAll('loading');
 			},
 			error: function(){
@@ -176,23 +182,7 @@ layui.use('layer', function(){
 			}
 		});
 	};
-
-})
-function ReWriter(data){
-	for(i=0;i<7;i++){
-		if(data[i]>=0 && data[i]<=49){
-			data[i] = parseInt(data[i])
-		}else{
-			data[i] = 0
-		}
-	}
-	writer(data)
-}
-// 
-layui.use(['layer', 'element', 'flow'], function(){
-	var element = layui.element;// layer 导航栏效果
-	var flow = layui.flow;// 图像懒加载 src改为lay-src
-	flow.lazyimg(); 
+	// 
 });
 </script>
 </body>
