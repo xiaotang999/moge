@@ -238,11 +238,17 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 				},
 				async: true,
 				dataType : 'json',
-				success: function(info) {
-					console.log(info)
-                    layer.msg(info.msg, {time:222,icon: info.icon}, function(){
-                        // window.location.reload()
-                    });
+				success: function(data) {
+	                console.log(data)
+	                if( data.icon == 1){
+	                    layer.msg(data.msg, {time:222,icon: data.icon}, function(){
+	                        // window.location.reload()
+	                    });
+	                }else{
+	                    layer.msg(data.msg, {icon: data.icon});
+	                    layer.closeAll('loading');
+	                    return false
+	                }
 				},
 				error: function(){
 					layer.closeAll('loading');
