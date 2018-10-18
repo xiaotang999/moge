@@ -21,7 +21,7 @@ class LoginForm(forms.Form):
 class UploadImageForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['users/avatar/']
+        fields = ['media/users/avatar/']
 
         
 
