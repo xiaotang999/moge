@@ -189,6 +189,26 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 	flow.lazyimg(); 
     // 获取评论信息
 	function getBBS(){
+		document.getElementById("People").innerHTML = "76{{ num }}";
+		document.getElementById("Num").innerHTML = "130{{ people }}";
+		var html = ''
+		{% for bbs in messages %}
+		html += '<div class="talk-info">'+
+					'<div class="talk-info-avatar"><img src="../media/{{bbs.username.avatar}}" class="layui-nav-img"></div>'+
+					'<div class="talk-info-main">'+
+						'<div class="talk-user">{{bbs.username}}</div>'+
+						'<div class="talk-message">{{bbs.desc}}</div>'+
+					'</div>'+
+					'<div class="talk-info-tail">'+
+						'<div class="talk-time">{{bbs.add_time}}</div>'+
+						'<a class="talk-good" href="javascript:GoodUp({{bbs.id}})">'+
+							'<i class="layui-icon layui-icon-praise" style="font-size: 24px; color: #1E9FFF;"></i>'+
+							'<em class="talk-good-no">{{bbs.good}}</em>'+
+						'</a>'+
+					'</div>'+
+				'</div>'
+		{% endfor %}
+		document.getElementById("TalkInfo").innerHTML = html
 		function GoodUp(n){
 			console.log(n)
 			layer.load(2);
@@ -210,26 +230,6 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 			});
 			return false;
 		}
-		document.getElementById("People").innerHTML = "76{{ num }}";
-		document.getElementById("Num").innerHTML = "130{{ people }}";
-		var html = ''
-		{% for bbs in messages %}
-		html += '<div class="talk-info">'+
-					'<div class="talk-info-avatar"><img src="../media/{{bbs.username.avatar}}" class="layui-nav-img"></div>'+
-					'<div class="talk-info-main">'+
-						'<div class="talk-user">{{bbs.username}}</div>'+
-						'<div class="talk-message">{{bbs.desc}}</div>'+
-					'</div>'+
-					'<div class="talk-info-tail">'+
-						'<div class="talk-time">{{bbs.add_time}}</div>'+
-						'<a class="talk-good" href="javascript:GoodUp({{bbs.id}})">'+
-							'<i class="layui-icon layui-icon-praise" style="font-size: 24px; color: #1E9FFF;"></i>'+
-							'<em class="talk-good-no">{{bbs.good}}</em>'+
-						'</a>'+
-					'</div>'+
-				'</div>'
-		{% endfor %}
-		document.getElementById("TalkInfo").innerHTML = html
 	}
 	getBBS();
 	// 评论功能-监听提交
