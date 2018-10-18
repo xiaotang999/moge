@@ -55,6 +55,7 @@ class ZL955IndexView(View):
 	def post(self, request):
 		if request.user.is_authenticated():
 			print('asd')
+			print(request.body.decode())
 			user_obj=json.loads(request.body.decode())
 			print('asd-------')
 			return HttpResponse(user_obj['desc'])
