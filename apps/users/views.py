@@ -154,8 +154,8 @@ class UploadImageView(LoginRequiredMixin, View):
     def post(self, request):
         # image  FILES
         # _img = request.FILES['file']
-        request.FILES = request.POST.get('avatar')
-        image_form = UploadImageForm(request.POST, request.FILES, instance=request.user)
+        _img = request.POST.get('avatar')
+        image_form = UploadImageForm(request.POST, _img, instance=request.user)
         if image_form.is_valid():
             image_form.save()
             return HttpResponse('上传成功~', content_type='application/json')
