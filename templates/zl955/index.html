@@ -34,6 +34,9 @@
 							<input type="file" name="avatar" id="" style="display: none;">	
 						</a>
 					</dd>
+					<dd>
+						<button class="layui-btn layui-btn-warm" id="asdasd">xx</button>
+					</dd>
 					<dd><a href="/logout/">注销</a></dd>
 				</dl>
 			</li>
@@ -255,11 +258,13 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	  var uploadInst = upload.render({
 	    elem: '#changeavatar' //绑定元素
 	    ,url: 'image/upload/' //上传接口
+	    ,auto: false 
+	    ,bindAction: '#asdasd'
 	    ,headers:{
 	    	"X-CSRFToken": "{{ csrf_token }}"
 	    }
 	    ,data:{
-	    	FILES: $('#changeavatar input')[0].files[0]
+	    	FILES: $('#changeavatar input').files[0]
 	    }
 	    ,done: function(res){
 	      //上传完毕回调
