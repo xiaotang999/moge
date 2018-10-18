@@ -54,18 +54,25 @@ class ZL955IndexView(View):
 		})
 	def post(self, request):
 		if request.user.is_authenticated():
-			print(request.user.open_speak)
-			print(request.user.limit_speak_no)
+			print(request.user.group.open_speak)
+			print(request.user.group.limit_speak_no)
 			print('asd')
 			_desc = request.POST.get("desc", "")
 			_open_speak = request.POST.get("open_speak", "")
 			_limit_speak_no = request.POST.get("limit_speak_no", "")
-			print(_desc)
-			print('asd-------')
-			_xx = {_desc,_open_speak,_limit_speak_no}
-			return HttpResponse(_xx,content_type='application/json') 
+			if(_open_speak == request.user.group.open_speak):
+				if(_limit_speak_no == request.user.group.limit_speak_no):
+                    _status = {'msg':'发表成功！','icon':'1'}
+                    return HttpResponse(json.dumps(_status),content_type='application/json')
+				else:
+					_status = {'msg':'发布失败！','icon':'5'}
+					return HttpResponse(json.dumps(_status),content_type='application/json')
+			else:
+				_status = {'msg':'发布失败！','icon':'5'}
+				return HttpResponse(json.dumps(_status),content_type='application/json')
 		else:
-			pass
+			_status = {'msg':'发布失败！','icon':'5'}
+			return HttpResponse(json.dumps(_status),content_type='application/json')
 
 # 刷新获取新数据
 class zl955NewOpen(View):
