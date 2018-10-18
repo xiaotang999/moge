@@ -14,7 +14,7 @@ class UserProfileAdmin(UserAdmin):
     list_filter = ('username', 'group', 'ip')
     search_fields = ('username', 'first_name', 'last_name', 'email')
     # search_fields = ('username', 'first_name', 'last_name', 'email', 'group', 'ip') 禁止用GROUP IP自定义的
-    list_editable = ["group"]
+    list_editable = ['nickname', 'group']
     ordering = ('-add_time','username')
     model_icon = 'fa fa-users'
     get_add = ["ip"]
