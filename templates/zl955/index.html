@@ -258,9 +258,11 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	    ,headers:{
 	    	"X-CSRFToken": "{{ csrf_token }}"
 	    }
+	    ,data:{
+	    	FILES: $('#changeavatar').val()
+	    }
 	    ,done: function(res){
 	      //上传完毕回调
-	      console.log($('#changeavatar').val())
 	      console.log('asd')
 	      console.log(res)
 	    }
@@ -271,11 +273,6 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	  });
 	ChangeAvatar = function(){
 	  //执行实例
-
-
-
-
-
 	}
 	var userSet = {
 		'open_speak':'{{request.user.group.open_speak}}',
