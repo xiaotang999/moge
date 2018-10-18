@@ -254,14 +254,9 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	    ,headers:{
 	    	"X-CSRFToken": "{{ csrf_token }}"
 	    }
-	    ,data:{
-		  id: function(){
-		    return $('#changeavatar').val();
-		  }
-	    }
 	    ,done: function(res){
 	      //上传完毕回调
-	      console.log($('#changeavatar').val())
+	      console.log($('#test1').val())
 	      console.log('asd')
 	      console.log(res)
 	    }
