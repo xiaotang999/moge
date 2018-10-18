@@ -246,6 +246,9 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	  var uploadInst = upload.render({
 	    elem: '#changeavatar' //绑定元素
 	    ,url: 'image/upload/' //上传接口
+	    ,headers:{
+	    	"X-CSRFToken", "{{ csrf_token }}"
+	    }
 	    ,done: function(res){
 	      //上传完毕回调
 	      console.log('asd')
