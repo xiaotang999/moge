@@ -23,19 +23,7 @@
 				<a href="javascript:;"><img src="media/{{ request.user.avatar }}" class="layui-nav-img">{{ request.user.nickname }}</a>
 				<dl class="layui-nav-child">
 					<dd>
-						<form action="image/upload/" method="post" enctype="multipart/form-data">
-						  {% csrf_token %}
-						  <div>头像<input type="file" name="avatar"></div>
-						  <input type="submit" value="提交">
-						</form>
-					</dd>
-					<dd>
-						<a href="javascript:;" id="changeavatar">更换头像
-							<input type="file" name="avatar" id="" style="display: none;">	
-						</a>
-					</dd>
-					<dd>
-						<button class="layui-btn layui-btn-warm" id="asdasd">xx</button>
+						<a href="javascript:;" id="changeavatar">更换头像</a>
 					</dd>
 					<dd><a href="/logout/">注销</a></dd>
 				</dl>
@@ -255,28 +243,21 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	getBBS();
 	// 评论功能-监听提交
 	{% if request.user.is_authenticated %}
-	  var uploadInst = upload.render({
-	    elem: '#changeavatar' //绑定元素
-	    ,url: 'image/upload/' //上传接口
-	    ,auto: false 
-	    ,bindAction: '#asdasd'
-	    ,headers:{
-	    	"X-CSRFToken": "{{ csrf_token }}"
-	    }
-	    ,done: function(res){
-	      if(res.code > 0){
-	        return layer.msg('上传失败');
-	      }
-	      console.log('asd')
-	      console.log(res)
-	    }
-	    ,error: function(){
-	      //请求异常回调
-	      console.log('bad')
-	    }
-	  });
 	ChangeAvatar = function(){
-	  //执行实例
+		layer.open({
+		  type: 1,
+		  title: false,
+		  closeBtn: 0,
+		  shadeClose: true,
+		  skin: 'yourclass',
+		  content: '<div class="upload-avatar">'+
+		  				'<form action="image/upload/" method="post" enctype="multipart/form-data">'+
+						  '{% csrf_token %}'+
+						  '<div>头像<input type="file" name="avatar"></div>'+
+						  '<input type="submit" value="提交">'+
+						'</form>'+
+					'</div>'
+		});
 	}
 	var userSet = {
 		'open_speak':'{{request.user.group.open_speak}}',
