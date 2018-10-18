@@ -54,8 +54,8 @@ class ZL955IndexView(View):
 		})
 	def post(self, request):
 		if request.user.is_authenticated():
-			print(request.user.username.open_speak)
-			print(request.user.username.limit_speak_no)
+			print(request.user.open_speak)
+			print(request.user.limit_speak_no)
 			print('asd')
 			_desc = request.POST.get("desc", "")
 			_open_speak = request.POST.get("open_speak", "")
