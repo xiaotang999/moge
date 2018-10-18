@@ -127,7 +127,11 @@
 				</div>
 				<div class="talk-top-hot">热门评论</div>
 				<!--  -->
-				<div id="TalkInfo"></div>
+				<div id="TalkInfo">
+					<div class="loading" style="display: none;">
+						<i class="layui-icon layui-icon-loading" style="font-size: 30px; color: #1E9FFF;"></i>  
+					</div>
+				</div>
 				<!--  -->
 			</div>
 		</div>
@@ -210,7 +214,7 @@ layui.use(['layer', 'element', 'flow', 'form'], function(){
 		{% endfor %}
 		document.getElementById("TalkInfo").innerHTML = html
 		GoodUp = function(n){
-			console.log(n)
+			// console.log(n)
 			layer.load(2);
 			$.ajax({
 				cache: false,
