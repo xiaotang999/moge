@@ -106,10 +106,10 @@ class zl955GetNew(View):
 	"""获取品论新数据"""
 	def get(self, request):
 		response_data = {"record":[]}
-		_list = CommentSet.objects.all()
-		pageinator = Paginator(_list,5)
-		contacts= pageinator.page(1)
+		_list = CommentSet.objects.order_by('-id')
+		p = Paginator(_list,5)
+		contacts= p.page(1)
 		for i in contacts:
 			response_data["record"].append(i)
 		print(response_data)
-		return HttpResponse(json.dumps(response_data))
+		return HttpResponse(json.dumps(response_data),content_type='application/json')
