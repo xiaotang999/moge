@@ -108,25 +108,17 @@ class zl955GetNew(View):
 	def get(self, request):
 		_pages = request.GET.get("pages", "")
 		p = int(_pages)
-		_s = p*5+1
+		_s = p*5
 		_e = 5*(p+1)
 		data = {}
 		book = CommentSet.objects.order_by('-id')[_s:_e]
 		data['list'] = json.loads(serializers.serialize("json", book))
-		datas = json.dumps(data)
-		asd = datas[0].username
-		# info = User.objects.get(username=data['list'][0].username)
-		# _avatar = info.avatar
-		# _nickname = info.nickname
-		# data['list'][0].append(_avatar)
-		# data['list'][0].append(_nickname)
-
-		# for i in data['list']:
-		# 	info = User.objects.get(username=data['list'][i].username)
-		# 	_avatar = info.avatar
-		# 	_nickname = info.nickname
-		# 	data['list'][i].append(_avatar)
-		# 	data['list'][i].append(_nickname)
-
-		# return JsonResponse(data)
-		return HttpResponse(asd,content_type='application/json')
+		n = 0
+		for i in data['list']:
+			info = User.objects.get(id=i['fields']['username'])
+			_avatar = info.avatar
+			_nickname = info.nickname
+			i['fields']['avatar'] = str(_avatar)
+			i['fields']['nickname'] = str(_nickname)
+			n+=1
+		return HttpResponse(json.dumps(data),content_type='application/json')
