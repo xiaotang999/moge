@@ -108,6 +108,7 @@ class zl955GetNew(View):
 		_pages = request.GET.get("pages", "")
 		list = CommentSet.objects.all()
 		p = Paginator(list, 2)
-		_messages = p.page(2)
+		page2 = p.page(2)
+		_messages = page2.object_list
 		_status = {'status':'ok','messages':_messages,'pages':_pages}
 		return HttpResponse(json.dumps(_status),content_type='application/json')
