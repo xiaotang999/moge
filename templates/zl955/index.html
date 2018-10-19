@@ -170,6 +170,7 @@
 <script src="{% static '/layui/layui.js' %}"></script>
 <script src="{% static '/moge/js/zl.js' %}"></script>
 <script type="text/javascript">
+var page = 1;
 {% for opennew in opennew.all|slice:":1" %}
 function OpenNewShow(){
 	document.getElementById("OpenIssues").innerHTML = "{{ opennew.issue }}:";
@@ -216,7 +217,7 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 					'</div>'+
 				'</div>'
 		{% endfor %}
-		html += '<div style="padding: 10px 30px;"><button class="layui-btn layui-btn-fluid layui-btn-primary">获取更多信息</button></div>'
+		html += '<div style="padding: 10px 30px;"><button class="layui-btn layui-btn-fluid layui-btn-primary" id="getMore">获取更多信息</button></div>'
 		document.getElementById("TalkInfo").innerHTML = html
 		GoodUp = function(n){
 			// console.log(n)
@@ -242,6 +243,12 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 		}
 	}
 	getBBS();
+	var GetMore = document.getElementById("getMore");
+	GetMore.onclick = function(){
+		console.log(1)
+		console.log(page)
+		page++
+	}
 	// 评论功能-监听提交
 	{% if request.user.is_authenticated %}
 	var userSet = {
