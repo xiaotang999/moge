@@ -4,6 +4,7 @@ from django.views.generic import View
 import json 
 from django.http import HttpResponse
 from django.template import loader
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 from .models import Settings, Guanggao, OpenNew, Open, Bottoms, PiaoChuan, IpApp
 from bbs.models import CommentSet
@@ -101,12 +102,12 @@ class zl955Good(View):
 		return HttpResponse(json.dumps(_status),content_type='application/json')
 
 class zl955GetNew(View):
+	"""获取品论新数据"""
 	def get(self, request):
 		_pages = request.GET.get("pages", "")
-		# _messages = 'asd'
-		_start = 6*_pages
-		_end = 5*(_pages+1)
-		_messages = CommentSet.objects.order_by('-id')[6:10]
+		_messages = CommentSet.objects.filter('-id')[6:11]
+		_list = CommentSet.objects.all()
+		_paginator = Paginator(_list, 5)
+		_messages = paginator.page(pages+1)
 		_status = {'status':'ok','messages':_messages,'pages':_pages}
 		return HttpResponse(json.dumps(_status),content_type='application/json')
-
