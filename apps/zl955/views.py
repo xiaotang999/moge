@@ -108,6 +108,6 @@ class zl955GetNew(View):
 		_messages = CommentSet.objects.filter('-id')[6:11]
 		_list = CommentSet.objects.all()
 		_paginator = Paginator(_list, 5)
-		_messages = paginator.page(pages+1)
+		_messages = paginator.page(2)
 		_status = {'status':'ok','messages':_messages,'pages':_pages}
 		return HttpResponse(json.dumps(_status),content_type='application/json')
