@@ -135,6 +135,7 @@
 						<i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop" style="font-size: 50px; color: #1E9FFF;"></i>  
 					</div>
 				</div>
+				<div style="padding: 10px 30px;"><button class="layui-btn layui-btn-fluid layui-btn-primary" id="getMore">获取更多信息</button></div>
 				<!--  -->
 			</div>
 		</div>
@@ -217,7 +218,6 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 					'</div>'+
 				'</div>'
 		{% endfor %}
-		html += '<div style="padding: 10px 30px;"><button class="layui-btn layui-btn-fluid layui-btn-primary" id="getMore">获取更多信息</button></div>'
 		document.getElementById("TalkInfo").innerHTML = html
 		GoodUp = function(n){
 			// console.log(n)
@@ -256,11 +256,26 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 				console.log(datas)
 				console.log(datas.list.length)
 				console.log(datas.list[0].fields.avatar)
+				var htmlnew = ''
 				for(i=0;i<datas.list.length;i++){
-					console.log(datas.list[0].fields.avatar)
+					console.log(datas.list[i].fields.avatar)
+					htmlnew +=  '<div class="talk-info">'+
+									'<div class="talk-info-avatar"><img src="../media/'+datas.list[i].fields.avatar+'" class="layui-nav-img"></div>'+
+									'<div class="talk-info-main">'+
+										'<div class="talk-user">'+datas.list[i].fields.nickname+'</div>'+
+										'<div class="talk-message">'+datas.list[i].fields.desc+'</div>'+
+									'</div>'+
+									'<div class="talk-info-tail">'+
+										'<div class="talk-time">'+datas.list[i].fields.add_time+'</div>'+
+										'<a class="talk-good talk-good-'+datas.list[i].pk+'" href="javascript:GoodUp('+datas.list[i].pk+'})">'+
+											'<i class="layui-icon layui-icon-praise" style="font-size: 24px;"></i>'+
+											'<em class="talk-good-no">'+datas.list[i].fields.good+'</em>'+
+										'</a>'+
+									'</div>'+
+								'</div>'
 				}
-				
-				
+				// document.getElementById("TalkInfo").innerHTML = html
+				$("TalkInfo").append(htmlnew);
 	            layer.closeAll('loading');
 	            page++
 			},
