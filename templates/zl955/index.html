@@ -276,8 +276,12 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 					$("#TalkInfo").append(htmlnew);
 		            layer.closeAll('loading');
 		            page++
+		            return false
 				}else{
 					$("#getMore").hide();
+					layer.closeAll('loading');
+					layer.msg('暂无更多的信息', {icon: 0});
+					return false
 				}
 				// ending
 			},
