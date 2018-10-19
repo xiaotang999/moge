@@ -253,7 +253,9 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 			data: {pages:page},
 			async: true,
 			success: function(datas) {
-				console.log(datas)
+				console.log(datas.list[0])
+				console.log(datas.list.length)
+				
 	            layer.closeAll('loading');
 	            page++
 			},
