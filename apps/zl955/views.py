@@ -105,12 +105,11 @@ class zl955Good(View):
 class zl955GetNew(View):
 	"""获取品论新数据"""
 	def get(self, request):
-		all_orgs = CommentSet.objects.all()
-		org_nums = all_orgs.count()
-		try:
-			page = request.GET.get('pages', 1)
-		except PageNotAnInteger:
-			page = 1
-		p = Paginator(all_orgs, 5)
-		orgs = p.page(page)
-		return HttpResponse({'messages':orgs},content_type='application/json')
+		response_data = {"record":[]}
+		_list = CommentSet.objects.all('-id')
+		pageinator = Paginator(_list,1)
+		page = 1
+		contacts= pageinator.page(page)
+		for i in contacts:
+			response_data["record"].append(i)
+		return HttpResponse({'messages':response_data},content_type='application/json')
