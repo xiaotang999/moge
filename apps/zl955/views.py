@@ -112,4 +112,4 @@ class zl955GetNew(View):
 		for i in contacts:
 			response_data["record"].append(i)
 		print(response_data)
-		return HttpResponse(json.dumps(response_data),content_type='application/json')
+		return HttpResponse(json.dumps(response_data))
