@@ -106,7 +106,7 @@ class zl955GetNew(View):
 		# _messages = 'asd'
 		_start = 6*_pages
 		_end = 5*(_pages+1)
-		_messages = CommentSet.objects.order_by('-id')[_start:_end]
+		_messages = CommentSet.objects.order_by('-id')[6:10]
 		_status = {'status':'ok','messages':_messages,'pages':_pages}
 		return HttpResponse(json.dumps(_status),content_type='application/json')
 
