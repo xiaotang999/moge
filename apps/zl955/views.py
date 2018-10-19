@@ -111,6 +111,6 @@ class zl955GetNew(View):
 			page = request.GET.get('pages', 1)
 		except PageNotAnInteger:
 			page = 1
-		p = Paginator(all_orgs, 5, request=request)
+		p = Paginator(all_orgs, 5)
 		orgs = p.page(page)
 		return HttpResponse({'messages':orgs},content_type='application/json')
