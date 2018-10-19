@@ -77,8 +77,8 @@ class ZL955IndexView(View):
 			_status = {'msg':'发布失败！','icon':'5'}
 			return HttpResponse(json.dumps(_status),content_type='application/json')
 
-# 刷新获取新数据
 class zl955NewOpen(View):
+	"""刷新获取开奖新数据"""
 	def get(self, request):
 		_opennew = OpenNew.objects.all()
 		_opennew = [
@@ -93,6 +93,7 @@ class zl955NewOpen(View):
 		return HttpResponse(json.dumps(_opennew),content_type='application/json')
 
 class zl955Good(View):
+	"""点赞功能只向上叠加"""
 	def get(self, request):
 		_id = request.GET.get("id", "")
 		_bbs = CommentSet.objects.get(id=_id)
@@ -105,8 +106,8 @@ class zl955GetNew(View):
 	"""获取品论新数据"""
 	def get(self, request):
 		_pages = request.GET.get("pages", "")
-		_list = CommentSet.objects.all()
-		_paginator = Paginator(_list, 5)
-		_messages = _paginator.page(2)
+		list = CommentSet.objects.all()
+		p = Paginator(list, 2)
+		_messages = p.page(2)
 		_status = {'status':'ok','messages':_messages,'pages':_pages}
 		return HttpResponse(json.dumps(_status),content_type='application/json')
