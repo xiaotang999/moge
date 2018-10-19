@@ -103,8 +103,10 @@ class zl955Good(View):
 class zl955GetNew(View):
 	def get(self, request):
 		_pages = request.GET.get("pages", "")
-		_messages = 'asd'
-		# _messages = CommentSet.objects.order_by('-id')[6*_pages:5*(_pages+1)]
+		# _messages = 'asd'
+		_start = 6*_pages
+		_end = 5*(_pages+1)
+		_messages = CommentSet.objects.order_by('-id')[_start:_end]
 		_status = {'status':'ok','messages':_messages,'pages':_pages}
 		return HttpResponse(json.dumps(_status),content_type='application/json')
 
