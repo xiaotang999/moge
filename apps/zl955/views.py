@@ -107,7 +107,23 @@ class zl955GetNew(View):
 	"""获取品论新数据"""
 	def get(self, request):
 		data = {}
-		book = CommentSet.objects.order_by('-id')[6:11]
+		_pages = request.GET.get("pages", "")
+		_pages = int(_pages)
+		book = CommentSet.objects.order_by('-id')
 		data['list'] = json.loads(serializers.serialize("json", book))
+		p = Paginator(data['list'],5)
+		contacts = p.page(1)
+		return HttpResponse(json.dumps(contacts),content_type='application/json')
+
+		# data['list'] = json.loads(serializers.serialize("json", book))
 		# return JsonResponse(data)
-		return HttpResponse(json.dumps(data),content_type='application/json')
+		
+
+		# response_data = {"record":[]}
+		# _list = CommentSet.objects.order_by('-id')
+		
+		# contacts= p.page(1)
+		# for i in contacts:
+		# 	response_data["record"].append(i)
+		# print(response_data)
+		# return HttpResponse(json.dumps(response_data),content_type='application/json')
