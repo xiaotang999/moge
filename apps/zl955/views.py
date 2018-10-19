@@ -5,6 +5,7 @@ import json
 from django.http import HttpResponse
 from django.template import loader
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core import serializers
 # Create your views here.
 from .models import Settings, Guanggao, OpenNew, Open, Bottoms, PiaoChuan, IpApp
 from bbs.models import CommentSet
@@ -105,11 +106,8 @@ class zl955Good(View):
 class zl955GetNew(View):
 	"""获取品论新数据"""
 	def get(self, request):
-		response_data = {"record":[]}
-		_list = CommentSet.objects.order_by('-id')
-		p = Paginator(_list,5)
-		contacts= p.page(1)
-		for i in contacts:
-			response_data["record"].append(i)
-		print(response_data)
-		return HttpResponse(json.dumps(response_data),content_type='application/json')
+		data = {}
+		book = CommentSet.objects.order_by('-id')[6:11]
+		data['list'] = json.loads(serializers.serialize("json", book))
+		return JsonResponse(data)
+		# return HttpResponse(json.dumps(response_data),content_type='application/json')
