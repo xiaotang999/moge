@@ -113,7 +113,8 @@ class zl955GetNew(View):
 		data = {}
 		book = CommentSet.objects.order_by('-id')[_s:_e]
 		data['list'] = json.loads(serializers.serialize("json", book))
-		asd = data['list'][0].username
+		datas = json.dumps(data)
+		asd = datas[0].username
 		# info = User.objects.get(username=data['list'][0].username)
 		# _avatar = info.avatar
 		# _nickname = info.nickname
@@ -128,4 +129,4 @@ class zl955GetNew(View):
 		# 	data['list'][i].append(_nickname)
 
 		# return JsonResponse(data)
-		return HttpResponse(json.dumps(asd),content_type='application/json')
+		return HttpResponse(asd,content_type='application/json')
