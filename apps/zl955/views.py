@@ -105,9 +105,8 @@ class zl955GetNew(View):
 	"""获取品论新数据"""
 	def get(self, request):
 		_pages = request.GET.get("pages", "")
-		# _messages = CommentSet.objects.filter('-id')[6:11]
 		_list = CommentSet.objects.all()
 		_paginator = Paginator(_list, 5)
-		_messages = paginator.page(2)
+		_messages = _paginator.page(2)
 		_status = {'status':'ok','messages':_messages,'pages':_pages}
 		return HttpResponse(json.dumps(_status),content_type='application/json')
