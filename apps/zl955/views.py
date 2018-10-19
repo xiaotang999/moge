@@ -111,4 +111,4 @@ class zl955GetNew(View):
 		contacts= pageinator.page(1)
 		for i in contacts:
 			response_data["record"].append(i)
-		return HttpResponse({'messages':response_data},content_type='application/json')
+		return HttpResponse(json.dumps(response_data),content_type='application/json')
