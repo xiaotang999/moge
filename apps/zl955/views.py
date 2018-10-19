@@ -105,6 +105,12 @@ class zl955Good(View):
 class zl955GetNew(View):
 	"""获取品论新数据"""
 	def get(self, request):
-		# _pages = request.GET.get("pages", "")
-		# list = CommentSet.objects.order_by('-id')
-		return HttpResponse({},content_type='application/json')
+		all_orgs = CommentSet.objects.all()
+		org_nums = all_orgs.count()
+		try:
+			page = request.GET.get('pages', 1)
+		except PageNotAnInteger:
+			page = 1
+		p = Paginator(all_orgs, 5, request=request)
+		orgs = p.page(page)
+		return HttpResponse({'messages':orgs},content_type='application/json')
