@@ -113,7 +113,11 @@ class zl955GetNew(View):
 		data = {}
 		book = CommentSet.objects.order_by('-id')[_s:_e]
 		data['list'] = json.loads(serializers.serialize("json", book))
-		if not data['list']:
-			data['list'] = 'ending'
+		for i in data['list']:
+			_avatar = User.objects.filter(username=i.username).avatar
+			_nickname = User.objects.filter(username=i.username).nickname
+			data['list'][i].append(_avatar)
+			data['list'][i].append(_nickname)
+
 		# return JsonResponse(data)
 		return HttpResponse(json.dumps(data),content_type='application/json')
