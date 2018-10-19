@@ -255,7 +255,10 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 			success: function(datas) {
 				console.log(datas)
 				console.log(datas.list.length)
-				console.log(datas.list[0].avatar)
+				console.log(datas.list[0].fields.avatar)
+				for(i=0;i<datas.list.length;i++){
+					console.log(datas.list[0].fields.avatar)
+				}
 				
 				
 	            layer.closeAll('loading');
