@@ -203,11 +203,11 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 		document.getElementById("Num").innerHTML = "130{{ people }}";
 		var html = ''
 		{% for bbs in messages %}
-		html += '<div class="talk-info" id="bbs-talk-info-{{bbs-id}}">'+
+		html += '<div class="talk-info">'+
 					'<div class="talk-info-avatar"><img src="../media/{{bbs.username.avatar}}" class="layui-nav-img"></div>'+
 					'<div class="talk-info-main">'+
 						'<div class="talk-user">{{bbs.username.nickname}}</div>'+
-						'<div class="talk-message">'
+						'<div class="talk-message">'+
 						'{{bbs.desc}}'+
 						'</div>'+
 					'</div>'+
@@ -219,12 +219,8 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 						'</a>'+
 					'</div>'+
 				'</div>'
-		
 		{% endfor %}
-		// document.getElementById("TalkInfo").innerHTML = html
-		// for(z=1;z>5;z++){
-		// 	$('#bbs-talk-info-'++' .talk-message').append(htmlnew);
-		// }
+		document.getElementById("TalkInfo").innerHTML = html
 		GoodUp = function(n){
 			// console.log(n)
 			layer.load(2);
