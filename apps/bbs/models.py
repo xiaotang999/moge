@@ -6,7 +6,7 @@ from users.models import User
 class CommentSet(models.Model):
     """网站评论"""
     username = models.ForeignKey(User, verbose_name="会员账号")
-    desc = models.CharField(max_length=250, verbose_name="评论信息", help_text="请输入小于200字符的描述！")
+    desc = models.TextField(max_length=250, verbose_name="评论信息", help_text="请输入小于200字符的描述！")
     good = models.IntegerField(verbose_name="点赞数量", null=True, blank=True, default=0)
     add_time = models.DateTimeField(default=datetime.now, verbose_name="更新时间")
 
