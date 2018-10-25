@@ -201,24 +201,50 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	function getBBS(){
 		document.getElementById("People").innerHTML = "76{{ num }}";
 		document.getElementById("Num").innerHTML = "130{{ people }}";
-		var html = ''
-		{% for bbs in messages %}
-		html += '<div class="talk-info">'+
-					'<div class="talk-info-avatar"><img src="../media/{{bbs.username.avatar}}" class="layui-nav-img"></div>'+
-					'<div class="talk-info-main">'+
-						'<div class="talk-user">{{bbs.username.nickname}}</div>'+
-						'<div class="talk-message">'+'{{bbs.desc}}'+'</div>'+
-					'</div>'+
-					'<div class="talk-info-tail">'+
-						'<div class="talk-time">{{bbs.add_time}}</div>'+
-						'<a class="talk-good talk-good-{{bbs.id}}" href="javascript:GoodUp({{bbs.id}})">'+
-							'<i class="layui-icon layui-icon-praise" style="font-size: 24px;"></i>'+
-							'<em class="talk-good-no">{{bbs.good}}</em>'+
-						'</a>'+
-					'</div>'+
-				'</div>'
-		{% endfor %}
-		document.getElementById("TalkInfo").innerHTML = html
+
+		function getBBS(){
+			$.ajax({
+				cache: false,
+				type: "GET",
+				url: "/getbbs/",
+				async: true,
+				success: function(datas) {
+					console.log(datas.length)
+					if(datas.length != 0){
+						var html = ''
+						for(i=0;i<datas.length;i++){
+							console.log(datas[i].fields.avatar)
+							html +=  '<div class="talk-info">'+
+											'<div class="talk-info-avatar"><img src="../media/'+datas[i].fields.avatar+'" class="layui-nav-img"></div>'+
+											'<div class="talk-info-main">'+
+												'<div class="talk-user">'+datas[i].fields.nickname+'</div>'+
+												'<div class="talk-message">'+datas[i].fields.desc+'</div>'+
+											'</div>'+
+											'<div class="talk-info-tail">'+
+												'<div class="talk-time">'+datas[i].fields.add_time+'</div>'+
+												'<a class="talk-good talk-good-'+datas[i].pk+'" href="javascript:GoodUp('+datas[i].pk+')">'+
+													'<i class="layui-icon layui-icon-praise" style="font-size: 24px;"></i>'+
+													'<em class="talk-good-no">'+datas[i].fields.good+'</em>'+
+												'</a>'+
+											'</div>'+
+										'</div>'
+						}
+						document.getElementById("TalkInfo").innerHTML = html
+			            return false
+					}else{
+						// document.getElementById("TalkInfo").innerHTML = html
+					}
+					// ending
+				},
+				error: function(){
+					layer.closeAll('loading');
+					layer.msg('网络异常错误，请稍候再试！！！', {icon: 5});
+					return false
+				}
+			});
+		}
+		getBBS()
+		
 		GoodUp = function(n){
 			// console.log(n)
 			layer.load(2);
