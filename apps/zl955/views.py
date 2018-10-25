@@ -103,6 +103,17 @@ class zl955Good(View):
 		_status = {'status':'ok','num':_bbs.good}
 		return HttpResponse(json.dumps(_status),content_type='application/json')
 
+
+class zl955GetBBS(View):
+	"""
+	获取BBS前5条记录
+	"""
+	def get(self, request):
+		_bbs_5s = CommentSet.objects.order_by('-id')[:5]
+		_bbs_5= json.loads(serializers.serialize("json", _bbs_5s))
+		return HttpResponse(json.dumps(_bbs_5),content_type='application/json')
+
+
 class zl955GetNew(View):
 	"""获取品论新数据"""
 	def get(self, request):
