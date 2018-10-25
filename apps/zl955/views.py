@@ -111,6 +111,13 @@ class zl955GetBBS(View):
 	def get(self, request):
 		_bbs_5s = CommentSet.objects.order_by('-id')[:5]
 		_bbs_5= json.loads(serializers.serialize("json", _bbs_5s))
+		for z in _bbs_5:
+			zs = User.objects.get(id=z['fields']['username'])
+			_avatar = zs.avatar
+			_nickname = zs.nickname
+			z['fields']['avatar'] = str(_avatar)
+			z['fields']['nickname'] = str(_nickname)
+
 		return HttpResponse(json.dumps(_bbs_5),content_type='application/json')
 
 
