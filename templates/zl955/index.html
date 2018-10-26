@@ -53,7 +53,7 @@
 		<!-- aqq end -->
 		<!-- open new s -->
 		<div class="news">
-			<div class="news-open" id="news" style="display: none">
+			<div class="news-open" id="news" style="display: block;">
 				<div class="nob issues" id="OpenIssues">第000期</div>
 				<div id="no1" class="nob">
 					<div class="up1">0</div>
@@ -173,7 +173,7 @@
 <script type="text/javascript">
 var page = 1;
 {% for opennew in opennew.all|slice:":1" %}
-function OpenNewShow11(){
+function OpenNewShow(){
 	{% for item in open_no %}
 		document.getElementById("OpenIssues").innerHTML = "{{ item.expect }}:";
 		var data = ['{{item.no1}}','{{item.no2}}','{{item.no3}}','{{item.no4}}','{{item.no5}}','{{item.no6}}','{{item.no7}}']
@@ -186,9 +186,6 @@ function OpenNewShow11(){
 		}
 		writer(data)
 	{% endfor %}
-	document.getElementById("OpennewDesc").innerHTML = '{% autoescape off %}{{ opennew.desc }}{% endautoescape %}';
-}
-function OpenNewShow(){
 	document.getElementById("OpennewDesc").innerHTML = '{% autoescape off %}{{ opennew.desc }}{% endautoescape %}';
 }
 {% endfor %}
