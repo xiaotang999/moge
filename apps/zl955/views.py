@@ -147,7 +147,7 @@ class zl955getSixOne(View):
 	check_token = "kdsjfhsh29*/djk.*3dsa.1x1as"
 	def get(self, request):
 		#
-		_status = {}
+		_status = {"_num":"xxx"}
 		num = []
 		token = request.GET.get("token")
 		expect = request.GET.get("expect")
