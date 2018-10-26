@@ -176,7 +176,7 @@ var page = 1;
 function OpenNewShow(){
 {% for item in open_no %}
 	var haoma = "{{ item.expect }}"
-	haoma = haoma.substring(3)
+	haoma = haoma.substring(4)
 	document.getElementById("OpenIssues").innerHTML = ""+haoma+"期：";
 	var data = ['{{item.no1}}','{{item.no2}}','{{item.no3}}','{{item.no4}}','{{item.no5}}','{{item.no6}}','{{item.no7}}']
 	for(i=0;i<7;i++){
