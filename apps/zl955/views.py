@@ -148,20 +148,20 @@ class zl955getSixOne(View):
 	def get(self, request):
 		#
 		_status = {"_num":"xxx"}
-		num = []
-		token = request.GET.get("token")
-		expect = request.GET.get("expect")
-		old_expect = OpenAutoOne.objects.order_by('-id')[:1]
-		if token == check_token:
-			if old_expect != expect:
-				num.append(request.GET.get("no1"))
-				num.append(request.GET.get("no2"))
-				num.append(request.GET.get("no3"))
-				num.append(request.GET.get("no4"))
-				num.append(request.GET.get("no5"))
-				num.append(request.GET.get("no6"))
-				num.append(request.GET.get("no7"))
-				_status = {"_num":num}
+		# num = []
+		# token = request.GET.get("token")
+		# expect = request.GET.get("expect")
+		# old_expect = OpenAutoOne.objects.order_by('-id')[:1]
+		# if token == check_token:
+		# 	if old_expect != expect:
+		# 		num.append(request.GET.get("no1"))
+		# 		num.append(request.GET.get("no2"))
+		# 		num.append(request.GET.get("no3"))
+		# 		num.append(request.GET.get("no4"))
+		# 		num.append(request.GET.get("no5"))
+		# 		num.append(request.GET.get("no6"))
+		# 		num.append(request.GET.get("no7"))
+		# 		_status = {"_num":num}
 
 		return HttpResponse(json.dumps(_status),content_type='application/json') 
 		
