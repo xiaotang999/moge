@@ -90,6 +90,7 @@ class zl955NewOpen(View):
 	def get(self, request):
 		_opennew = OpenAutoOne.objects.order_by('-id')[:1]
 		_opennew = [
+			_opennew[0].expect,
 			_opennew[0].no1,
 			_opennew[0].no2,
 			_opennew[0].no3,
