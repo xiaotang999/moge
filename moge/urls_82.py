@@ -3,7 +3,7 @@ from django.views.static import serve
 from moge.settings import MEDIA_ROOT
 from moge.settings import STATIC_ROOT
 
-from zl955.views import ZL955IndexView, zl955NewOpen, zl955Good, zl955GetNew, zl955GetBBS
+from zl955.views import ZL955IndexView, zl955NewOpen, zl955Good, zl955GetNew, zl955GetBBS, zl955getSixOne
 from users.views import LoginView, RegisterView, LogoutView, UploadImageView
 from bbs.views import CommentSetView
 
@@ -23,6 +23,7 @@ urlpatterns = [
     url('^good/', zl955Good.as_view(), name='zl-good'),
     url('^getbbs/', zl955GetBBS.as_view(), name='zl-getbbs'),
     url('^getnew/', zl955GetNew.as_view(), name='zl-getnew'),
+    url('^getsixone/', zl955getSixOne.as_view(), name='zl-getsixone'),
     url(r'^image/upload/$', UploadImageView.as_view(), name="image_upload"),
 ]
 

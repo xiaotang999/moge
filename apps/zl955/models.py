@@ -36,6 +36,26 @@ class Guanggao(models.Model):
     def __str__(self):
         return self.name
 
+class OpenAutoOne(models.Model):
+    """自动开奖一"""
+    expect = models.CharField(max_length=55, verbose_name="期号", help_text="请输入小于50字符的描述！")
+    no1 = models.CharField(max_length=55, verbose_name="第1位", null=True, blank=True, help_text="请输第1位号码！", default='0')
+    no2 = models.CharField(max_length=55, verbose_name="第2位", null=True, blank=True, help_text="请输第2位号码！", default='0')
+    no3 = models.CharField(max_length=55, verbose_name="第3位", null=True, blank=True, help_text="请输第3位号码！", default='0')
+    no4 = models.CharField(max_length=55, verbose_name="第4位", null=True, blank=True, help_text="请输第4位号码！", default='0')
+    no5 = models.CharField(max_length=55, verbose_name="第5位", null=True, blank=True, help_text="请输第5位号码！", default='0')
+    no6 = models.CharField(max_length=55, verbose_name="第6位", null=True, blank=True, help_text="请输第6位号码！", default='0')
+    no7 = models.CharField(max_length=55, verbose_name="第7位", null=True, blank=True, help_text="请输第7位号码！", default='0')
+    is_open = models.BooleanField(choices=((True,u'已开'),(False,u'未开')),max_length=2,verbose_name=u'是否开完', default=False)
+    add_time = models.DateTimeField(default=datetime.now, verbose_name="更新时间")
+
+    class Meta:
+        verbose_name = "自动开奖一"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.expect
+
 class OpenNew(models.Model):
     """最新开奖"""
     issue = models.CharField(max_length=55, verbose_name="开奖期号", help_text="请输入小于50字符的描述！")
@@ -116,5 +136,5 @@ class IpApp(models.Model):
         return '访问IP'
 		
 
-        
+      
 

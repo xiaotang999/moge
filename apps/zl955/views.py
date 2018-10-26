@@ -7,7 +7,7 @@ from django.template import loader
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core import serializers
 # Create your views here.
-from .models import Settings, Guanggao, OpenNew, Open, Bottoms, PiaoChuan, IpApp
+from .models import Settings, Guanggao, OpenAutoOne, OpenNew, Open, Bottoms, PiaoChuan, IpApp
 from bbs.models import CommentSet
 from users.models import User
 
@@ -140,3 +140,29 @@ class zl955GetNew(View):
 			i['fields']['nickname'] = str(_nickname)
 			n+=1
 		return HttpResponse(json.dumps(data),content_type='application/json')
+
+
+class zl955getSixOne(View):
+	"""自动采集六合彩一"""
+	check_token = "kdsjfhsh29*/djk.*3dsa.1x1as"
+	def get(self, request):
+		#
+		_status = {}
+		num = []
+		token = request.GET.get("token")
+		expect = request.GET.get("expect")
+		old_expect = OpenAutoOne.objects.order_by('-id')[:1]
+		if token == check_token:
+			if old_expect != expect:
+				num.append(request.GET.get("no1"))
+				num.append(request.GET.get("no2"))
+				num.append(request.GET.get("no3"))
+				num.append(request.GET.get("no4"))
+				num.append(request.GET.get("no5"))
+				num.append(request.GET.get("no6"))
+				num.append(request.GET.get("no7"))
+				_status = {"_num":num}
+
+		return HttpResponse(json.dumps(_status),content_type='application/json') 
+		
+		
