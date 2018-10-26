@@ -25,7 +25,7 @@ class GuanggaoAdmin(object):
 class OpenAutoOneAdmin(object):
     """自动开奖一"""
     list_display = ["expect", "no1", "no2", "no3", "no4", "no5", "no6", "no7", "is_open", "add_time"]
-    list_editable = ('no1', 'no2', 'no3', 'no4', 'no5', 'no6', 'no7')
+    list_editable = ('expect', 'no1', 'no2', 'no3', 'no4', 'no5', 'no6', 'no7', 'is_open')
     ordering = ["-id"]
     model_icon = 'fa fa-html5'
 class OpenNewAdmin(object):

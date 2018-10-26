@@ -28,10 +28,11 @@ SECRET_KEY = '--jyn^hqb_h(voubf(t7c)5gn$dj2gwl^+qg@bbs#2-hv&#7qp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['vip8j888.com','www.vip8j888.com','zl955.com','www.zl955.com','moge.pk5866.com']
+ALLOWED_HOSTS = ['vip8j888.com','www.vip8j888.com','127.0.0.9','zl955.com','www.zl955.com','moge.pk5866.com']
 MULTIPLE_UFL_CONFIG = {
     'vip8j888.com': 'moge.urls_81',
     'www.vip8j888.com': 'moge.urls_81',
+    '127.0.0.9': 'moge.urls_82',
     'zl955.com': 'moge.urls_82',
     'www.zl955.com': 'moge.urls_82',
     'moge.pk5866.com': 'moge.urls_83',

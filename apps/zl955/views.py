@@ -55,24 +55,29 @@ class ZL955IndexView(View):
 			'messages':_messages,
 		})
 	def post(self, request):
+		"""发布评论"""
 		if request.user.is_authenticated():
 			_desc = request.POST.get("desc", "")
 			_open_speak = request.POST.get("open_speak", "")
 			_limit_speak_no = request.POST.get("limit_speak_no", "")
 			_changdu = len(_desc)
-			if request.user.group.open_speak:
-				if _changdu <= request.user.group.limit_speak_no:
-					_bbs = CommentSet()
-					_bbs.username = User.objects.get(username=request.user.username)
-					_bbs.desc = _desc
-					_bbs.save()
-					_status = {'msg':'发表成功！','icon':'1'}
-					return HttpResponse(json.dumps(_status),content_type='application/json')
+			if not _desc:
+				if request.user.group.open_speak:
+					if _changdu <= request.user.group.limit_speak_no:
+						_bbs = CommentSet()
+						_bbs.username = User.objects.get(username=request.user.username)
+						_bbs.desc = _desc
+						_bbs.save()
+						_status = {'msg':'发表成功！','icon':'1'}
+						return HttpResponse(json.dumps(_status),content_type='application/json')
+					else:
+						_status = {'msg':'发布失败！','icon':'5'}
+						return HttpResponse(json.dumps(_status),content_type='application/json')
 				else:
 					_status = {'msg':'发布失败！','icon':'5'}
 					return HttpResponse(json.dumps(_status),content_type='application/json')
 			else:
-				_status = {'msg':'发布失败！','icon':'5'}
+				_status = {'msg':'不允许提交空评论','icon':'5'}
 				return HttpResponse(json.dumps(_status),content_type='application/json')
 		else:
 			_status = {'msg':'发布失败！','icon':'5'}
@@ -143,26 +148,53 @@ class zl955GetNew(View):
 
 
 class zl955getSixOne(View):
-	"""自动采集六合彩一"""
-	check_token = "kdsjfhsh29*/djk.*3dsa.1x1as"
+	"""获取六合彩"""
 	def get(self, request):
-		#
-		_status = {"_num":"xxx"}
-		# num = []
-		# token = request.GET.get("token")
-		# expect = request.GET.get("expect")
-		# old_expect = OpenAutoOne.objects.order_by('-id')[:1]
-		# if token == check_token:
-		# 	if old_expect != expect:
-		# 		num.append(request.GET.get("no1"))
-		# 		num.append(request.GET.get("no2"))
-		# 		num.append(request.GET.get("no3"))
-		# 		num.append(request.GET.get("no4"))
-		# 		num.append(request.GET.get("no5"))
-		# 		num.append(request.GET.get("no6"))
-		# 		num.append(request.GET.get("no7"))
-		# 		_status = {"_num":num}
-
-		return HttpResponse(json.dumps(_status),content_type='application/json') 
+		check_token = "kdsjfhsh29*/djk.*3dsa.1x1as"
+		_status = {}
+		# 
+		token = request.GET.get("token")
+		expect = request.GET.get("expect")
+		no1 = request.GET.get("no1")
+		no2 = request.GET.get("no2")
+		no3 = request.GET.get("no3")
+		no4 = request.GET.get("no4")
+		no5 = request.GET.get("no5")
+		no6 = request.GET.get("no6")
+		no7 = request.GET.get("no7")
+		old_expect = OpenAutoOne.objects.order_by('-id')[:1]
+		info = json.loads(serializers.serialize("json", old_expect))
+		if token == check_token:
+			print("token正确")
+			if not info or expect != info[0]['fields']['expect']:
+				print("期号不存在，写入数据库")
+				up = OpenAutoOne()
+				up.expect = expect
+				up.no1 = no1
+				up.no2 = no2
+				up.no3 = no3
+				up.no4 = no4
+				up.no5 = no5
+				up.no6 = no6
+				up.no7 = no7
+				if no7:
+					up.is_open = True
+				up.save()
+			else: # 更新操作
+				if not info[0]['fields']['is_open']: # 判断是否开完？
+					print("期号存在，未全部开完，继续写入")
+					find_expect = OpenAutoOne.objects.get(expect=expect)
+					# updates = json.loads(serializers.serialize("json", find_expect))
+					find_expect.no1 = no1
+					find_expect.no2 = no2
+					find_expect.no3 = no3
+					find_expect.no4 = no4
+					find_expect.no5 = no5
+					find_expect.no6 = no6
+					find_expect.no7 = no7
+					if no7:
+						find_expect.is_open = True
+					find_expect.save()
+		return HttpResponse(json.dumps(_status),content_type='application/json')
 		
 		
