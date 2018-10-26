@@ -174,16 +174,6 @@
 var page = 1;
 {% for opennew in opennew.all|slice:":1" %}
 function OpenNewShow(){
-	document.getElementById("OpenIssues").innerHTML = "{{ opennew.issue }}:";
-	var data = ['{{opennew.no1}}','{{opennew.no2}}','{{opennew.no3}}','{{opennew.no4}}','{{opennew.no5}}','{{opennew.no6}}','{{opennew.no7}}']
-	for(i=0;i<7;i++){
-		if(data[i]>=0 && data[i]<=49){
-			data[i] = parseInt(data[i])
-		}else{
-			data[i] = 0
-		}
-	}
-	writer(data)
 	document.getElementById("OpennewDesc").innerHTML = '{% autoescape off %}{{ opennew.desc }}{% endautoescape %}';
 }
 {% endfor %}
