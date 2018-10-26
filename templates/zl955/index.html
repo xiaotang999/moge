@@ -173,6 +173,21 @@
 <script type="text/javascript">
 var page = 1;
 {% for opennew in opennew.all|slice:":1" %}
+function OpenNewShow11(){
+	{% for item in open_no %}
+		document.getElementById("OpenIssues").innerHTML = "{{ item.expect }}:";
+		var data = ['{{item.no1}}','{{item.no2}}','{{item.no3}}','{{item.no4}}','{{item.no5}}','{{item.no6}}','{{item.no7}}']
+		for(i=0;i<7;i++){
+			if(data[i]>=0 && data[i]<=49){
+				data[i] = parseInt(data[i])
+			}else{
+				data[i] = 0
+			}
+		}
+		writer(data)
+	{% endfor %}
+	document.getElementById("OpennewDesc").innerHTML = '{% autoescape off %}{{ opennew.desc }}{% endautoescape %}';
+}
 function OpenNewShow(){
 	document.getElementById("OpennewDesc").innerHTML = '{% autoescape off %}{{ opennew.desc }}{% endautoescape %}';
 }

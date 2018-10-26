@@ -17,6 +17,7 @@ class ZL955IndexView(View):
 		_settings = Settings.objects.all()
 		_guanggao = Guanggao.objects.all()
 		_opennew = OpenNew.objects.all()
+		_open_no = OpenAutoOne.objects.all('-id')[:1]
 		_open = Open.objects.order_by('-id')
 		_bottoms = Bottoms.objects.all()
 		_piaochuan = PiaoChuan.objects.all()
@@ -46,6 +47,7 @@ class ZL955IndexView(View):
 		return render(request, 'zl955/index.html',{
 			"settings" : _settings,
 			"guanggao" : _guanggao,
+			"open_no": _open_no,
 			"opennew" : _opennew,
 			"open" : _open,
 			"bottoms" : _bottoms,
