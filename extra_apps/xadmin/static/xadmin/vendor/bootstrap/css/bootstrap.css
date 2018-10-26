@@ -5753,7 +5753,7 @@ a.list-group-item.active:focus .list-group-item-text {
 .panel-title > a {
   color: inherit;
   font-weight: bold;
-  font-size: 18px;
+  /* font-size: 18px; */
 }
 
 .panel-footer {
