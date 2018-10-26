@@ -376,7 +376,7 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	{% endif %}
 	// 刷新功能
 	var shuaxin = document.getElementById("refalsh");
-	shuaxin.onclick = function(){
+	function f_lash(){
 		layer.load(2);
 		$.ajax({
 			cache: false,
@@ -399,7 +399,30 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 				layer.msg('获取失败...请稍后再试...');
 			}
 		});
+	}
+	shuaxin.onclick = function(){
+		f_lash()
 	};
+	var s_time = 2125
+	var e_time = 2140
+	function showTime(){ 
+		var now = new Date();
+		var hour = now.getHours();
+		var minutes = now.getMinutes();
+		hour<10?hour='0'+hour:hour; 
+		minutes<10?minutes='0'+minutes:minutes; 
+		var now_time = hour + '' + minutes
+		console.log(now_time)
+		parseInt(now_time)
+		if (now_time >= s_time) {
+			if(now_time <= e_time){
+				console.log("开始执行~")
+				f_lash();
+			}
+		}
+	 } 
+
+	 setInterval(showTime, 5000) 
 	// 
 });
 </script>
