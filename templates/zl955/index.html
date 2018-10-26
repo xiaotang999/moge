@@ -53,7 +53,7 @@
 		<!-- aqq end -->
 		<!-- open new s -->
 		<div class="news">
-			<div class="news-open" id="news" style="display: block;">
+			<div class="news-open" id="news">
 				<div class="nob issues" id="OpenIssues">第000期</div>
 				<div id="no1" class="nob">
 					<div class="up1">0</div>
@@ -85,7 +85,7 @@
 					<div class="down7">0</div>
 				</div>
 			</div>
-			<div class="refalsh-btn" style="display: none">
+			<div class="refalsh-btn">
 				<button class="layui-btn layui-btn-warm" id="refalsh">刷新</button>
 			</div>
 			<div id="OpennewDesc">
@@ -174,18 +174,20 @@
 var page = 1;
 {% for opennew in opennew.all|slice:":1" %}
 function OpenNewShow(){
-	{% for item in open_no %}
-		document.getElementById("OpenIssues").innerHTML = "{{ item.expect }}:";
-		var data = ['{{item.no1}}','{{item.no2}}','{{item.no3}}','{{item.no4}}','{{item.no5}}','{{item.no6}}','{{item.no7}}']
-		for(i=0;i<7;i++){
-			if(data[i]>=0 && data[i]<=49){
-				data[i] = parseInt(data[i])
-			}else{
-				data[i] = 0
-			}
+{% for item in open_no %}
+	var haoma = "{{ item.expect }}"
+	haoma = haoma.substring(3)
+	document.getElementById("OpenIssues").innerHTML = ""+haoma+"期：";
+	var data = ['{{item.no1}}','{{item.no2}}','{{item.no3}}','{{item.no4}}','{{item.no5}}','{{item.no6}}','{{item.no7}}']
+	for(i=0;i<7;i++){
+		if(data[i]>=0 && data[i]<=49){
+			data[i] = parseInt(data[i])
+		}else{
+			data[i] = 0
 		}
-		writer(data)
-	{% endfor %}
+	}
+	writer(data)
+{% endfor %}
 	document.getElementById("OpennewDesc").innerHTML = '{% autoescape off %}{{ opennew.desc }}{% endautoescape %}';
 }
 {% endfor %}
