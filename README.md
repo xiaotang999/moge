@@ -45,3 +45,9 @@ pkill -9 uwsgi
 uwsgi --ini uwsgi.ini
 
 ```
+```
+workon moge
+nohup python -u runsix.py > out.log 2>&1 &
+ps -ef |grep python
+pkill -9 python
+```

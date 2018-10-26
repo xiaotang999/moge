@@ -83,20 +83,20 @@ class ZL955IndexView(View):
 			_status = {'msg':'发布失败！','icon':'5'}
 			return HttpResponse(json.dumps(_status),content_type='application/json')
 
-class zl955NewOpen(View):
-	"""刷新获取开奖新数据"""
-	def get(self, request):
-		_opennew = OpenNew.objects.all()
-		_opennew = [
-			_opennew[0].no1,
-			_opennew[0].no2,
-			_opennew[0].no3,
-			_opennew[0].no4,
-			_opennew[0].no5,
-			_opennew[0].no6,
-			_opennew[0].no7,
-			]
-		return HttpResponse(json.dumps(_opennew),content_type='application/json')
+# class zl955NewOpen(View):
+# 	"""刷新获取开奖新数据"""
+# 	def get(self, request):
+# 		_opennew = OpenNew.objects.all()
+# 		_opennew = [
+# 			_opennew[0].no1,
+# 			_opennew[0].no2,
+# 			_opennew[0].no3,
+# 			_opennew[0].no4,
+# 			_opennew[0].no5,
+# 			_opennew[0].no6,
+# 			_opennew[0].no7,
+# 			]
+# 		return HttpResponse(json.dumps(_opennew),content_type='application/json')
 
 class zl955Good(View):
 	"""点赞功能只向上叠加"""

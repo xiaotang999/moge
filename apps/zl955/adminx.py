@@ -30,9 +30,8 @@ class OpenAutoOneAdmin(object):
     model_icon = 'fa fa-html5'
 class OpenNewAdmin(object):
     """最新开奖"""
-    list_display = ["issue", "no1", "no2", "no3", "no4", "no5", "no6", "no7", "add_time"]
-    list_editable = ('no1', 'no2', 'no3', 'no4', 'no5', 'no6', 'no7')
-    ordering = ["issue"]
+    list_display = ["id", "add_time"]
+    ordering = ["id"]
     style_fields = {"desc": "ueditor"}
     model_icon = 'fa fa-html5'
 class OpenAdmin(object):

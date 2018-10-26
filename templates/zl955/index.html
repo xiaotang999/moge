@@ -371,31 +371,31 @@ layui.use(['layer', 'element', 'flow', 'form', 'upload'], function(){
 	}
 	{% endif %}
 	// 刷新功能
-	var shuaxin = document.getElementById("refalsh");
-	shuaxin.onclick = function(){
-		layer.load(2);
-		$.ajax({
-			cache: false,
-			type: "GET",
-			url: "/newopen/",
-			async: true,
-			success: function(info) {
-				for(i=0;i<7;i++){
-					if(info[i]>=0 && info[i]<=49){
-						info[i] = parseInt(info[i])
-					}else{
-						info[i] = 0
-					}
-				}
-				writer(info)
-				layer.closeAll('loading');
-			},
-			error: function(){
-				layer.closeAll('loading');
-				layer.msg('获取失败...请稍后再试...');
-			}
-		});
-	};
+	// var shuaxin = document.getElementById("refalsh");
+	// shuaxin.onclick = function(){
+	// 	layer.load(2);
+	// 	$.ajax({
+	// 		cache: false,
+	// 		type: "GET",
+	// 		url: "/newopen/",
+	// 		async: true,
+	// 		success: function(info) {
+	// 			for(i=0;i<7;i++){
+	// 				if(info[i]>=0 && info[i]<=49){
+	// 					info[i] = parseInt(info[i])
+	// 				}else{
+	// 					info[i] = 0
+	// 				}
+	// 			}
+	// 			writer(info)
+	// 			layer.closeAll('loading');
+	// 		},
+	// 		error: function(){
+	// 			layer.closeAll('loading');
+	// 			layer.msg('获取失败...请稍后再试...');
+	// 		}
+	// 	});
+	// };
 	// 
 });
 </script>

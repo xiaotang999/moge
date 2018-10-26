@@ -58,14 +58,6 @@ class OpenAutoOne(models.Model):
 
 class OpenNew(models.Model):
     """最新开奖"""
-    issue = models.CharField(max_length=55, verbose_name="开奖期号", help_text="请输入小于50字符的描述！")
-    no1 = models.CharField(max_length=55, verbose_name="第1位", null=True, blank=True, help_text="请输第1位号码！", default='0')
-    no2 = models.CharField(max_length=55, verbose_name="第2位", null=True, blank=True, help_text="请输第2位号码！", default='0')
-    no3 = models.CharField(max_length=55, verbose_name="第3位", null=True, blank=True, help_text="请输第3位号码！", default='0')
-    no4 = models.CharField(max_length=55, verbose_name="第4位", null=True, blank=True, help_text="请输第4位号码！", default='0')
-    no5 = models.CharField(max_length=55, verbose_name="第5位", null=True, blank=True, help_text="请输第5位号码！", default='0')
-    no6 = models.CharField(max_length=55, verbose_name="第6位", null=True, blank=True, help_text="请输第6位号码！", default='0')
-    no7 = models.CharField(max_length=55, verbose_name="第7位", null=True, blank=True, help_text="请输第7位号码！", default='0')
     desc = UEditorField(verbose_name=u"详细信息",width=900, height=300, imagePath="zl955/ueditor/opennew/", filePath="ueditor/", default='')
     add_time = models.DateTimeField(default=datetime.now, verbose_name="更新时间")
 
@@ -74,7 +66,7 @@ class OpenNew(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.issue
+        return "最新开奖"
 
 class Open(models.Model):
     """新增开奖"""
