@@ -61,7 +61,7 @@ class ZL955IndexView(View):
 			_open_speak = request.POST.get("open_speak", "")
 			_limit_speak_no = request.POST.get("limit_speak_no", "")
 			_changdu = len(_desc)
-			if not _desc:
+			if _desc != '':
 				if request.user.group.open_speak:
 					if _changdu <= request.user.group.limit_speak_no:
 						_bbs = CommentSet()
