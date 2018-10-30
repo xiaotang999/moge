@@ -23,12 +23,24 @@ print(n_time)
     # }
 
 def six2():
-    _url = "http://1680660.com/smallSix/findCurrentVideoInfo.do"
+    _url = "http://1680660.com/smallSix/findCurrentVideoInfo.do?"
     _get_token = "kdsjfhsh29*/djk.*3dsa.1x1as"
     _get_url = "http://127.0.0.9/opengotwo/"
-    r = requests.get(_url)
+    headers = {
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Encoding': 'gzip, deflate',
+        'Accept-Language': 'zh-CN,zh;q=0.9',
+        'Cache-Control': 'max-age=0',
+        'Connection': 'keep-alive',
+        'Cookie': '__cfduid=dbe18b18953b7f84f38dc8c4bf8687cfe1540888690',
+        'Host': '1680660.com',
+        'Pragma': 'no-cache',
+        'Upgrade-Insecure-Requests': '1',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36'
+    }
+    r = requests.get(_url, headers=headers)
     _json = r.json()
-
+    print(_json)
     _id = _json['id']
     _time = _json['time']
     _nextid = _json['nextid']
@@ -49,11 +61,6 @@ def six2():
     xx = requests.get(_get_url, data)
     print(xx)        
 
-
-
-
-
-
 def xunhuan():
     #six()
     #print("循环开始")
@@ -70,12 +77,11 @@ def xunhuan():
             try:
                 six2()
             except:
-                pass
-                
-# while True:
-#     xunhuan()
-#     time.sleep(4)
-try:
-    six2()
-except:
-    print("bug")
+                print("bug")
+i = 1
+while True:
+    a = str(i)
+    print('运行第'+a+'次')
+    xunhuan()
+    time.sleep(6)
+    i=i+1
