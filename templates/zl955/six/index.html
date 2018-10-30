@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="{% static 'dist/index/animate_index.css' %}">
+	<link rel="stylesheet" href="{% static 'moge/dist/index/animate_index.css' %}">
 	<title>开奖</title>
 </head>
 <body>
@@ -33,9 +33,9 @@
 			<div class="animate_date">
 				<b id="data_b">2000年01月01号</b> <span>第</span><b id="issue_b">000</b><span>期</span>
 			</div>
-			<div class="view_box status" style="display: initial; background-image: url({% static 'dist/img/0001.png' %});"></div>
+			<div class="view_box status" style="display: initial; background-image: url({% static 'moge/dist/img/0001.png' %});"></div>
 			<div class="view_box each" style="display: initial;"></div>
-			<div class="view_box" id="die" style="background-image: url({% static 'dist/img/0001.png' %}) !important;">
+			<div class="view_box" id="die" style="background-image: url({% static 'moge/dist/img/0001.png' %}) !important;">
 				<div class="ball">
 					<span style="transform: rotate(0deg); top: 199px; left: 114px; display: none;"></span>
 					<span style="transform: rotate(0deg); top: 199px; left: 114px; display: none;"></span>
@@ -64,80 +64,80 @@
 			<p id="nextTime">距离下期开奖还有：00天00小时00分00秒</p>
 		</div>
 		<div class="loadcolor">
-			<img src="{% static 'dist/index/ball_blue.png' %}" alt="">
-			<img src="{% static 'dist/index/ball_green.png' %}" alt="">
-			<img src="{% static 'dist/index/ball_red.png' %}" alt="">
-			<img src="{% static 'dist/index/liuhe_v0.png' %}" alt="">
-			<img src="{% static 'dist/index/liuhe_v1.png' %}" alt="">
-			<img src="{% static 'dist/index/liuhe_v2.png' %}" alt="">
+			<img src="{% static 'moge/dist/index/ball_blue.png' %}" alt="">
+			<img src="{% static 'moge/dist/index/ball_green.png' %}" alt="">
+			<img src="{% static 'moge/dist/index/ball_red.png' %}" alt="">
+			<img src="{% static 'moge/dist/index/liuhe_v0.png' %}" alt="">
+			<img src="{% static 'moge/dist/index/liuhe_v1.png' %}" alt="">
+			<img src="{% static 'moge/dist/index/liuhe_v2.png' %}" alt="">
 		</div>
 
-		<audio id="bgSound" src="{% static 'dist/sound/bgsound.mp3' %}" loop="loop"></audio>
-		<audio id="numSound" src="{% static 'dist/sound/empt.mp3' %}"></audio>
+		<audio id="bgSound" src="{% static 'moge/dist/sound/bgsound.mp3' %}" loop="loop"></audio>
+		<audio id="numSound" src="{% static 'moge/dist/sound/empt.mp3' %}"></audio>
 		<div class="num_sound">
-			<audio id="numSound1" src="{% static 'dist/sound/1.mp3' %}"></audio>
-			<audio id="numSound2" src="{% static 'dist/sound/2.mp3' %}"></audio>
-			<audio id="numSound3" src="{% static 'dist/sound/3.mp3' %}"></audio>
-			<audio id="numSound4" src="{% static 'dist/sound/4.mp3' %}"></audio>
-			<audio id="numSound5" src="{% static 'dist/sound/5.mp3' %}"></audio>
-			<audio id="numSound6" src="{% static 'dist/sound/6.mp3' %}"></audio>
-			<audio id="numSound7" src="{% static 'dist/sound/7.mp3' %}"></audio>
-			<audio id="numSound8" src="{% static 'dist/sound/8.mp3' %}"></audio>
-			<audio id="numSound9" src="{% static 'dist/sound/9.mp3' %}"></audio>
-			<audio id="numSound10" src="{% static 'dist/sound/10.mp3' %}"></audio>
-			<audio id="numSound11" src="{% static 'dist/sound/11.mp3' %}"></audio>
-			<audio id="numSound12" src="{% static 'dist/sound/12.mp3' %}"></audio>
-			<audio id="numSound13" src="{% static 'dist/sound/13.mp3' %}"></audio>
-			<audio id="numSound14" src="{% static 'dist/sound/14.mp3' %}"></audio>
-			<audio id="numSound15" src="{% static 'dist/sound/15.mp3' %}"></audio>
-			<audio id="numSound16" src="{% static 'dist/sound/16.mp3' %}"></audio>
-			<audio id="numSound17" src="{% static 'dist/sound/17.mp3' %}"></audio>
-			<audio id="numSound18" src="{% static 'dist/sound/18.mp3' %}"></audio>
-			<audio id="numSound19" src="{% static 'dist/sound/19.mp3' %}"></audio>
-			<audio id="numSound20" src="{% static 'dist/sound/20.mp3' %}"></audio>
-			<audio id="numSound21" src="{% static 'dist/sound/21.mp3' %}"></audio>
-			<audio id="numSound22" src="{% static 'dist/sound/22.mp3' %}"></audio>
-			<audio id="numSound23" src="{% static 'dist/sound/23.mp3' %}"></audio>
-			<audio id="numSound24" src="{% static 'dist/sound/24.mp3' %}"></audio>
-			<audio id="numSound25" src="{% static 'dist/sound/25.mp3' %}"></audio>
-			<audio id="numSound26" src="{% static 'dist/sound/26.mp3' %}"></audio>
-			<audio id="numSound27" src="{% static 'dist/sound/27.mp3' %}"></audio>
-			<audio id="numSound28" src="{% static 'dist/sound/28.mp3' %}"></audio>
-			<audio id="numSound29" src="{% static 'dist/sound/29.mp3' %}"></audio>
-			<audio id="numSound30" src="{% static 'dist/sound/30.mp3' %}"></audio>
-			<audio id="numSound31" src="{% static 'dist/sound/31.mp3' %}"></audio>
-			<audio id="numSound32" src="{% static 'dist/sound/32.mp3' %}"></audio>
-			<audio id="numSound33" src="{% static 'dist/sound/33.mp3' %}"></audio>
-			<audio id="numSound34" src="{% static 'dist/sound/34.mp3' %}"></audio>
-			<audio id="numSound35" src="{% static 'dist/sound/35.mp3' %}"></audio>
-			<audio id="numSound36" src="{% static 'dist/sound/36.mp3' %}"></audio>
-			<audio id="numSound37" src="{% static 'dist/sound/37.mp3' %}"></audio>
-			<audio id="numSound38" src="{% static 'dist/sound/38.mp3' %}"></audio>
-			<audio id="numSound39" src="{% static 'dist/sound/39.mp3' %}"></audio>
-			<audio id="numSound40" src="{% static 'dist/sound/40.mp3' %}"></audio>
-			<audio id="numSound41" src="{% static 'dist/sound/41.mp3' %}"></audio>
-			<audio id="numSound42" src="{% static 'dist/sound/42.mp3' %}"></audio>
-			<audio id="numSound43" src="{% static 'dist/sound/43.mp3' %}"></audio>
-			<audio id="numSound44" src="{% static 'dist/sound/44.mp3' %}"></audio>
-			<audio id="numSound45" src="{% static 'dist/sound/45.mp3' %}"></audio>
-			<audio id="numSound46" src="{% static 'dist/sound/46.mp3' %}"></audio>
-			<audio id="numSound47" src="{% static 'dist/sound/47.mp3' %}"></audio>
-			<audio id="numSound48" src="{% static 'dist/sound/48.mp3' %}"></audio>
-			<audio id="numSound49" src="{% static 'dist/sound/49.mp3' %}"></audio>
+			<audio id="numSound1" src="{% static 'moge/dist/sound/1.mp3' %}"></audio>
+			<audio id="numSound2" src="{% static 'moge/dist/sound/2.mp3' %}"></audio>
+			<audio id="numSound3" src="{% static 'moge/dist/sound/3.mp3' %}"></audio>
+			<audio id="numSound4" src="{% static 'moge/dist/sound/4.mp3' %}"></audio>
+			<audio id="numSound5" src="{% static 'moge/dist/sound/5.mp3' %}"></audio>
+			<audio id="numSound6" src="{% static 'moge/dist/sound/6.mp3' %}"></audio>
+			<audio id="numSound7" src="{% static 'moge/dist/sound/7.mp3' %}"></audio>
+			<audio id="numSound8" src="{% static 'moge/dist/sound/8.mp3' %}"></audio>
+			<audio id="numSound9" src="{% static 'moge/dist/sound/9.mp3' %}"></audio>
+			<audio id="numSound10" src="{% static 'moge/dist/sound/10.mp3' %}"></audio>
+			<audio id="numSound11" src="{% static 'moge/dist/sound/11.mp3' %}"></audio>
+			<audio id="numSound12" src="{% static 'moge/dist/sound/12.mp3' %}"></audio>
+			<audio id="numSound13" src="{% static 'moge/dist/sound/13.mp3' %}"></audio>
+			<audio id="numSound14" src="{% static 'moge/dist/sound/14.mp3' %}"></audio>
+			<audio id="numSound15" src="{% static 'moge/dist/sound/15.mp3' %}"></audio>
+			<audio id="numSound16" src="{% static 'moge/dist/sound/16.mp3' %}"></audio>
+			<audio id="numSound17" src="{% static 'moge/dist/sound/17.mp3' %}"></audio>
+			<audio id="numSound18" src="{% static 'moge/dist/sound/18.mp3' %}"></audio>
+			<audio id="numSound19" src="{% static 'moge/dist/sound/19.mp3' %}"></audio>
+			<audio id="numSound20" src="{% static 'moge/dist/sound/20.mp3' %}"></audio>
+			<audio id="numSound21" src="{% static 'moge/dist/sound/21.mp3' %}"></audio>
+			<audio id="numSound22" src="{% static 'moge/dist/sound/22.mp3' %}"></audio>
+			<audio id="numSound23" src="{% static 'moge/dist/sound/23.mp3' %}"></audio>
+			<audio id="numSound24" src="{% static 'moge/dist/sound/24.mp3' %}"></audio>
+			<audio id="numSound25" src="{% static 'moge/dist/sound/25.mp3' %}"></audio>
+			<audio id="numSound26" src="{% static 'moge/dist/sound/26.mp3' %}"></audio>
+			<audio id="numSound27" src="{% static 'moge/dist/sound/27.mp3' %}"></audio>
+			<audio id="numSound28" src="{% static 'moge/dist/sound/28.mp3' %}"></audio>
+			<audio id="numSound29" src="{% static 'moge/dist/sound/29.mp3' %}"></audio>
+			<audio id="numSound30" src="{% static 'moge/dist/sound/30.mp3' %}"></audio>
+			<audio id="numSound31" src="{% static 'moge/dist/sound/31.mp3' %}"></audio>
+			<audio id="numSound32" src="{% static 'moge/dist/sound/32.mp3' %}"></audio>
+			<audio id="numSound33" src="{% static 'moge/dist/sound/33.mp3' %}"></audio>
+			<audio id="numSound34" src="{% static 'moge/dist/sound/34.mp3' %}"></audio>
+			<audio id="numSound35" src="{% static 'moge/dist/sound/35.mp3' %}"></audio>
+			<audio id="numSound36" src="{% static 'moge/dist/sound/36.mp3' %}"></audio>
+			<audio id="numSound37" src="{% static 'moge/dist/sound/37.mp3' %}"></audio>
+			<audio id="numSound38" src="{% static 'moge/dist/sound/38.mp3' %}"></audio>
+			<audio id="numSound39" src="{% static 'moge/dist/sound/39.mp3' %}"></audio>
+			<audio id="numSound40" src="{% static 'moge/dist/sound/40.mp3' %}"></audio>
+			<audio id="numSound41" src="{% static 'moge/dist/sound/41.mp3' %}"></audio>
+			<audio id="numSound42" src="{% static 'moge/dist/sound/42.mp3' %}"></audio>
+			<audio id="numSound43" src="{% static 'moge/dist/sound/43.mp3' %}"></audio>
+			<audio id="numSound44" src="{% static 'moge/dist/sound/44.mp3' %}"></audio>
+			<audio id="numSound45" src="{% static 'moge/dist/sound/45.mp3' %}"></audio>
+			<audio id="numSound46" src="{% static 'moge/dist/sound/46.mp3' %}"></audio>
+			<audio id="numSound47" src="{% static 'moge/dist/sound/47.mp3' %}"></audio>
+			<audio id="numSound48" src="{% static 'moge/dist/sound/48.mp3' %}"></audio>
+			<audio id="numSound49" src="{% static 'moge/dist/sound/49.mp3' %}"></audio>
 
 		</div>
 		<div class="count_sound">
-			<audio id="numSound_one" src="{% static 'dist/sound/one.mp3' %}"></audio>
-			<audio id="numSound_two" src="{% static 'dist/sound/two.mp3' %}"></audio>
-			<audio id="numSound_three" src="{% static 'dist/sound/three.mp3' %}"></audio>
-			<audio id="numSound_four" src="{% static 'dist/sound/four.mp3' %}"></audio>
-			<audio id="numSound_five" src="{% static 'dist/sound/five.mp3' %}"></audio>
-			<audio id="numSound_six" src="{% static 'dist/sound/six.mp3' %}"></audio>
-			<audio id="numSound_seven" src="{% static 'dist/sound/seven.mp3' %}"></audio>
+			<audio id="numSound_one" src="{% static 'moge/dist/sound/one.mp3' %}"></audio>
+			<audio id="numSound_two" src="{% static 'moge/dist/sound/two.mp3' %}"></audio>
+			<audio id="numSound_three" src="{% static 'moge/dist/sound/three.mp3' %}"></audio>
+			<audio id="numSound_four" src="{% static 'moge/dist/sound/four.mp3' %}"></audio>
+			<audio id="numSound_five" src="{% static 'moge/dist/sound/five.mp3' %}"></audio>
+			<audio id="numSound_six" src="{% static 'moge/dist/sound/six.mp3' %}"></audio>
+			<audio id="numSound_seven" src="{% static 'moge/dist/sound/seven.mp3' %}"></audio>
 		</div>
 	</div>
 	<!--  -->
-	<script type="text/javascript" src="{% static 'dist/index/jquery-1.11.3.js' %}"></script>
-	<script type="text/javascript" src="{% static 'dist/index/index.js' %}"></script>
+	<script type="text/javascript" src="{% static 'moge/dist/index/jquery-1.11.3.js' %}"></script>
+	<script type="text/javascript" src="{% static 'moge/dist/index/index.js' %}"></script>
 </body>
 </html>
