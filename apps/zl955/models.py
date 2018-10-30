@@ -37,7 +37,7 @@ class Guanggao(models.Model):
         return self.name
 
 class OpenAutoOne(models.Model):
-    """自动开奖一"""
+    """自动开奖.一"""
     expect = models.CharField(max_length=55, verbose_name="期号", help_text="请输入小于50字符的描述！")
     no1 = models.CharField(max_length=55, verbose_name="第1位", null=True, blank=True, help_text="请输第1位号码！", default='0')
     no2 = models.CharField(max_length=55, verbose_name="第2位", null=True, blank=True, help_text="请输第2位号码！", default='0')
@@ -50,7 +50,36 @@ class OpenAutoOne(models.Model):
     add_time = models.DateTimeField(default=datetime.now, verbose_name="更新时间")
 
     class Meta:
-        verbose_name = "自动开奖一"
+        verbose_name = "自动开奖.一"
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.expect
+    # {
+    # "id":"122",
+    # "time":"21:43:0",
+    # "nextid":"123",
+    # "s":0,
+    # "c":"4001",
+    # "ma":"45,虎,red,1,狗,red,15,猴,blue,5,马,green,39,猴,green,47,鼠,blue,43,龙,green",
+    # "year":"2018",
+    # "m":"",
+    # "day":"10月27日",
+    # "type":4,
+    # "nextdate":"2018/10/30 21:30:00",
+    # "info":""
+    # }
+class OpenAutoTwo(models.Model):
+    """自动开奖.二"""
+    expect = models.CharField(max_length=55, verbose_name="期号", help_text="请输入小于50字符的描述！")
+    time = models.CharField(max_length=55, verbose_name="开奖时间", help_text="请输入小于50字符的描述！")
+    nextid = models.CharField(max_length=55, verbose_name="下个期号", help_text="请输入小于50字符的描述！")
+    ma = models.CharField(max_length=150, verbose_name="号码", help_text="请输入小于100字符的描述！")
+    type = models.IntegerField(verbose_name="类型", null=True, blank=True)
+    nextdate = models.CharField(max_length=55, verbose_name="下期时间", help_text="请输入小于50字符的描述！")
+
+    class Meta:
+        verbose_name = "自动开奖.二"
         verbose_name_plural = verbose_name
 
     def __str__(self):

@@ -7,7 +7,7 @@ from django.template import loader
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core import serializers
 # Create your views here.
-from .models import Settings, Guanggao, OpenAutoOne, OpenNew, Open, Bottoms, PiaoChuan, IpApp
+from .models import Settings, Guanggao, OpenAutoOne, OpenAutoTwo, OpenNew, Open, Bottoms, PiaoChuan, IpApp
 from bbs.models import CommentSet
 from users.models import User
 
@@ -199,5 +199,17 @@ class zl955getSixOne(View):
 						find_expect.is_open = True
 					find_expect.save()
 		return HttpResponse(json.dumps(_status),content_type='application/json')
-		
-		
+
+class zl955OpenAutoTwo(View):
+	"""刷新获取开奖新数据"""
+	def get(self, request):
+		_opennew2 = OpenAutoTwo.objects.order_by('-id')[:1]
+		_opennew2 = {
+			"id":_opennew2[0].expect,
+			"time":_opennew2[0].time,
+			"nextid":_opennew2[0].nextid,
+			"ma":_opennew2[0].ma,
+			"type":_opennew2[0].type,
+			"nextdate":_opennew2[0].nextdate,
+		}
+		return HttpResponse(json.dumps(_opennew2),content_type='application/json')

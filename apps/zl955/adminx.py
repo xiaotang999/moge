@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import xadmin
 
-from .models import Settings, Guanggao, OpenAutoOne, OpenNew, Open, Bottoms, PiaoChuan, IpApp
+from .models import Settings, Guanggao, OpenAutoOne, OpenAutoTwo, OpenNew, Open, Bottoms, PiaoChuan, IpApp
 from xadmin import views
 from xadmin.views import ListAdminView
 
@@ -23,9 +23,15 @@ class GuanggaoAdmin(object):
     list_editable = ["is_show"]
     model_icon = 'fa fa-html5'
 class OpenAutoOneAdmin(object):
-    """自动开奖一"""
+    """自动开奖.一"""
     list_display = ["expect", "no1", "no2", "no3", "no4", "no5", "no6", "no7", "is_open", "add_time"]
     list_editable = ('expect', 'no1', 'no2', 'no3', 'no4', 'no5', 'no6', 'no7', 'is_open')
+    ordering = ["-id"]
+    model_icon = 'fa fa-html5'
+class OpenAutoTwoAdmin(object):
+    """自动开奖.二"""
+    list_display = ["expect", "time", "nextid", "ma", "type", "nextdate"]
+    list_editable = ('expect', 'time', 'nextid', 'ma', 'type', 'nextdate')
     ordering = ["-id"]
     model_icon = 'fa fa-html5'
 class OpenNewAdmin(object):
@@ -74,6 +80,7 @@ xadmin.site.register(views.CommAdminView, GlobalSetting)
 xadmin.site.register(Settings, SettingsAdmin)
 xadmin.site.register(Guanggao, GuanggaoAdmin)
 xadmin.site.register(OpenAutoOne, OpenAutoOneAdmin)
+xadmin.site.register(OpenAutoTwo, OpenAutoTwoAdmin)
 xadmin.site.register(OpenNew, OpenNewAdmin)
 xadmin.site.register(Open, OpenAdmin)
 xadmin.site.register(Bottoms, BottomsAdmin)

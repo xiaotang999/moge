@@ -43,7 +43,7 @@ def six():
 def xunhuan():
     #six()
     #print("循环开始")
-    s_time = 2125 #开始时间
+    s_time = 2130 #开始时间
     e_time = 2140 #结束时间
     now_time = datetime.datetime.now().strftime('%H%M')#现在
     #print(now_time)
