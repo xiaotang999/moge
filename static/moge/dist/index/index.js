@@ -83,14 +83,14 @@ $("#try").click(function(e) { //试试手气
         numSound.play();
     }
     $("#die").addClass("play");
-    $(".status").css("background-image", "url(dist/img/status.gif)")
+    $(".status").css("background-image", "url(../static/moge/dist/img/status.gif)")
     var eachnone = setTimeout(function() {
         $(".each").css("display", "none")
-        $("#die").css("cssText","background-image:url(dist/img/empt.png) !important");
+        $("#die").css("cssText","background-image:url(../static/moge/dist/img/empt.png) !important");
         clearTimeout(eachnone)
     }, 1000)
     var eachtime = setTimeout(function() {
-        $(".each").css("display", "block").css("background-image", "url(dist/img/each.gif)");
+        $(".each").css("display", "block").css("background-image", "url(../static/moge/dist/img/each.gif)");
         addDOM(createArr(), false) //加载随机数到 DOM
         clearTimeout(eachtime);
     }, 2500)
@@ -306,9 +306,9 @@ function stopanimate() {
     }
     $(".ball>span").removeClass(); //清除球转出时添加的 class 
     $("#die").removeClass("play");
-    $("#die").css("cssText","background-image:url(dist/img/0001.png) !important");
+    $("#die").css("cssText","background-image:url(../static/moge/dist/img/0001.png) !important");
     $(".status").css("display", "initial").siblings(".each").css("display", "initial")
-    $(".status").css("background-image", "url(dist/img/0001.png)");
+    $(".status").css("background-image", "url(../static/moge/dist/img/0001.png)");
     $(".ball>span").removeClass("rotate").css({
         "transform": "rotate(0deg)",
         "top": top,
@@ -422,7 +422,7 @@ function loadAjax() {
     $.ajax({
         type: "GET",
         // url: "http://1680660.com/smallSix/findCurrentVideoInfo.do?",
-        url: "https://zl955.com/getsixtwo/",
+        url: "/getsixtwo/",
         async: true,
         // dataType: "json",
         success: function(data) {
@@ -502,14 +502,14 @@ function kaijiIn(maArr) {
             numSound.play();
         }
         $("#die").addClass("play");
-        $(".status").css("background-image", "url(dist/img/status.gif)")
+        $(".status").css("background-image", "url(../static/moge/dist/img/status.gif)")
         var eachnone = setTimeout(function() {
             $(".each").css("display", "none")
             $("#die").css("background-image", "initial");
             clearTimeout(eachnone)
         }, 1000)
         var eachtime = setTimeout(function() {
-            $(".each").css("display", "block").css("background-image", "url(dist/img/each.gif)");
+            $(".each").css("display", "block").css("background-image", "url(../static/moge/moge/dist/img/each.gif)");
             addDOM(maArr, true) //加载随机数到 DOM
             clearTimeout(eachtime);
         }, 2500)
