@@ -202,6 +202,7 @@ class zl955getSixOne(View):
 
 class zl955OpenTwo(View):
 	"""刷新获取开奖新数据"""
+	def get(self, request):
 		return render(request, 'zl955/six/index.html',{})
 
 class zl955OpenAutoTwo(View):
