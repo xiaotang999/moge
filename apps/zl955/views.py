@@ -201,12 +201,12 @@ class zl955getSixOne(View):
 		return HttpResponse(json.dumps(_status),content_type='application/json')
 
 class zl955OpenTwo(View):
-	"""刷新获取开奖新数据"""
+	"""自动开奖页面2"""
 	def get(self, request):
 		return render(request, 'zl955/six/index.html',{})
 
 class zl955OpenAutoTwo(View):
-	"""刷新获取开奖新数据"""
+	"""客户获取彩票数据2"""
 	def get(self, request):
 		_opennew2 = OpenAutoTwo.objects.order_by('-id')[:1]
 		_opennew2 = {
@@ -218,3 +218,45 @@ class zl955OpenAutoTwo(View):
 			"nextdate":_opennew2[0].nextdate,
 		}
 		return HttpResponse(json.dumps(_opennew2),content_type='application/json')
+
+class zl955OpenGoTwo(View):
+	"""采集提交数据2"""
+	def get(self, request):
+		check_token = "kdsjfhsh29*/djk.*3dsa.1x1as"
+		_status = {}
+
+		token = request.GET.get("token")
+		expect = request.GET.get("id")
+		time = request.GET.get("time")
+		nextid = request.GET.get("nextid")
+		ma = request.GET.get("ma")
+		type = request.GET.get("type")
+		nextdate = request.GET.get("nextdate")
+
+		old_expect = OpenAutoTwo.objects.order_by('-id')[:1]
+		info = json.loads(serializers.serialize("json", old_expect))
+		if token == check_token:
+			print("token正确")
+			if not info or expect != info[0]['fields']['expect']:
+				print("期号不存在，写入数据库")
+				up = OpenAutoTwo()
+				up.expect = expect
+				up.time = time
+				up.nextid = nextid
+				up.ma = ma
+				up.type = type
+				up.nextdate = nextdate
+				up.save()
+			else: # 更新操作
+				if info[0]['fields']['type'] != 4: # 判断是否开完？
+					print("期号存在，未全部开完，继续写入")
+					find_expect = OpenAutoOne.objects.get(expect=expect)
+					# updates = json.loads(serializers.serialize("json", find_expect))
+					find_expect.time = time
+					find_expect.nextid = nextid
+					find_expect.ma = ma
+					find_expect.type = type
+					find_expect.nextdate = nextdate
+					find_expect.save()
+		return HttpResponse(json.dumps(_status),content_type='application/json')
+
