@@ -75,7 +75,7 @@ class OpenAutoTwo(models.Model):
     time = models.CharField(max_length=55, verbose_name="开奖时间", help_text="请输入小于50字符的描述！")
     nextid = models.CharField(max_length=55, verbose_name="下个期号", help_text="请输入小于50字符的描述！")
     ma = models.CharField(max_length=150, verbose_name="号码", help_text="请输入小于100字符的描述！")
-    type = models.IntegerField(verbose_name="类型", null=True, blank=True)
+    type = models.IntegerField(verbose_name="类型")
     nextdate = models.CharField(max_length=55, verbose_name="下期时间", help_text="请输入小于50字符的描述！")
 
     class Meta:
