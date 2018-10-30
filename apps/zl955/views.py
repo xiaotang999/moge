@@ -200,6 +200,10 @@ class zl955getSixOne(View):
 					find_expect.save()
 		return HttpResponse(json.dumps(_status),content_type='application/json')
 
+class zl955OpenTwo(View):
+	"""刷新获取开奖新数据"""
+		return render(request, 'zl955/six/index.html',{})
+
 class zl955OpenAutoTwo(View):
 	"""刷新获取开奖新数据"""
 	def get(self, request):
