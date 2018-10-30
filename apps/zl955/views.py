@@ -250,7 +250,7 @@ class zl955OpenGoTwo(View):
 			else: # 更新操作
 				if info[0]['fields']['type'] != "4": # 判断是否开完？
 					print("期号存在，未全部开完，继续写入")
-					find_expect = OpenAutoOne.objects.get(expect=expect)
+					find_expect = OpenAutoTwo.objects.get(expect=expect)
 					# updates = json.loads(serializers.serialize("json", find_expect))
 					find_expect.time = time
 					find_expect.nextid = nextid
