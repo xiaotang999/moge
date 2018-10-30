@@ -3,7 +3,7 @@ import requests
 import json
 import datetime
 import time
-# 
+#
 n_time = datetime.datetime.now().strftime('%H%M')#现在
 print(n_time)
 def six():
@@ -39,17 +39,25 @@ def six():
     print(data)
     xx = requests.get(_get_url, data)
     print(xx)
-# 
+#
 def xunhuan():
-    print("循环开始")
+    #six()
+    #print("循环开始")
     s_time = 2125 #开始时间
     e_time = 2140 #结束时间
     now_time = datetime.datetime.now().strftime('%H%M')#现在
+    #print(now_time)
     now_time = int(now_time)
-    if now_time >= s_time:
-        if now_time <= e_time:
+    #zhi = now_time - s_time
+    if now_time > s_time:
+        #print("start")
+        if now_time < e_time:
             print("开始执行")
-            six()
+            try:
+                six()
+            except:
+                pass
+                
 while True:
     xunhuan()
     time.sleep(4)
