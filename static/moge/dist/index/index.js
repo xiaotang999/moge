@@ -557,6 +557,8 @@ function nextopenTime(nextTime) {
         var fen = parseInt((time / (1000 * 60 * 60) - (day * 24) - hours) * 60)
         var miao = parseInt(((time / (1000 * 60 * 60) - (day * 24) - hours) * 60 - fen) * 60);
         if(time < 0 || day < 0 || time < 0 || time < 0 || time < 0) {
+            clearTimeout(nexttimeinter)
+            loadAjax()
             return;
         } else {
             var textime = '距离下期开奖还有：' + day + '天' + hours + '小时' + fen + '分' + miao + '秒'
