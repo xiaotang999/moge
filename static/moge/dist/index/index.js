@@ -558,6 +558,7 @@ function nextopenTime(nextTime) {
         var miao = parseInt(((time / (1000 * 60 * 60) - (day * 24) - hours) * 60 - fen) * 60);
         if(time < 0 || day < 0 || time < 0 || time < 0 || time < 0) {
             clearTimeout(nexttimeinter)
+            $(".number>ul").html("");//清空当前数据
             loadAjax()
             return;
         } else {
