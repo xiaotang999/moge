@@ -48,6 +48,7 @@ uwsgi --ini uwsgi.ini
 ```
 workon moge
 nohup python -u runsix.py > out.log 2>&1 &
+nohup python -u runsix2.py > out2.log 2>&1 &
 ps -ef |grep python
 pkill -9 python
 TZ='Asia/Shanghai'; export TZ

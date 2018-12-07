@@ -180,7 +180,7 @@ class zl955getSixOne(View):
 				up.no5 = no5
 				up.no6 = no6
 				up.no7 = no7
-				if no7:
+				if no7 != '0':
 					up.is_open = True
 				up.save()
 			else: # 更新操作
@@ -195,7 +195,7 @@ class zl955getSixOne(View):
 					find_expect.no5 = no5
 					find_expect.no6 = no6
 					find_expect.no7 = no7
-					if no7:
+					if no7 != '0':
 						find_expect.is_open = True
 					find_expect.save()
 		return HttpResponse(json.dumps(_status),content_type='application/json')
